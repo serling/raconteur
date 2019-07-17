@@ -1,0 +1,46 @@
+{
+  "Success": true,
+  "payload": {
+    "pageTitle": "front page",
+    "initialMessage": {
+      "id": "u8f2998384f34f",
+      "type": "info",
+      "message": "This is a short-lived message from the server."
+    },
+    "title": "Welcome to the front page",
+    "latestArticles": [
+      {
+        "title": "article #1",
+        "href": "/article-page?id=1",
+        "image": {
+          "src": "../static/images/game2.jpg",
+          "alt": "image of game 2"
+        }
+      },
+      {
+        "title": "article #2",
+        "href": "/article-page?id=2",
+        "image": {
+          "src": "../static/images/game.jpg",
+          "alt": "image of game 1"
+        }
+      },
+      {
+        "title": "article #3",
+        "href": "/article-page?id=3",
+        "image": {
+          "src": "../static/images/game3.jpg",
+          "alt": "image of game 3"
+        }
+      },
+      {
+        "title": "article #4",
+        "href": "/article-page?id=4",
+        "image": {
+          "src": "../static/images/game4.jpg",
+          "alt": "image of game 4"
+        }
+      }
+    ]
+  }
+}
