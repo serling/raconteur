@@ -1,0 +1,45 @@
+.header {
+  border-bottom: 1px solid black;
+
+  &__content {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+
+    > * {
+      margin-right: 1rem;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+  &__logo {
+    transition: all 0.2s linear;
+    &:hover {
+      transform: rotate(360deg);
+    }
+  }
+
+  &__navigation {
+    display: flex;
+    align-items: center;
+
+    > * {
+      margin-left: 1rem;
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+  }
+}

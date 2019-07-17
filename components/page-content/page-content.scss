@@ -1,0 +1,28 @@
+.page-content {
+  $self: &;
+  margin: 0 auto;
+
+  + #{$self} {
+    margin-top: 2rem;
+  }
+
+  &--full {
+    max-width: 100%;
+  }
+
+  &--wide {
+    max-width: 1240px;
+  }
+
+  &--normal {
+    max-width: 980px;
+  }
+
+  &--narrow {
+    max-width: 768px;
+  }
+
+  &__inner {
+    padding: 0 2rem;
+  }
+}

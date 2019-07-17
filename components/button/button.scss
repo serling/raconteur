@@ -1,0 +1,49 @@
+.button {
+  cursor: pointer;
+  width: auto;
+  height: auto;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  text-decoration: none;
+  transition: 0.3s all cubic-bezier(0.33, 0, 0.2, 1);
+  transform: translateZ(0);
+  background-color: transparent;
+  color: initial;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+
+  &[disabled] {
+    cursor: not-allowed;
+  }
+
+  &:focus {
+    outline: 1px solid black;
+  }
+
+  &--colored {
+    background-color: rgb(82, 11, 11);
+    color: white;
+    padding: 1rem 2rem;
+
+    &:hover,
+    &:focus {
+      outline: none;
+      color: black;
+    }
+  }
+
+  &--icon {
+    display: block;
+    background: transparent;
+    padding: 0;
+  }
+
+  &__icon {
+    display: inline-block;
+  }
+}

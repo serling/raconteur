@@ -1,0 +1,42 @@
+.image {
+  $self: &;
+  $aspect-ratio--sixteen-nine: 56.25%; //at 16:9 asepct ratio, the height of the image equals 56.25% of the width
+
+  margin: 0;
+
+  &--enforce-aspect-ratio {
+    #{$self}__wrapper {
+      height: 0;
+      position: relative;
+      overflow: hidden;
+      padding-top: $aspect-ratio--sixteen-nine;
+    }
+
+    #{$self}__image {
+      width: 100%;
+      height: auto;
+
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  &__image {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  &__meta {
+    margin-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #d4d2d2;
+  }
+
+  &__credit {
+  }
+}

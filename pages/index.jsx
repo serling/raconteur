@@ -1,8 +1,8 @@
 import React from 'react';
-// import NetworkService from '../services/NetworkService';
+import RequestService from '../js/RequestService';
 
-// import FrontPage from '../components/front-page/front-page';
-// import WithPageTransition from '../components/with-page-transition/with-page-transitions';
+import FrontPage from '../components/front-page/front-page';
+import WithPageTransition from '../components/with-page-transition/with-page-transitions';
 
 import '../scss/global.scss';
 
@@ -11,13 +11,13 @@ class Index extends React.Component {
     let data;
     let error;
 
-    // await NetworkService.getFrontPage()
-    //   .then(response => {
-    //     data = response;
-    //   })
-    //   .catch(error => {
-    //     error = error;
-    //   });
+    await RequestService.get('/static/api/on-front-page.json')
+      .then(response => {
+        data = response;
+      })
+      .catch(error => {
+        error = error;
+      });
 
     return { data, error };
   }
@@ -32,10 +32,9 @@ class Index extends React.Component {
     // }
 
     return (
-      <div>hello</div>
-      // <WithPageTransition>
-      //   <FrontPage {...this.props.data} />
-      // </WithPageTransition>
+      <WithPageTransition>
+        <FrontPage {...this.props.data} />
+      </WithPageTransition>
     );
   }
 }

@@ -1,0 +1,39 @@
+.link {
+  text-decoration: none;
+  color: inherit;
+
+  &:hover,
+  &:focus {
+    outline: initial;
+    color: initial;
+    text-decoration: none;
+  }
+
+  &:focus,
+  &:hover {
+    color: black;
+  }
+
+  &--underlined {
+    border-bottom: 1px solid transparent;
+    transition: 0.3s border cubic-bezier(0.33, 0, 0.2, 1);
+    padding: 0;
+
+    &:focus,
+    &:hover {
+      border-bottom: 1px solid black;
+    }
+  }
+
+  &--arrow {
+    &::after {
+      content: '➝';
+      margin-left: 0.25em;
+    }
+
+    &:focus,
+    &:hover {
+      border-bottom: 1px solid black;
+    }
+  }
+}

@@ -1,0 +1,24 @@
+.text {
+  &__text {
+    margin: 0;
+  }
+
+  &--body {
+    font-size: 1rem;
+  }
+
+  &--lead {
+    font-size: 1.5rem;
+    line-height: 1.5em;
+  }
+
+  &--small {
+    font-size: 0.8889rem;
+  }
+
+  &--label {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.8889rem;
+  }
+}
