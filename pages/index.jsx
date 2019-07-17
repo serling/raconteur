@@ -23,13 +23,13 @@ class Index extends React.Component {
   }
 
   render() {
-    // if (this.props.error) {
-    //   return <Error statusCode="Request Error" />;
-    // }
+    if (this.props.error) {
+      return <Error statusCode="Request Error" />;
+    }
 
-    // if (!this.props.data) {
-    //   return <Error statusCode="Missing Data" />;
-    // }
+    if (!this.props.data) {
+      return <Error statusCode="Missing Data" />;
+    }
 
     return (
       <WithPageTransition>
