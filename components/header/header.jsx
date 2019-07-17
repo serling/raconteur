@@ -37,8 +37,8 @@ class Header extends React.Component {
                 <Icon name="close" size={Icon.sizes.medium} />
               </Link>
               <Link href="/article-page" text="Article (page)" />
-              <Route href="/article-page">
-                <a>Article (route)</a>
+              <Route href="/games-page">
+                <a>Games (route)</a>
               </Route>
             </nav>
             <div className="header__actions">

@@ -2,17 +2,17 @@ import React from 'react';
 import Error from 'next/error';
 
 import RequestService from '../js/RequestService';
-import ArticlePageContent from '../components/article-page/article-page';
+import GamesPageContent from '../components/games-page/games-page';
 import WithPageTransition from '../components/with-page-transition/with-page-transitions';
 
 import '../scss/global.scss';
 
-class ArticlePage extends React.Component {
+class GamesPage extends React.Component {
   static async getInitialProps(ctx) {
     let error;
     let data;
 
-    await RequestService.get('/static/api/on-article.json', ctx.query.id)
+    await RequestService.get('/static/api/on-games-page.json')
       .then(response => {
         data = response;
       })
@@ -34,10 +34,10 @@ class ArticlePage extends React.Component {
 
     return (
       <WithPageTransition>
-        <ArticlePageContent data={this.props.data} />
+        <GamesPageContent data={this.props.data} />
       </WithPageTransition>
     );
   }
 }
 
-export default ArticlePage;
+export default GamesPage;

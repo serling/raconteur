@@ -6,15 +6,9 @@ import ArticleTop from '../article-top/article-top';
 import ArticleImage from '../article-image/article-image';
 import ArticleBody from '../article-body/article-body';
 
-class Article extends React.Component {
+class ArticlePage extends React.Component {
   static propTypes = {
-    data: PropTypes.object,
-    user: PropTypes.object
-  };
-
-  static defaultProps = {
-    data: {},
-    user: {}
+    data: PropTypes.object
   };
 
   static pageTransitionDelayEnter = true;
@@ -37,15 +31,22 @@ class Article extends React.Component {
   render() {
     if (!this.state.hasLoaded) return null;
 
+    const {
+      pageTitle,
+      articleTop,
+      articleBody,
+      articleImage
+    } = this.props.data;
+
     return (
-      <Layout title={this.props.data.pageTitle}>
-        <ArticleTop {...this.props.data.articleTop} />
-        <ArticleBody {...this.props.data.articleBody} />
-        <ArticleImage {...this.props.data.articleImage} />
-        <ArticleBody {...this.props.data.articleBody} />
+      <Layout title={pageTitle}>
+        <ArticleTop {...articleTop} />
+        <ArticleBody {...articleBody} />
+        <ArticleImage {...articleImage} />
+        <ArticleBody {...articleBody} />
       </Layout>
     );
   }
 }
 
-export default Article;
+export default ArticlePage;
