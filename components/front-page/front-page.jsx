@@ -10,7 +10,6 @@ class FrontPage extends React.Component {
   state = { hasLoaded: false };
 
   componentDidMount() {
-    console.log(this.props);
     this.setState(
       {
         hasLoaded: true
@@ -34,13 +33,9 @@ class FrontPage extends React.Component {
 
 FrontPage.propTypes = {
   pageTitle: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  latestArticles: PropTypes.array.isRequired,
-  initialMessage: PropTypes.object
+  title: PropTypes.string.isRequired
 };
 
-FrontPage.defaultProps = {
-  latestArticles: []
-};
+FrontPage.defaultProps = {};
 
 export default FrontPage;

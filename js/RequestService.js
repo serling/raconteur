@@ -42,15 +42,24 @@ function handleFetchError(error) {
   return Promise.reject(error);
 }
 
+function getUrl(endpoint, id) {
+  let url = `${BASE_URL + endpoint}`;
+
+  if (id) {
+    url + `/${id}`;
+  }
+
+  return url;
+}
+
 class RequestService {
   async get(endpoint, id) {
     console.log('* getting', endpoint, id);
 
-    let url = `${BASE_URL + endpoint}` + id ? `/${id}` : undefined;
-
-    console.log('url:', url);
-
-    let data = await fetch(url, Object.assign({}, getDefaultOptions()))
+    let data = await fetch(
+      getUrl(endpoint, id),
+      Object.assign({}, getDefaultOptions())
+    )
       .then(parseResponse)
       .then(handleError)
       .then(handleResponse)
