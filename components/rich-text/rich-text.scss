@@ -41,6 +41,14 @@
   }
 
   a {
+    text-decoration: none;
+    border-bottom: 2px solid blue;
+
+    &:hover,
+    &:focus {
+      border: 0;
+    }
+
     &[href*='//'] {
     }
   }

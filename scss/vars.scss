@@ -1,0 +1,32 @@
+@mixin cf {
+  *zoom: 1;
+
+  &:before,
+  &:after {
+    content: ' ';
+    display: table;
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
+@mixin remove-list-styles {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+@mixin remove-link-styles {
+  text-decoration: none;
+  color: inherit;
+}
+
+@mixin remove-button-styles {
+  appearance: none;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+}
