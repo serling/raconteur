@@ -35,6 +35,10 @@ Heading.propTypes = {
   theme: PropTypes.oneOf(Object.keys(themes).map(key => themes[key]))
 };
 
+Heading.defaultProps = {
+  level: 3
+};
+
 Heading.themes = themes;
 
 export default Heading;

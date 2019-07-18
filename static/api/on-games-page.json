@@ -2,6 +2,29 @@
   "Success": true,
   "payload": {
     "pageTitle": "Games Page",
-    "title": "Games"
+    "title": "Games",
+    "filters": [
+      { "id": "#shortform", "text": "shortform" },
+      { "id": "#longform", "text": "longform" },
+      { "id": "#justification", "text": "justification" },
+      { "id": "#warmup", "text": "warm-up" }
+    ],
+    "games": [
+      {
+        "id": "jr40j3049jf9394",
+        "name": "hello from api #1",
+        "abstract": "a short abstract"
+      },
+      {
+        "id": "gg34g34g",
+        "name": "hello from api #2",
+        "abstract": "a short abstract"
+      },
+      {
+        "id": "45h45g45g",
+        "name": "hello from api #3",
+        "abstract": "a short abstract"
+      }
+    ]
   }
 }

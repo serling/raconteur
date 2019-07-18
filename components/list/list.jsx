@@ -4,7 +4,11 @@ import cn from 'classnames';
 
 import './list.scss';
 
-const List = ({ isOrdered, children, className }) => {
+const themes = {
+  grid: 'grid'
+};
+
+const List = ({ isOrdered, children, className, theme }) => {
   return (
     <>
       {React.createElement(
@@ -13,10 +17,17 @@ const List = ({ isOrdered, children, className }) => {
           className: cn(
             'list',
             [`list--${isOrdered ? 'ordered' : 'unordered'}`],
+            {
+              [`list--${themes[theme]}`]: themes[theme]
+            },
             className
           )
         },
-        children
+        React.Children.map(children, (child, index) => (
+          <li key={index} className={cn('list__item', `list__item--${index}`)}>
+            {child}
+          </li>
+        ))
       )}
     </>
   );
@@ -25,11 +36,14 @@ const List = ({ isOrdered, children, className }) => {
 List.propTypes = {
   children: PropTypes.node.isRequired,
   isOrdered: PropTypes.bool,
-  className: PropTypes.string
+  className: PropTypes.string,
+  theme: PropTypes.oneOf(Object.keys(themes).map(key => themes[key]))
 };
 
 List.defaultProps = {
   isOrdered: false
 };
+
+List.themes = themes;
 
 export default List;

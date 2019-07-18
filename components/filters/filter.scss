@@ -1,0 +1,20 @@
+.filter {
+  $self: &;
+
+  &--active {
+    #{$self}__button {
+      color: blue;
+      font-weight: bold;
+    }
+  }
+
+  &__button {
+    background: 0;
+    border: 0;
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
+}
