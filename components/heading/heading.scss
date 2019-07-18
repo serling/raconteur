@@ -1,9 +1,8 @@
 .heading {
   $self: &;
-  margin: 0;
+  $break-at-sm: 25rem; //400px
 
-  &__text {
-  }
+  margin: 0;
 
   &--level-1 {
     font-size: 4rem;
@@ -26,16 +25,14 @@
     font-size: 1rem;
   }
 
-  &--bold {
-  }
-
-  &--page {
-  }
-
   &--headline {
-    font-size: 4rem;
+    font-size: 2rem;
     line-height: 1.1em;
     margin-top: 1rem;
+
+    @media screen and (min-width: $break-at-sm) {
+      font-size: 4rem;
+    }
 
     #{$self}__text {
       background-color: white;
