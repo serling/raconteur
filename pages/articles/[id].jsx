@@ -1,18 +1,18 @@
 import React from 'react';
 import Error from 'next/error';
 
-import RequestService from '../js/RequestService';
-import ArticlePageContent from '../components/article-page/article-page';
-import WithPageTransition from '../components/with-page-transition/with-page-transitions';
+import RequestService from '../../js/RequestService';
+import ArticlePageContent from '../../components/article-page/article-page';
+import WithPageTransition from '../../components/with-page-transition/with-page-transitions';
 
-import '../scss/global.scss';
+import '../../scss/global.scss';
 
 class ArticlePage extends React.Component {
   static async getInitialProps(ctx) {
     let error;
     let data;
 
-    await RequestService.get('/static/api/on-article.json', ctx.query.id)
+    await RequestService.get('/static/api/articles', ctx.query.id)
       .then(response => {
         data = response;
       })

@@ -3,7 +3,7 @@
   "payload": {
     "pageTitle": "article page",
     "articleTop": {
-      "title": "Hello and welcome to the placeholder",
+      "title": "An article on how to",
       "lead": "The successes and failures of today’s new releases could influence the future of the industry",
       "image": {
         "src": "../static/images/cabin.jpg",

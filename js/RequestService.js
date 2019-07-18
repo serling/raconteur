@@ -46,8 +46,10 @@ function getUrl(endpoint, id) {
   let url = `${BASE_URL + endpoint}`;
 
   if (id) {
-    url + `/${id}`;
+    url = url + `/${id}.json`;
   }
+
+  console.log('url', url);
 
   return url;
 }
