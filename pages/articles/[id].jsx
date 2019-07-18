@@ -12,7 +12,7 @@ class ArticlePage extends React.Component {
     let error;
     let data;
 
-    await RequestService.get('/static/api/articles', ctx.query.id)
+    await RequestService.getArticle(ctx.query.id)
       .then(response => {
         data = response;
       })

@@ -42,24 +42,16 @@ function handleFetchError(error) {
   return Promise.reject(error);
 }
 
-function getUrl(endpoint, id) {
-  let url = `${BASE_URL + endpoint}`;
-
-  if (id) {
-    url = url + `/${id}.json`;
+class RequestService {
+  async getArticle(id) {
+    return await this.get(`/static/api/articles/${id}.json`);
   }
 
-  console.log('url', url);
-
-  return url;
-}
-
-class RequestService {
-  async get(endpoint, id) {
-    console.log('* getting', endpoint, id);
+  async get(endpoint) {
+    console.log('* getting', `${BASE_URL + endpoint}`);
 
     let data = await fetch(
-      getUrl(endpoint, id),
+      `${BASE_URL + endpoint}`,
       Object.assign({}, getDefaultOptions())
     )
       .then(parseResponse)
