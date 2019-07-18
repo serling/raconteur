@@ -4,10 +4,12 @@ import cn from 'classnames';
 
 import './filter.scss';
 
-const Filter = ({ id, text, isActive }) => {
+const Filter = ({ id, text, isActive, onClick }) => {
   return (
     <div className={cn('filter', { 'filter--active': isActive })}>
-      <button className="filter__button">{text}</button>
+      <button onClick={e => onClick(e, id)} className="filter__button">
+        {text}
+      </button>
     </div>
   );
 };
@@ -15,9 +17,12 @@ const Filter = ({ id, text, isActive }) => {
 Filter.propTypes = {
   id: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
-  isActive: PropTypes.bool
+  isActive: PropTypes.bool,
+  onClick: PropTypes.func.isRequired
 };
 
-Filter.defaultProps = {};
+Filter.defaultProps = {
+  onClick: () => {}
+};
 
 export default Filter;

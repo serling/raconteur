@@ -18,13 +18,20 @@ class FilteredGamesList extends React.Component {
     filters: this.props.filters
   };
 
+  handleOnFilterClick = (e, id) => {
+    console.log(e, id);
+  };
+
   render() {
     return (
       <PageContent>
         <div className="filtered-games-list">
-          <div className="filtered-games-list__filters">
-            <Filters filters={this.state.filters} />
-          </div>
+          {/* <div className="filtered-games-list__filters">
+            <Filters
+              filters={this.state.filters}
+              onClick={this.handleOnFilterClick}
+            />
+          </div> */}
           <GamesList games={this.state.games} />
         </div>
       </PageContent>
