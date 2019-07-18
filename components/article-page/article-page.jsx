@@ -5,6 +5,7 @@ import Layout from '../layout/layout';
 import ArticleTop from '../article-top/article-top';
 import ArticleImage from '../article-image/article-image';
 import ArticleBody from '../article-body/article-body';
+import ArticleHeading from '../article-heading/article-heading';
 
 class ArticlePage extends React.Component {
   static propTypes = {
@@ -35,7 +36,8 @@ class ArticlePage extends React.Component {
       pageTitle,
       articleTop,
       articleBody,
-      articleImage
+      articleImage,
+      articleHeading
     } = this.props.data;
 
     return (
@@ -43,6 +45,7 @@ class ArticlePage extends React.Component {
         <ArticleTop {...articleTop} />
         <ArticleBody {...articleBody} />
         <ArticleImage {...articleImage} />
+        <ArticleHeading {...articleHeading} />
         <ArticleBody {...articleBody} />
       </Layout>
     );

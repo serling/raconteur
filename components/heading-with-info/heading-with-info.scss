@@ -1,0 +1,8 @@
+.heading-with-info {
+  display: flex;
+  align-items: center;
+
+  &__info {
+    margin-left: 1rem;
+  }
+}

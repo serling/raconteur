@@ -17,6 +17,13 @@
     },
     "articleBody": {
       "string": "<p>Exodus is one of many timed exclusives on the Epic Games Store. Epic is leveraging exclusives to entice newcomers to install the platform on their <i>computer</i> and create active user profiles. Some players have cried foul, claiming they’ve been forced to buy and play a game through a service that doesn’t have the functionality they’re accustomed to.</p><h2>Another chapter</h2><p>Exodus is one of many timed exclusives on the Epic Games Store. Epic is leveraging exclusives to entice newcomers to install the platform on their <i>computer</i> and create active user profiles. Some players have cried foul, claiming they’ve been forced to buy and play a game through a service that doesn’t have the functionality they’re accustomed to.</p><h3>More to the point</h3><p>Other critics speculate that competition in the marketplace — Steam has never had a true rival of its scale — could lead to better prices and deals for players, along with better revenue shares for game makers. Still others fear that intense pricing competition might <a href='#game-makers-link'>force game makers to cut their price tags</a> too low, too quickly. Here's a list of stuff you might consider: <ul><li>Helo</li><li>Helo</li><li>Oh no</li><li>Maye take a walk</li><li>Appelsinkjøtt</li></ul>Exodus is one of many timed exclusives on the Epic Games Store. Epic is leveraging exclusives to entice newcomers to install the platform.</p>"
+    },
+    "articleHeading": {
+      "heading": {
+        "text": "Heading with some help icon",
+        "level": 3
+      },
+      "infoText": "<h2>Info panel with some stuff you can read</h2><p>Exodus is one of many timed exclusives on the Epic Games Store. Epic is leveraging exclusives to entice newcomers to install the platform on their <i>computer</i> and create active user profiles. Some players have cried foul, claiming they’ve been forced to buy and play a game through a service that doesn’t have the functionality they’re accustomed to."
     }
   }
 }

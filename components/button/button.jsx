@@ -23,6 +23,8 @@ const elements = {
   [types.submit]: 'button'
 };
 
+const iconSizes = Icon.sizes;
+
 const Button = ({
   children,
   className,
@@ -103,7 +105,7 @@ Button.defaultProps = {
   theme: themes.colored
 };
 
-Button.iconSizes = Icon.sizes;
+Button.iconSizes = iconSizes;
 Button.themes = themes;
 
 export default Button;
