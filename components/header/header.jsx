@@ -42,6 +42,7 @@ class Header extends React.Component {
               <Route href="/games-page">
                 <a>Games (route)</a>
               </Route>
+              <Link href="/games-page">Games (page)</Link>
             </nav>
             <div className="header__actions">
               <Button
