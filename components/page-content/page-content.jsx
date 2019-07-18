@@ -10,10 +10,17 @@ const themes = {
   narrow: 'narrow'
 };
 
-const PageContent = ({ theme, children }) => (
+const colors = {
+  red: 'red',
+  blue: 'blue'
+};
+
+const PageContent = ({ theme, children, backgroundColor }) => (
   <div
     className={cn('page-content', {
-      [`page-content--${themes[theme]}`]: themes[theme]
+      [`page-content--${themes[theme]}`]: themes[theme],
+      [`page-content--${colors[backgroundColor]}`]: colors[backgroundColor],
+      'page-content--background': !!colors[backgroundColor]
     })}
   >
     <div className="page-content__inner">{children}</div>
@@ -22,6 +29,7 @@ const PageContent = ({ theme, children }) => (
 
 PageContent.propTypes = {
   children: PropTypes.node,
+  backgroundColor: PropTypes.oneOf(Object.keys(colors).map(key => colors[key])),
   theme: PropTypes.oneOf(Object.keys(themes).map(key => themes[key]))
 };
 
@@ -30,5 +38,6 @@ PageContent.defaultProps = {
 };
 
 PageContent.themes = themes;
+PageContent.colors = colors;
 
 export default PageContent;

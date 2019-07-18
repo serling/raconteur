@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import './game.scss';
 
 const Game = ({
+  id,
   name,
   alternativeNames,
   playerCount,
@@ -17,7 +18,8 @@ const Game = ({
 };
 
 Game.propTypes = {
-  name: PropTypes.string,
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
   alternativeNames: PropTypes.array,
   playerCount: PropTypes.string,
   abstract: PropTypes.string,

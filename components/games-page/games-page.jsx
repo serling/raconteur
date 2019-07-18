@@ -38,4 +38,9 @@ GamesPage.propTypes = {
   title: PropTypes.string.isRequired
 };
 
+GamesPage.defaultProps = {
+  pageTitle: '',
+  title: ''
+};
+
 export default GamesPage;
