@@ -1,43 +1,34 @@
 import React from 'react';
-import Error from 'next/error';
 
-import RequestService from '../../js/RequestService';
+import Error from '../_error';
 import ArticlePageContent from '../../components/article-page/article-page';
 import WithPageTransition from '../../components/with-page-transition/with-page-transitions';
 
 import '../../scss/global.scss';
 
-class ArticlePage extends React.Component {
-  static async getInitialProps(ctx) {
-    let error;
-    let data;
-
-    await RequestService.getArticle(ctx.query.id)
-      .then(response => {
-        data = response;
-      })
-      .catch(error => {
-        error = error;
-      });
-
-    return { data, error };
+const ArticlePage = ({ data, status }) => {
+  if (status === 404) {
+    return <Error statusCode={404} />;
   }
 
-  render() {
-    if (this.props.error) {
-      return <Error statusCode="Request Error" />;
-    }
+  return (
+    <WithPageTransition>
+      <ArticlePageContent data={data} />
+    </WithPageTransition>
+  );
+};
 
-    if (!this.props.data) {
-      return <Error statusCode="Missing Data" />;
-    }
+ArticlePage.getInitialProps = async ({ res, query }) => {
+  const response = await fetch(
+    `http://localhost:3000/api/articles/${query.id}`
+  );
+  const data = await response.json();
 
-    return (
-      <WithPageTransition>
-        <ArticlePageContent data={this.props.data} />
-      </WithPageTransition>
-    );
+  if (data.error && res) {
+    res.statusCode = 404;
   }
-}
+
+  return { data, status: response.status };
+};
 
 export default ArticlePage;

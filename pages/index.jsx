@@ -6,37 +6,19 @@ import WithPageTransition from '../components/with-page-transition/with-page-tra
 
 import '../scss/global.scss';
 
-class Index extends React.Component {
-  static async getInitialProps(ctx) {
-    let data;
-    let error;
+const Index = ({ data }) => {
+  return (
+    <WithPageTransition>
+      <FrontPage {...data} />
+    </WithPageTransition>
+  );
+};
 
-    await RequestService.get('/static/api/on-front-page.json')
-      .then(response => {
-        data = response;
-      })
-      .catch(error => {
-        error = error;
-      });
+Index.getInitialProps = async ctx => {
+  const response = await fetch('http://localhost:3000/api/index');
+  const data = await response.json();
 
-    return { data, error };
-  }
-
-  render() {
-    if (this.props.error) {
-      return <Error statusCode="Request Error" />;
-    }
-
-    if (!this.props.data) {
-      return <Error statusCode="Missing Data" />;
-    }
-
-    return (
-      <WithPageTransition>
-        <FrontPage {...this.props.data} />
-      </WithPageTransition>
-    );
-  }
-}
+  return { data };
+};
 
 export default Index;

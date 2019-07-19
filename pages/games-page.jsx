@@ -7,37 +7,35 @@ import WithPageTransition from '../components/with-page-transition/with-page-tra
 
 import '../scss/global.scss';
 
-class GamesPage extends React.Component {
-  static async getInitialProps(ctx) {
-    let error;
-    let data;
-
-    await RequestService.get('/static/api/on-games-page.json')
-      .then(response => {
-        data = response;
-      })
-      .catch(error => {
-        error = error;
-      });
-
-    return { data, error };
+const GamesPage = ({ data, error }) => {
+  if (error) {
+    return <Error statusCode="Request Error" />;
   }
 
-  render() {
-    if (this.props.error) {
-      return <Error statusCode="Request Error" />;
-    }
-
-    if (!this.props.data) {
-      return <Error statusCode="Missing Data" />;
-    }
-
-    return (
-      <WithPageTransition>
-        <GamesPageContent data={this.props.data} />
-      </WithPageTransition>
-    );
+  if (!data) {
+    return <Error statusCode="Missing Data" />;
   }
-}
+
+  return (
+    <WithPageTransition>
+      <GamesPageContent data={data} />
+    </WithPageTransition>
+  );
+};
+
+GamesPage.getInitialProps = async ctx => {
+  let error;
+  let data;
+
+  await RequestService.get('/static/data/on-games-page.json')
+    .then(response => {
+      data = response;
+    })
+    .catch(error => {
+      error = error;
+    });
+
+  return { data, error };
+};
 
 export default GamesPage;

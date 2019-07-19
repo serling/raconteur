@@ -39,7 +39,10 @@ class Header extends React.Component {
               <Route href="/articles/[id]" as={`/articles/how-to`}>
                 <a>Article: How To</a>
               </Route>
-              <Route href="/games-page">
+              <Route href="/articles/[id]" as={`/articles/ajkhjahkjshd`}>
+                <a>Invalid Article</a>
+              </Route>
+              <Route href="/games-page" scroll={false}>
                 <a>Games (route)</a>
               </Route>
               <Link href="/games-page">Games (page)</Link>
