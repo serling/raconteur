@@ -1,6 +1,7 @@
 import React from 'react';
+import { server } from '../../js/server';
 
-import Error from 'next/error';
+import Error from '../_error';
 import ArticlePageContent from '../../components/article-page/article-page';
 import WithPageTransition from '../../components/with-page-transition/with-page-transitions';
 
@@ -19,9 +20,8 @@ const ArticlePage = ({ data }) => {
 };
 
 ArticlePage.getInitialProps = async ({ res, query }) => {
-  const response = await fetch(
-    `http://localhost:3000/api/articles/${query.id}`
-  );
+  const endpoint = `${server + `/api/articles/${query.id}`}`;
+  const response = await fetch(endpoint);
   const data = await response.json();
 
   if (data.error && res) {

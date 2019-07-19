@@ -1,5 +1,5 @@
 import React from 'react';
-import RequestService from '../js/RequestService';
+import { server } from '../js/server';
 
 import FrontPage from '../components/front-page/front-page';
 import WithPageTransition from '../components/with-page-transition/with-page-transitions';
@@ -15,7 +15,8 @@ const Index = ({ data }) => {
 };
 
 Index.getInitialProps = async ctx => {
-  const response = await fetch('http://localhost:3000/api/index');
+  const endpoint = `${server + '/api/index'}`;
+  const response = await fetch(endpoint);
   const data = await response.json();
 
   return { data };
