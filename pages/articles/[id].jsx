@@ -1,13 +1,13 @@
 import React from 'react';
 
-import Error from '../_error';
+import Error from 'next/error';
 import ArticlePageContent from '../../components/article-page/article-page';
 import WithPageTransition from '../../components/with-page-transition/with-page-transitions';
 
 import '../../scss/global.scss';
 
-const ArticlePage = ({ data, status }) => {
-  if (status === 404) {
+const ArticlePage = ({ data }) => {
+  if (data.error) {
     return <Error statusCode={404} />;
   }
 
@@ -28,7 +28,7 @@ ArticlePage.getInitialProps = async ({ res, query }) => {
     res.statusCode = 404;
   }
 
-  return { data, status: response.status };
+  return { data };
 };
 
 export default ArticlePage;
