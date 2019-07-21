@@ -16,6 +16,7 @@ const Index = ({ data }) => {
 
 Index.getInitialProps = async ctx => {
   const endpoint = `${server + '/api/index'}`;
+
   const response = await fetch(endpoint);
   const data = await response.json();
 
