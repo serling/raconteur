@@ -27,6 +27,10 @@ ArticlePage.getInitialProps = async ctx => {
 
   const data = await response.json();
 
+  if (data.error && res) {
+    res.statusCode = 404;
+  }
+
   return { data };
 };
 
