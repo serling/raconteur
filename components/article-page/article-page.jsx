@@ -2,10 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Layout from '../layout/layout';
-import ArticleTop from '../article-top/article-top';
-import ArticleImage from '../article-image/article-image';
-import ArticleBody from '../article-body/article-body';
-import ArticleHeading from '../article-heading/article-heading';
+import DynamicContent from '../dynamic-content/dynamic-content';
 
 class ArticlePage extends React.Component {
   static propTypes = {
@@ -32,21 +29,11 @@ class ArticlePage extends React.Component {
   render() {
     if (!this.state.hasLoaded) return null;
 
-    const {
-      pageTitle,
-      articleTop,
-      articleBody,
-      articleImage,
-      articleHeading
-    } = this.props.data;
+    const { pageTitle } = this.props.data;
 
     return (
       <Layout title={pageTitle}>
-        <ArticleTop {...articleTop} />
-        <ArticleBody {...articleBody} />
-        <ArticleImage {...articleImage} />
-        <ArticleHeading {...articleHeading} />
-        <ArticleBody {...articleBody} />
+        <DynamicContent {...this.props.data} />
       </Layout>
     );
   }
