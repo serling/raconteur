@@ -7,10 +7,8 @@ import WithPageTransition from '../../components/with-page-transition/with-page-
 
 import '../../scss/global.scss';
 
-const ArticlePage = ({ data }) => {
-  if (data.error) {
-    return <Error statusCode={404} />;
-  }
+const ArticlePage = props => {
+  const { data } = props;
 
   return (
     <WithPageTransition>
@@ -19,14 +17,13 @@ const ArticlePage = ({ data }) => {
   );
 };
 
-ArticlePage.getInitialProps = async ({ res, query }) => {
+ArticlePage.getInitialProps = async ctx => {
+  const { query } = ctx;
+
   const endpoint = `${server + `/api/articles/${query.id}`}`;
   const response = await fetch(endpoint);
-  const data = await response.json();
 
-  if (data.error && res) {
-    res.statusCode = 404;
-  }
+  const data = await response.json();
 
   return { data };
 };
