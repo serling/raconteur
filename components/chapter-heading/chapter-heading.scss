@@ -5,6 +5,7 @@
 
   &--overlap {
     position: relative;
+    z-index: -1; //TODO: workaround for pulling out the lead text
 
     #{$self}__text {
       @media screen and (min-width: $break-at-md) {

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import cn from 'classnames';
 
 import PageContent from '../page-content/page-content';
 import ChapterHeading from '../chapter-heading/chapter-heading';
@@ -17,19 +18,27 @@ const ArticleTop = ({
   return (
     <>
       <PageContent theme={PageContent.themes.wide}>
-        <ChapterHeading
-          title={title}
-          subtitle={subtitle}
-          image={image}
-          theme={
-            headingShouldOverlapImage
-              ? ChapterHeading.themes.overlap
-              : undefined
-          }
-        />
-      </PageContent>
-      <PageContent theme={PageContent.themes.narrow}>
-        <Text text={lead} theme={Text.themes.lead} />
+        <div className="article-top">
+          <div className="article-top__heading">
+            <ChapterHeading
+              title={title}
+              subtitle={subtitle}
+              image={image}
+              theme={
+                headingShouldOverlapImage
+                  ? ChapterHeading.themes.overlap
+                  : undefined
+              }
+            />
+          </div>
+          <div
+            className={cn('article-top__lead', {
+              'article-top__lead--overlap': headingShouldOverlapImage
+            })}
+          >
+            <Text text={lead} theme={Text.themes.lead} />
+          </div>
+        </div>
       </PageContent>
     </>
   );
