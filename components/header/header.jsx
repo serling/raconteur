@@ -29,7 +29,7 @@ class Header extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
+      <>
         <header className="header">
           <div className="header__content">
             <nav className="header__navigation">
@@ -39,10 +39,10 @@ class Header extends React.Component {
               <Route href="/articles">
                 <a>Articles</a>
               </Route>
-              <Route href="/games-page" scroll={false}>
+              <Route href="/games" scroll={false}>
                 <a>Games (route)</a>
               </Route>
-              <Link href="/games-page">Games (page)</Link>
+              <Link href="/games">Games (page)</Link>
             </nav>
             <div className="header__actions">
               <Button
@@ -57,7 +57,7 @@ class Header extends React.Component {
           onClose={() => this.handleOnCloseModal()}
           isVisible={this.state.menuIsVisible}
         />
-      </React.Fragment>
+      </>
     );
   }
 }

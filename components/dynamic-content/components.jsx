@@ -3,11 +3,13 @@ import ArticleHeading from '../article-heading/article-heading';
 import ArticleImage from '../article-image/article-image';
 import ArticleTop from '../article-top/article-top';
 import ArticlesList from '../articles-list/articles-list';
+import FilteredGamesList from '../filtered-games-list/filtered-games-list';
 
 export default {
   ArticleBody,
   ArticleHeading,
   ArticleImage,
   ArticleTop,
-  ArticlesList
+  ArticlesList,
+  FilteredGamesList
 };

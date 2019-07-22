@@ -1,6 +1,6 @@
 import React from 'react';
 import App, { Container } from 'next/app';
-import fetch from 'isomorphic-unfetch'; //this 'unused' import is needed for children
+import fetch from 'isomorphic-unfetch';
 
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
