@@ -34,11 +34,7 @@ const InfoIcon = ({ components }) => {
 };
 
 InfoIcon.propTypes = {
-  text: PropTypes.string.isRequired
-};
-
-InfoIcon.defaultProps = {
-  text: ''
+  components: PropTypes.array
 };
 
 export default InfoIcon;
