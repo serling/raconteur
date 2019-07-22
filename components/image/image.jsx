@@ -4,6 +4,7 @@ import cn from 'classnames';
 import ModalImage from 'react-modal-image';
 
 import Text from '../text/text';
+import Icon from '../icon/icon';
 
 import './image.scss';
 
@@ -29,6 +30,9 @@ const Image = ({
       )}
     >
       <div className="image__wrapper">
+        <div className="image__icon">
+          <Icon name="expand" />
+        </div>
         {thumbnailSrc ? (
           <ModalImage
             className="image__image"

@@ -18,7 +18,7 @@ const InfoIcon = ({ text }) => {
     <div className="info-icon">
       <Button
         onClick={toggleOnClick}
-        iconName="hamburger"
+        iconName="info"
         iconSize={Button.iconSizes.small}
       />
       <Modal
