@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 
 import Button from '../button/button';
 import Modal from '../modal/modal';
-import RichText from '../rich-text/rich-text';
+import DynamicContent from '../dynamic-content/dynamic-content';
 
 import './info-icon.scss';
 
-const InfoIcon = ({ text }) => {
+const InfoIcon = ({ components }) => {
   const [isVisible, setIsVisible] = useState(false);
 
   const toggleOnClick = () => {
@@ -27,7 +27,7 @@ const InfoIcon = ({ text }) => {
         isCloseable={true}
         contentLabel="info"
       >
-        <RichText string={text} />
+        <DynamicContent components={components} />
       </Modal>
     </div>
   );

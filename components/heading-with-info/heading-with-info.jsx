@@ -6,14 +6,14 @@ import InfoIcon from '../info-icon/info-icon';
 
 import './heading-with-info.scss';
 
-const HeadingWithInfo = ({ heading, infoText }) => (
+const HeadingWithInfo = ({ heading, infoComponents }) => (
   <div className="heading-with-info">
     <div className="heading-with-info__heading">
       <Heading {...heading} />
     </div>
-    {infoText && (
+    {infoComponents && (
       <div className="heading-with-info__info">
-        <InfoIcon text={infoText} />
+        <InfoIcon components={infoComponents} />
       </div>
     )}
   </div>
@@ -21,7 +21,7 @@ const HeadingWithInfo = ({ heading, infoText }) => (
 
 HeadingWithInfo.propTypes = {
   heading: PropTypes.object.isRequired,
-  infoText: PropTypes.string
+  infoComponents: PropTypes.string
 };
 
 export default HeadingWithInfo;
