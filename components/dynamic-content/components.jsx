@@ -7,6 +7,9 @@ import FilteredGamesList from '../filtered-games-list/filtered-games-list';
 import ArticleQuote from '../article-quote/article-quote';
 import UtilitiesList from '../utilities-list/utilities-list';
 import SuggestionGenerator from '../suggestion-generator/suggestion-generator';
+import RichText from '../rich-text/rich-text';
+import InlineImage from '../inline-image/inline-image';
+import ParagraphWithImage from '../paragraph-with-image/paragraph-with-image';
 
 export default {
   ArticleBody,
@@ -17,5 +20,8 @@ export default {
   FilteredGamesList,
   ArticleQuote,
   UtilitiesList,
-  SuggestionGenerator
+  SuggestionGenerator,
+  RichText,
+  InlineImage,
+  ParagraphWithImage
 };

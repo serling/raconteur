@@ -1,16 +1,14 @@
 import React from 'react';
 
-import RichText from '../rich-text/rich-text';
 import PageContent from '../page-content/page-content';
-import InlineImage from '../inline-image/inline-image';
+import ParagraphWithImage from '../paragraph-with-image/paragraph-with-image';
 
 import './article-body.scss';
 
-const ArticleBody = ({ string, image, imageIsRight }) => {
+const ArticleBody = props => {
   return (
     <PageContent theme={PageContent.themes.narrow}>
-      {image && <InlineImage image={image} imageIsRight={imageIsRight} />}
-      <RichText string={string} />
+      <ParagraphWithImage {...props} />
     </PageContent>
   );
 };
