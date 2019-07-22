@@ -5,6 +5,7 @@
   margin: 0;
 
   &--enforce-aspect-ratio {
+    //TODO: we have control of all the assets, we don't need to enforce image formats or sizes
     #{$self}__wrapper {
       height: 0;
       overflow: hidden;

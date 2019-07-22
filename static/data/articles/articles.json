@@ -31,30 +31,6 @@
             "alt": "placeholder image alt text",
             "text": "this image has some filler text for descriptive pruporses"
           }
-        },
-        {
-          "id": "feg54",
-          "name": "ArticleHeading",
-          "props": {
-            "heading": {
-              "text": "Heading with some help icon",
-              "level": 3
-            },
-            "infoComponents": [
-              {
-                "id": "55",
-                "name": "ParagraphWithImage",
-                "props": {
-                  "string": "<h3>A helping hand?</h3><p>Exodus is one of many timed exclusives on the Epic Games Store. Epic is leveraging exclusives to entice newcomers to install the platform on their <i>computer</i> and create active user profiles.</p><p>Exodus is one of many timed exclusives on the Epic Games Store. Epic is leveraging exclusives to entice newcomers to install the platform on their <i>computer</i> and create active user profiles.</p> ",
-                  "image": {
-                    "thumbnailSrc": "../static/images/cabin3.jpg",
-                    "src": "../static/images/cabin.jpg",
-                    "alt": "placeholder image alt text"
-                  }
-                }
-              }
-            ]
-          }
         }
       ]
     },
