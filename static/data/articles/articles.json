@@ -46,14 +46,14 @@
       ]
     },
     {
-      "id": "how-tos",
+      "id": "my-life",
       "pageTitle": "article page",
       "components": [
         {
           "id": "h5j6k67k",
           "name": "ArticleTop",
           "props": {
-            "title": "An article on how to 2",
+            "title": "A new article about My life",
             "lead": "The successes and failures of today’s new releases could influence the future of the industry",
             "image": {
               "src": "../static/images/cabin.jpg",

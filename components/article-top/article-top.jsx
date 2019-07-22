@@ -10,7 +10,7 @@ import './article-top.scss';
 
 const ArticleTop = ({ title, lead, image }) => {
   return (
-    <React.Fragment>
+    <>
       <PageContent theme={PageContent.themes.wide}>
         <Image {...image} enforceAspectRatio={true} />
         <Heading level={1} text={title} theme={Heading.themes.headline} />
@@ -18,7 +18,7 @@ const ArticleTop = ({ title, lead, image }) => {
       <PageContent theme={PageContent.themes.narrow}>
         <Text text={lead} theme={Text.themes.lead} />
       </PageContent>
-    </React.Fragment>
+    </>
   );
 };
 

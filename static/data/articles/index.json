@@ -1,0 +1,25 @@
+{
+  "pageTitle": "List of articles",
+  "components": [
+    {
+      "id": "fmiwj3",
+      "name": "ArticlesList",
+      "props": {
+        "articles": [
+          {
+            "id": "20fi3f2",
+            "href": "/articles/how-to",
+            "title": "how to",
+            "lead": "a small lead text that describes the article's content"
+          },
+          {
+            "id": "h46",
+            "href": "/articles/my-life",
+            "title": "my life",
+            "lead": "another article with a lead text"
+          }
+        ]
+      }
+    }
+  ]
+}

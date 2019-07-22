@@ -1,4 +1,4 @@
-import { articles } from '../../../static/data/articles';
+import { articles } from '../../../static/data/articles/articles';
 
 export default ({ query }, res) => {
   const filtered = articles.filter(article => article.id === query.id);

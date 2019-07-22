@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Layout from '../layout/layout';
 import DynamicContent from '../dynamic-content/dynamic-content';
 
-class ArticlePage extends React.Component {
+class ArticleTemplate extends React.Component {
   static propTypes = {
     data: PropTypes.object
   };
@@ -39,4 +39,4 @@ class ArticlePage extends React.Component {
   }
 }
 
-export default ArticlePage;
+export default ArticleTemplate;

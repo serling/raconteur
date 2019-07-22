@@ -36,11 +36,8 @@ class Header extends React.Component {
               <Link href="/index" className="header__logo">
                 <Icon name="close" size={Icon.sizes.medium} />
               </Link>
-              <Route href="/articles/[id]" as={`/articles/how-to`}>
-                <a>Article: How To</a>
-              </Route>
-              <Route href="/articles/[id]" as={`/articles/ajkhjahkjshd`}>
-                <a>Invalid Article</a>
+              <Route href="/articles">
+                <a>Articles</a>
               </Route>
               <Route href="/games-page" scroll={false}>
                 <a>Games (route)</a>
