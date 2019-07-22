@@ -7,7 +7,13 @@ import Text from '../text/text';
 
 import './article-top.scss';
 
-const ArticleTop = ({ title, subtitle, lead, image }) => {
+const ArticleTop = ({
+  title,
+  subtitle,
+  lead,
+  image,
+  headingShouldOverlapImage
+}) => {
   return (
     <>
       <PageContent theme={PageContent.themes.wide}>
@@ -15,7 +21,11 @@ const ArticleTop = ({ title, subtitle, lead, image }) => {
           title={title}
           subtitle={subtitle}
           image={image}
-          theme={ChapterHeading.themes.overlap}
+          theme={
+            headingShouldOverlapImage
+              ? ChapterHeading.themes.overlap
+              : undefined
+          }
         />
       </PageContent>
       <PageContent theme={PageContent.themes.narrow}>
@@ -29,7 +39,8 @@ ArticleTop.propTypes = {
   title: PropTypes.string,
   subtitle: PropTypes.string,
   lead: PropTypes.string,
-  image: PropTypes.object.isRequired
+  image: PropTypes.object.isRequired,
+  headingShouldOverlapImage: PropTypes.bool
 };
 
 export default ArticleTop;

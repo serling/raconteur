@@ -8,7 +8,7 @@
           "id": "h5j6k67k",
           "name": "ArticleTop",
           "props": {
-            "title": "Speldid Article",
+            "title": "Splendid Article With A Long Title",
             "lead": "The successes and failures of today’s new releases could influence the future of the industry",
             "image": {
               "src": "../static/images/cabin.jpg",
@@ -55,6 +55,7 @@
           "props": {
             "title": "Sound Tech",
             "subtitle": "A step-by-step guide",
+            "headingShouldOverlapImage": true,
             "lead": "The successes and failures of today’s new releases could influence the future of the industry",
             "image": {
               "src": "../static/images/cabin.jpg",
