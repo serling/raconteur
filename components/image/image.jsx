@@ -30,19 +30,21 @@ const Image = ({
       )}
     >
       <div className="image__wrapper">
-        <div className="image__icon">
-          <Icon name="expand" />
-        </div>
         {thumbnailSrc ? (
-          <ModalImage
-            className="image__image"
-            hideDownload={true}
-            hideZoom={true}
-            showRotate={false}
-            alt={text || alt}
-            small={thumbnailSrc}
-            medium={src}
-          />
+          <>
+            <div className="image__icon">
+              <Icon name="expand" />
+            </div>
+            <ModalImage
+              className="image__image"
+              hideDownload={true}
+              hideZoom={true}
+              showRotate={false}
+              alt={text || alt}
+              small={thumbnailSrc}
+              medium={src}
+            />
+          </>
         ) : (
           <img src={src} alt={alt} className="image__image" />
         )}
