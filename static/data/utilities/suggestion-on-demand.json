@@ -4,9 +4,7 @@
     {
       "id": "1",
       "name": "SuggestionGenerator",
-      "props": {
-        "words": []
-      }
+      "props": {}
     }
   ]
 }

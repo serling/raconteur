@@ -7,11 +7,32 @@ import PageContent from '../../components/page-content/page-content';
 
 import './suggestion-generator.scss';
 
-const SuggestionGenerator = ({ words }) => {
+const SuggestionGenerator = () => {
   const [activeWord, setActiveWord] = useState('generator');
+  const [isLoading, setIsLoading] = useState(false);
+
+  const apiKey = 'TQ6WVK0T'; //https://random-word-api.herokuapp.com/
+  const numberOfWords = 1;
+
+  const getWord = async () => {
+    setIsLoading(true);
+    const endpoint = `https://random-word-api.herokuapp.com/word?key=${apiKey}&number=${numberOfWords}`;
+    const response = await fetch(endpoint);
+
+    const data = await response.json();
+
+    if (!data.length > 0) {
+      console.log('api returned no results');
+    }
+
+    return { word: data[0] };
+  };
 
   const handleOnClick = () => {
-    setActiveWord('new word');
+    getWord().then(({ word }) => {
+      setIsLoading(false);
+      setActiveWord(word);
+    });
   };
 
   return (
