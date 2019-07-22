@@ -1,6 +1,8 @@
 import cn from 'classnames';
 import PropTypes from 'prop-types';
 
+import Colors from '../quote/colors';
+
 import './page-content.scss';
 
 const themes = {
@@ -10,11 +12,7 @@ const themes = {
   narrow: 'narrow'
 };
 
-const colors = {
-  red: 'red',
-  blue: 'blue',
-  grey: 'grey'
-};
+const colors = Colors;
 
 const PageContent = ({ theme, children, backgroundColor }) => (
   <div

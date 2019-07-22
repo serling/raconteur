@@ -12,12 +12,18 @@ const ArticleQuote = ({ quote }) => (
     theme={PageContent.themes.narrow}
   >
     <div className="article-quote">
-      <Quote {...quote} textIsWhite={true} />
+      <Quote
+        {...quote}
+        textIsWhite={true}
+        showQuoteMark={true}
+        backgroundColor={Quote.backgroundColors.grey}
+      />
     </div>
   </PageContent>
 );
 
 ArticleQuote.propTypes = {
-  /* --------------------- 📝 --------------------- */
+  quote: PropTypes.object.isRequired
 };
+
 export default ArticleQuote;

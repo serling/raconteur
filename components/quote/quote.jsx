@@ -2,14 +2,33 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
+import Colors from './colors';
 import Text from '../text/text';
 
 import './quote.scss';
 
-const Quote = ({ text, source, textIsWhite }) => (
+const backgroundColors = Colors;
+
+const themes = {
+  bouble: 'bouble'
+};
+
+const Quote = ({
+  text,
+  source,
+  textIsWhite,
+  showQuoteMark,
+  theme,
+  backgroundColor
+}) => (
   <div
     className={cn('quote', {
-      'quote--white': textIsWhite
+      'quote--white-text': textIsWhite,
+      'quote--quotemark': showQuoteMark,
+      [`quote--${backgroundColors[backgroundColor]}`]: backgroundColors[
+        backgroundColor
+      ],
+      [`quote--${themes[theme]}`]: themes[theme]
     })}
   >
     <div className="quote__text">
@@ -24,7 +43,15 @@ const Quote = ({ text, source, textIsWhite }) => (
 Quote.propTypes = {
   text: PropTypes.string.isRequired,
   source: PropTypes.string.isRequired,
-  textIsWhite: PropTypes.bool
+  textIsWhite: PropTypes.bool,
+  showQuoteMark: PropTypes.bool,
+  theme: PropTypes.oneOf(Object.keys(themes).map(key => themes[key])),
+  backgroundColors: PropTypes.oneOf(
+    Object.keys(backgroundColors).map(key => backgroundColors[key])
+  )
 };
+
+Quote.backgroundColors = backgroundColors;
+Quote.themes = themes;
 
 export default Quote;
