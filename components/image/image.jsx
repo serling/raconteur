@@ -1,12 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
+import ModalImage from 'react-modal-image';
 
 import Text from '../text/text';
 
 import './image.scss';
 
-const Image = ({ text, alt, src, credit, className, enforceAspectRatio }) => {
+const Image = ({
+  text,
+  alt,
+  src,
+  thumbnailSrc,
+  credit,
+  className,
+  enforceAspectRatio
+}) => {
   if (!src) return null;
 
   return (
@@ -20,7 +29,19 @@ const Image = ({ text, alt, src, credit, className, enforceAspectRatio }) => {
       )}
     >
       <div className="image__wrapper">
-        <img src={src} alt={alt || text} className="image__image" />
+        {thumbnailSrc ? (
+          <ModalImage
+            className="image__image"
+            hideDownload={true}
+            hideZoom={true}
+            showRotate={false}
+            alt={text || alt}
+            small={thumbnailSrc}
+            medium={src}
+          />
+        ) : (
+          <img src={src} alt={alt} className="image__image" />
+        )}
       </div>
       {text && (
         <figcaption className="image__meta">
@@ -37,6 +58,7 @@ Image.propTypes = {
   className: PropTypes.string,
   alt: PropTypes.string.isRequired,
   src: PropTypes.string.isRequired,
+  thumbnailSrc: PropTypes.string,
   credit: PropTypes.string,
   enforceAspectRatio: PropTypes.bool
 };

@@ -53,7 +53,8 @@
           "id": "h5j6k67k",
           "name": "ArticleTop",
           "props": {
-            "title": "A new article about My life",
+            "title": "Sound Tech",
+            "subtitle": "A step-by-step guide",
             "lead": "The successes and failures of today’s new releases could influence the future of the industry",
             "image": {
               "src": "../static/images/cabin.jpg",
@@ -74,6 +75,7 @@
           "props": {
             "src": "../static/images/cabin.jpg",
             "alt": "placeholder image alt text",
+            "thumbnailSrc": "../static/images/cabin.jpg",
             "text": "this image has some filler text for descriptive pruporses"
           }
         },

@@ -2,18 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import PageContent from '../page-content/page-content';
-import Heading from '../heading/heading';
+import ChapterHeading from '../chapter-heading/chapter-heading';
 import Text from '../text/text';
-import Image from '../image/image';
 
 import './article-top.scss';
 
-const ArticleTop = ({ title, lead, image }) => {
+const ArticleTop = ({ title, subtitle, lead, image }) => {
   return (
     <>
       <PageContent theme={PageContent.themes.wide}>
-        <Image {...image} enforceAspectRatio={true} />
-        <Heading level={1} text={title} theme={Heading.themes.headline} />
+        <ChapterHeading
+          title={title}
+          subtitle={subtitle}
+          image={image}
+          theme={ChapterHeading.themes.overlap}
+        />
       </PageContent>
       <PageContent theme={PageContent.themes.narrow}>
         <Text text={lead} theme={Text.themes.lead} />
@@ -23,7 +26,8 @@ const ArticleTop = ({ title, lead, image }) => {
 };
 
 ArticleTop.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
+  subtitle: PropTypes.string,
   lead: PropTypes.string,
   image: PropTypes.object.isRequired
 };
