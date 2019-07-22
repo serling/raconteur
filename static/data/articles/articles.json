@@ -2,7 +2,7 @@
   "articles": [
     {
       "id": "how-to",
-      "pageTitle": "article page",
+      "pageTitle": "article: how to",
       "components": [
         {
           "id": "h5j6k67k",
@@ -60,7 +60,7 @@
     },
     {
       "id": "my-life",
-      "pageTitle": "article page",
+      "pageTitle": "article: my life",
       "components": [
         {
           "id": "h5j6k67k",
@@ -151,6 +151,85 @@
           "name": "ArticleBody",
           "props": {
             "string": "<p>Exodus is one of many timed exclusives on the Epic Games Store. Epic is leveraging exclusives to entice newcomers to install the platform on their <i>computer</i> and create active user profiles. Some players have cried foul, claiming they’ve been forced to buy and play a game through a service that doesn’t have the functionality they’re accustomed to.</p><h2>Another chapter</h2><p>Exodus is one of many timed exclusives on the Epic Games Store. Epic is leveraging exclusives to entice newcomers to install the platform on their <i>computer</i> and create active user profiles. Some players have cried foul, claiming they’ve been forced to buy and play a game through a service that doesn’t have the functionality they’re accustomed to.</p>"
+          }
+        }
+      ]
+    },
+    {
+      "id": "workshop-template-1",
+      "pageTitle": "Workshop Template",
+      "components": [
+        {
+          "id": "h5j6k67k",
+          "name": "ArticleTop",
+          "props": {
+            "title": "Workshop Template",
+            "subtitle": "A step-by-step guide"
+          }
+        },
+        {
+          "id": "5534g343f",
+          "name": "ArticleBody",
+          "props": {
+            "string": "<p>Hey, there. Thanks for stopping by.</p>"
+          }
+        },
+        {
+          "id": "5534g",
+          "name": "ArticleBody",
+          "props": {
+            "string": "<p>Exodus is one of many timed exclusives on the Epic Games Store. Epic is leveraging exclusives to entice newcomers to install the platform on their <i>computer</i> and create active user profiles. Some players have cried foul, claiming they’ve been forced to buy and play a game through a service that doesn’t have the functionality they’re accustomed to.</p>",
+            "imageIsRight": true,
+            "image": {
+              "thumbnailSrc": "../static/images/improv-form.jpg",
+              "src": "../static/images/improv-form.jpg",
+              "alt": "placeholder image alt text"
+            }
+          }
+        },
+        {
+          "id": "feg54",
+          "name": "ArticleHeading",
+          "props": {
+            "heading": {
+              "text": "Designing a level 1 workshop",
+              "level": 3
+            },
+            "infoComponents": [
+              {
+                "id": "552f2323f",
+                "name": "RichText",
+                "props": {
+                  "string": "<h3>A helping hand?</h3><p>Exodus is one of many timed exclusives on the Epic Games Store. Epic is leveraging exclusives to entice newcomers to install the platform on their <i>computer</i> and create active user profiles.</p><ul><li>Tip number #1</li><li>Tip number #2</li><li>Tip number #3</li><li>Tip number #4</li><li>Tip number #5</li></ul><p>But most of all, remember to have fun!</p>"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "5534g",
+          "name": "ArticleBody",
+          "props": {
+            "string": "<p>Other critics speculate that competition in the marketplace — Steam has never had a true rival of its scale — could lead to better prices and deals for players, along with better revenue shares for game makers. Still others fear that intense pricing competition might <a href='#game-makers-link'>force game makers to cut their price tags</a> too low, too quickly. Here's a list of stuff you might consider: <ul><li>Helo</li><li>Helo</li><li>Oh no</li><li>Maye take a walk</li><li>Appelsinkjøtt</li></ul>Exodus is one of many timed exclusives on the Epic Games Store. Epic is leveraging exclusives to entice newcomers to install the platform.</p>"
+          }
+        },
+        {
+          "id": "feg54",
+          "name": "ArticleHeading",
+          "props": {
+            "heading": {
+              "text": "Downloads",
+              "level": 3
+            },
+            "infoComponents": [
+              {
+                "id": "552f2323f",
+                "name": "RichText",
+                "props": {
+                  "string": "<p>Remember, these are just helpful guides - you're free to adjust and edit as you want to.</p> "
+                }
+              }
+            ]
           }
         }
       ]

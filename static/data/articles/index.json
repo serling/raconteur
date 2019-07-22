@@ -17,6 +17,12 @@
             "href": "/articles/my-life",
             "title": "my life",
             "lead": "another article with a lead text"
+          },
+          {
+            "id": "h4434fg34f6",
+            "href": "/articles/workshop-template-1",
+            "title": "workshop template",
+            "lead": "level 1 workshop template"
           }
         ]
       }
