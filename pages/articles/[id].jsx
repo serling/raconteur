@@ -1,5 +1,6 @@
 import React from 'react';
 import { server } from '../../js/server';
+import fetch from 'isomorphic-unfetch';
 
 import Error from 'next/error';
 import ArticleTemplate from '../../components/article-template/article-template';

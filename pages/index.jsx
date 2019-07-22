@@ -1,5 +1,6 @@
 import React from 'react';
 import { server } from '../js/server';
+import fetch from 'isomorphic-unfetch';
 
 import FrontPage from '../components/front-page/front-page';
 import WithPageTransition from '../components/with-page-transition/with-page-transitions';
