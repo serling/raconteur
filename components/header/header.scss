@@ -23,13 +23,6 @@
     }
   }
 
-  &__logo {
-    transition: all 0.2s linear;
-    &:hover {
-      transform: rotate(360deg);
-    }
-  }
-
   &__navigation {
     display: flex;
     align-items: center;

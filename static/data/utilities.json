@@ -1,0 +1,29 @@
+{
+  "pageTitle": "utilities page",
+  "components": [
+    {
+      "id": "34f3",
+      "name": "UtilitiesList",
+      "props": {
+        "links": [
+          {
+            "text": "text",
+            "href": "#href"
+          },
+          {
+            "text": "text 2",
+            "href": "#href"
+          },
+          {
+            "text": "text 3",
+            "href": "#href"
+          },
+          {
+            "text": "text 4",
+            "href": "#href"
+          }
+        ]
+      }
+    }
+  ]
+}

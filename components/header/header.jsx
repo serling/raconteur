@@ -34,15 +34,13 @@ class Header extends React.Component {
           <div className="header__content">
             <nav className="header__navigation">
               <Link href="/index" className="header__logo">
-                <Icon name="close" size={Icon.sizes.medium} />
+                Home
               </Link>
               <Route href="/articles">
                 <a>Articles</a>
               </Route>
-              <Route href="/games" scroll={false}>
-                <a>Games (route)</a>
-              </Route>
-              <Link href="/games">Games (page)</Link>
+              <Link href="/games">Games</Link>
+              <Link href="/utilities">Utilities</Link>
             </nav>
             <div className="header__actions">
               <Button

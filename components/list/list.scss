@@ -17,10 +17,11 @@
     display: flex;
     flex-wrap: wrap;
     margin-left: -2rem;
+    margin-top: -2rem;
 
     #{$self}__item {
       flex: 0 1 25%;
-      margin: 0 0 0 2rem;
+      margin: 2rem 0 0 2rem;
     }
   }
 }

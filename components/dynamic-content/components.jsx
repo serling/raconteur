@@ -5,6 +5,7 @@ import ArticleTop from '../article-top/article-top';
 import ArticlesList from '../articles-list/articles-list';
 import FilteredGamesList from '../filtered-games-list/filtered-games-list';
 import ArticleQuote from '../article-quote/article-quote';
+import UtilitiesList from '../utilities-list/utilities-list';
 
 export default {
   ArticleBody,
@@ -13,5 +14,6 @@ export default {
   ArticleTop,
   ArticlesList,
   FilteredGamesList,
-  ArticleQuote
+  ArticleQuote,
+  UtilitiesList
 };
