@@ -8,7 +8,7 @@ const themes = {
   grid: 'grid'
 };
 
-const List = ({ isOrdered, children, className, theme }) => {
+const List = ({ isOrdered, isCentered, children, className, theme }) => {
   return (
     <>
       {React.createElement(
@@ -18,6 +18,7 @@ const List = ({ isOrdered, children, className, theme }) => {
             'list',
             [`list--${isOrdered ? 'ordered' : 'unordered'}`],
             {
+              'list--centered': isCentered,
               [`list--${themes[theme]}`]: themes[theme]
             },
             className
@@ -36,6 +37,7 @@ const List = ({ isOrdered, children, className, theme }) => {
 List.propTypes = {
   children: PropTypes.node.isRequired,
   isOrdered: PropTypes.bool,
+  isCentered: PropTypes.bool,
   className: PropTypes.string,
   theme: PropTypes.oneOf(Object.keys(themes).map(key => themes[key]))
 };

@@ -7,10 +7,8 @@
   margin: 0;
   text-align: center;
   text-decoration: none;
-  transition: 0.3s all cubic-bezier(0.33, 0, 0.2, 1);
   transform: translateZ(0);
   background-color: transparent;
-  color: initial;
 
   &:hover,
   &:focus {

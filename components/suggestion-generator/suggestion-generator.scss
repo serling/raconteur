@@ -1,1 +1,6 @@
-.suggestion-generator {}
+.suggestion-generator {
+  &__canvas {
+    text-align: center;
+    font-size: 8rem;
+  }
+}
