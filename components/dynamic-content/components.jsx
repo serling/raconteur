@@ -4,6 +4,7 @@ import ArticleImage from '../article-image/article-image';
 import ArticleTop from '../article-top/article-top';
 import ArticlesList from '../articles-list/articles-list';
 import FilteredGamesList from '../filtered-games-list/filtered-games-list';
+import ArticleQuote from '../article-quote/article-quote';
 
 export default {
   ArticleBody,
@@ -11,5 +12,6 @@ export default {
   ArticleImage,
   ArticleTop,
   ArticlesList,
-  FilteredGamesList
+  FilteredGamesList,
+  ArticleQuote
 };

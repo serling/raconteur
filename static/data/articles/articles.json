@@ -90,6 +90,30 @@
             },
             "infoText": "<h2>Info panel with some stuff you can read</h2><p>Exodus is one of many timed exclusives on the Epic Games Store. Epic is leveraging exclusives to entice newcomers to install the platform on their <i>computer</i> and create active user profiles. Some players have cried foul, claiming they’ve been forced to buy and play a game through a service that doesn’t have the functionality they’re accustomed to."
           }
+        },
+        {
+          "id": "55-2",
+          "name": "ArticleBody",
+          "props": {
+            "string": "<p>Exodus is one of many timed exclusives on the Epic Games Store. Epic is leveraging exclusives to entice newcomers to install the platform on their <i>computer</i> and create active user profiles. Some players have cried foul, claiming they’ve been forced to buy and play a game through a service that doesn’t have the functionality they’re accustomed to.</p><h2>Another chapter</h2><p>Exodus is one of many timed exclusives on the Epic Games Store. Epic is leveraging exclusives to entice newcomers to install the platform on their <i>computer</i> and create active user profiles. Some players have cried foul, claiming they’ve been forced to buy and play a game through a service that doesn’t have the functionality they’re accustomed to.</p>"
+          }
+        },
+        {
+          "id": "n2fu93",
+          "name": "ArticleQuote",
+          "props": {
+            "quote": {
+              "text": "No matter who you are or what you look like, how you started off, or how and who you love, America is a place where you can write your own destiny.",
+              "source": "Barack Obama"
+            }
+          }
+        },
+        {
+          "id": "55-245",
+          "name": "ArticleBody",
+          "props": {
+            "string": "<p>Exodus is one of many timed exclusives on the Epic Games Store. Epic is leveraging exclusives to entice newcomers to install the platform on their <i>computer</i> and create active user profiles. Some players have cried foul, claiming they’ve been forced to buy and play a game through a service that doesn’t have the functionality they’re accustomed to.</p><h2>Another chapter</h2><p>Exodus is one of many timed exclusives on the Epic Games Store. Epic is leveraging exclusives to entice newcomers to install the platform on their <i>computer</i> and create active user profiles. Some players have cried foul, claiming they’ve been forced to buy and play a game through a service that doesn’t have the functionality they’re accustomed to.</p>"
+          }
         }
       ]
     }

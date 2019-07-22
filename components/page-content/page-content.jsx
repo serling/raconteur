@@ -12,7 +12,8 @@ const themes = {
 
 const colors = {
   red: 'red',
-  blue: 'blue'
+  blue: 'blue',
+  grey: 'grey'
 };
 
 const PageContent = ({ theme, children, backgroundColor }) => (
