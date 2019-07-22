@@ -18,9 +18,11 @@ const ChapterHeading = ({ title, subtitle, image, theme }) => (
       [`chapter-heading--${themes[theme]}`]: themes[theme]
     })}
   >
-    <div className="chapter-heading__image">
-      <Image {...image} enforceAspectRatio={true} />
-    </div>
+    {image && (
+      <div className="chapter-heading__image">
+        <Image {...image} enforceAspectRatio={true} />
+      </div>
+    )}
     <div className="chapter-heading__text">
       <div className="chapter-heading__heading">
         <Heading level={1} text={title} theme={Heading.themes.headline} />

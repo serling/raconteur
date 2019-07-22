@@ -31,13 +31,15 @@ const ArticleTop = ({
               }
             />
           </div>
-          <div
-            className={cn('article-top__lead', {
-              'article-top__lead--overlap': headingShouldOverlapImage
-            })}
-          >
-            <Text text={lead} theme={Text.themes.lead} />
-          </div>
+          {lead && (
+            <div
+              className={cn('article-top__lead', {
+                'article-top__lead--overlap': headingShouldOverlapImage
+              })}
+            >
+              <Text text={lead} theme={Text.themes.lead} />
+            </div>
+          )}
         </div>
       </PageContent>
     </>
@@ -48,7 +50,7 @@ ArticleTop.propTypes = {
   title: PropTypes.string,
   subtitle: PropTypes.string,
   lead: PropTypes.string,
-  image: PropTypes.object.isRequired,
+  image: PropTypes.object,
   headingShouldOverlapImage: PropTypes.bool
 };
 
