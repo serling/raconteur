@@ -48,8 +48,6 @@ class RequestService {
   }
 
   async get(endpoint) {
-    console.log('* getting', `${BASE_URL + endpoint}`);
-
     let data = await fetch(
       `${BASE_URL + endpoint}`,
       Object.assign({}, getDefaultOptions())
