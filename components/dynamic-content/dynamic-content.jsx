@@ -11,8 +11,10 @@ const themes = {
   default: 'default'
 };
 
+const components = Components;
+
 const Component = ({ id, name, props }) => {
-  const Component = Components[name];
+  const Component = components[name];
 
   if (!Component) return null;
 
@@ -30,7 +32,7 @@ const Component = ({ id, name, props }) => {
 };
 
 Component.propTypes = {
-  name: PropTypes.string.isRequired,
+  name: PropTypes.oneOf(Object.keys(components)),
   props: PropTypes.object.isRequired
 };
 

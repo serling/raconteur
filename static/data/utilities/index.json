@@ -2,24 +2,24 @@
   "pageTitle": "utilities page",
   "components": [
     {
-      "id": "34f3",
+      "id": "34f3-34j89",
       "name": "UtilitiesList",
       "props": {
         "links": [
           {
-            "text": "text",
+            "text": "Suggestion-on-demand",
+            "href": "/utilities/suggestion-on-demand"
+          },
+          {
+            "text": "Utility 2",
             "href": "#href"
           },
           {
-            "text": "text 2",
+            "text": "Utility 3",
             "href": "#href"
           },
           {
-            "text": "text 3",
-            "href": "#href"
-          },
-          {
-            "text": "text 4",
+            "text": "Utility 4",
             "href": "#href"
           }
         ]

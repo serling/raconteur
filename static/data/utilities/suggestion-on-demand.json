@@ -1,0 +1,12 @@
+{
+  "pageTitle": "utility - suggestion on demand",
+  "components": [
+    {
+      "id": "1",
+      "name": "SuggestionGenerator",
+      "props": {
+        "words": []
+      }
+    }
+  ]
+}

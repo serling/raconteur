@@ -6,6 +6,7 @@ import ArticlesList from '../articles-list/articles-list';
 import FilteredGamesList from '../filtered-games-list/filtered-games-list';
 import ArticleQuote from '../article-quote/article-quote';
 import UtilitiesList from '../utilities-list/utilities-list';
+import SuggestionGenerator from '../suggestion-generator/suggestion-generator';
 
 export default {
   ArticleBody,
@@ -15,5 +16,6 @@ export default {
   ArticlesList,
   FilteredGamesList,
   ArticleQuote,
-  UtilitiesList
+  UtilitiesList,
+  SuggestionGenerator
 };

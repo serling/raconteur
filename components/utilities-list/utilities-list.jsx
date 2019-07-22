@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import List from '../list/list';
+import Link from '../link/link';
 import PageContent from '../page-content/page-content';
 
 import './utilities-list.scss';
@@ -11,9 +12,7 @@ const UtilitiesList = ({ links }) => (
     <div className="utilities-list">
       <List theme={List.themes.grid}>
         {links.map((link, index) => (
-          <div key={index} className="utilities-list">
-            a link
-          </div>
+          <Link key={index} {...link} />
         ))}
       </List>
     </div>

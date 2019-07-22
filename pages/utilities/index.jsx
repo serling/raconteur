@@ -1,11 +1,11 @@
 import React from 'react';
 import Error from 'next/error';
-import { server } from '../js/server';
+import { server } from '../../js/server';
 
-import ArticleTemplate from '../components/article-template/article-template';
-import WithPageTransition from '../components/with-page-transition/with-page-transitions';
+import ArticleTemplate from '../../components/article-template/article-template';
+import WithPageTransition from '../../components/with-page-transition/with-page-transitions';
 
-import '../scss/global.scss';
+import '../../scss/global.scss';
 
 const Utilities = ({ data, error }) => {
   if (error) {
@@ -22,7 +22,7 @@ const Utilities = ({ data, error }) => {
 Utilities.getInitialProps = async ctx => {
   const { res } = ctx;
 
-  const endpoint = `${server + `/api/utilities`}`;
+  const endpoint = `${server + `/api/utilities/index`}`;
   const response = await fetch(endpoint);
 
   const data = await response.json();
