@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 
 import Button from '../../components/button/button';
 import List from '../../components/list/list';
@@ -11,7 +10,7 @@ const SuggestionGenerator = () => {
   const [activeWord, setActiveWord] = useState('generator');
   const [isLoading, setIsLoading] = useState(false);
 
-  const apiKey = 'TQ6WVK0T'; //https://random-word-api.herokuapp.com/
+  const apiKey = '8O23WFPE'; //https://random-word-api.herokuapp.com/
   const numberOfWords = 1;
 
   const getWord = async () => {
@@ -54,10 +53,6 @@ const SuggestionGenerator = () => {
       </PageContent>
     </>
   );
-};
-
-SuggestionGenerator.propTypes = {
-  words: PropTypes.array.isRequired
 };
 
 export default SuggestionGenerator;
