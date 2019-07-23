@@ -2,8 +2,22 @@
   $self: &;
   max-width: 100%;
 
-  + #{$self} {
-    margin-top: 2rem;
+  &--margins-default {
+    + #{$self} {
+      margin-top: 2rem;
+    }
+  }
+
+  &--margins-small {
+    + #{$self} {
+      margin-top: 1rem;
+    }
+  }
+
+  &--margins-none {
+    + #{$self} {
+      margin-top: 0;
+    }
   }
 
   &--full {

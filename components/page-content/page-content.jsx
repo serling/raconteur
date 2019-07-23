@@ -12,12 +12,19 @@ const themes = {
   narrow: 'narrow'
 };
 
+const margins = {
+  default: 'default',
+  small: 'small',
+  none: 'none'
+};
+
 const colors = Colors;
 
-const PageContent = ({ theme, children, backgroundColor }) => (
+const PageContent = ({ theme, margin, children, backgroundColor }) => (
   <div
     className={cn('page-content', {
       [`page-content--${themes[theme]}`]: themes[theme],
+      [`page-content--margins-${margins[margin]}`]: margins[margin],
       [`page-content--${colors[backgroundColor]}`]: colors[backgroundColor],
       'page-content--background': !!colors[backgroundColor]
     })}
@@ -29,14 +36,17 @@ const PageContent = ({ theme, children, backgroundColor }) => (
 PageContent.propTypes = {
   children: PropTypes.node,
   backgroundColor: PropTypes.oneOf(Object.keys(colors).map(key => colors[key])),
-  theme: PropTypes.oneOf(Object.keys(themes).map(key => themes[key]))
+  theme: PropTypes.oneOf(Object.keys(themes).map(key => themes[key])),
+  margins: PropTypes.oneOf(Object.keys(margins).map(key => margins[key]))
 };
 
 PageContent.defaultProps = {
-  theme: themes.normal
+  theme: themes.normal,
+  margin: margins.default
 };
 
 PageContent.themes = themes;
 PageContent.colors = colors;
+PageContent.margins = margins;
 
 export default PageContent;
