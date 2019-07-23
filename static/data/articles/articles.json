@@ -207,6 +207,30 @@
               }
             ]
           }
+        },
+        {
+          "id": "f2m32",
+          "name": "Downloads",
+          "props": {
+            "links": [
+              {
+                "href": "#download",
+                "text": "template_level1.docx"
+              },
+              {
+                "href": "#download",
+                "text": "template_level2.docx"
+              },
+              {
+                "href": "#download",
+                "text": "template_level3.docx"
+              },
+              {
+                "href": "#download",
+                "text": "template_level4.docx"
+              }
+            ]
+          }
         }
       ]
     }

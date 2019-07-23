@@ -1,4 +1,5 @@
 .link {
+  $self: &;
   text-decoration: none;
   color: inherit;
 
@@ -12,6 +13,26 @@
   &:focus,
   &:hover {
     color: black;
+  }
+
+  &__icon {
+    margin-left: 2rem;
+  }
+
+  &--icon {
+    display: flex;
+    align-self: center;
+    justify-content: space-between;
+
+    #{$self}__text,
+    #{$self}__icon {
+      flex: 0 0 auto;
+    }
+
+    #{$self}__text {
+      text-transform: uppercase;
+      font-size: 0.7em;
+    }
   }
 
   &--underlined {
@@ -35,5 +56,10 @@
     &:hover {
       border-bottom: 1px solid black;
     }
+  }
+
+  &--download {
+    border: 1px solid grey;
+    padding: 1rem 2rem;
   }
 }

@@ -24,7 +24,8 @@
     margin-top: -2rem;
 
     #{$self}__item {
-      flex: 0 1 25%;
+      // flex-grow: 1;
+      // flex-shrink: 0;
       margin: 2rem 0 0 2rem;
     }
   }
