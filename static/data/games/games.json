@@ -172,6 +172,26 @@
           }
         ]
       }
+    },
+    {
+      "id": "game4",
+      "data": {
+        "pageTitle": "game - excuse me?",
+        "header": {
+          "title": "Excuse me?",
+          "lead": "A game all about pimping and challenging your partner, just like a director would.",
+          "categories": ["shortform", "spontenouity", "director"]
+        },
+        "components": [
+          {
+            "id": "32",
+            "name": "ArticleBody",
+            "props": {
+              "string": "<p>Same concept as New Choice, but without a director. Can be played with more than two players in the scene. In this one, the players themselves challenge other players previous comments by going “excuse me?”, whereby that player needs to find something new to say. The only restriction is that it has to rhyme with the original statement. Forces players to justify new choices and incorporate them into the scene.</p>"
+            }
+          }
+        ]
+      }
     }
   ]
 }
