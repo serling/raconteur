@@ -9,9 +9,10 @@ import UtilitiesList from '../utilities-list/utilities-list';
 import SuggestionGenerator from '../suggestion-generator/suggestion-generator';
 import RichText from '../rich-text/rich-text';
 import Downloads from '../downloads/downloads';
-import InlineImage from '../inline-image/inline-image';
+import InlineContent from '../inline-content/inline-content';
 import ParagraphWithImage from '../paragraph-with-image/paragraph-with-image';
 import GameTop from '../game-top/game-top';
+import Image from '../image/image';
 
 export default {
   ArticleBody,
@@ -24,8 +25,9 @@ export default {
   UtilitiesList,
   SuggestionGenerator,
   RichText,
-  InlineImage,
+  InlineContent,
   ParagraphWithImage,
   Downloads,
-  GameTop
+  GameTop,
+  Image
 };

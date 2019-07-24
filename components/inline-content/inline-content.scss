@@ -1,4 +1,5 @@
 .inline-content {
+  $self: &;
   $break-at-sm: 25rem; //400px
   $break-at-md: 50rem; //800px
   $break-at-lg: 64rem; //1024px
@@ -12,7 +13,7 @@
   //   display: table;
   // }
 
-  &--left {
+  &--aligned-left {
     @media screen and (min-width: $break-at-md) {
       float: left;
       width: 50%;
@@ -20,11 +21,18 @@
     }
   }
 
-  &--right {
+  &--aligned-right {
     @media screen and (min-width: $break-at-md) {
       float: right;
       width: 50%;
       margin: 0 0 1rem $gutter;
+    }
+  }
+
+  &--frame {
+    #{$self}__inner {
+      background-color: lightgrey;
+      padding: 1rem;
     }
   }
 }

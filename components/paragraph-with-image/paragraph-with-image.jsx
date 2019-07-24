@@ -2,19 +2,35 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import RichText from '../rich-text/rich-text';
-import InlineImage from '../inline-image/inline-image';
+import InlineContent from '../inline-content/inline-content';
 
-const ParagraphWithImage = ({ string, image, imageIsRight }) => (
+const ParagraphWithImage = ({
+  string,
+  inlineComponents,
+  contentIsRight,
+  contentHasFrame
+}) => (
   <>
-    {image && <InlineImage image={image} imageIsRight={imageIsRight} />}
+    {inlineComponents && (
+      <InlineContent
+        components={inlineComponents}
+        theme={contentHasFrame ? InlineContent.themes.frame : undefined}
+        alignment={
+          contentIsRight
+            ? InlineContent.alignments.right
+            : InlineContent.alignments.left
+        }
+      />
+    )}
     <RichText string={string} />
   </>
 );
 
 ParagraphWithImage.propTypes = {
   string: PropTypes.string,
-  image: PropTypes.object,
-  imageIsRight: PropTypes.bool
+  inlineComponents: PropTypes.array,
+  contentIsRight: PropTypes.bool,
+  contentHasFrame: PropTypes.bool
 };
 
 export default ParagraphWithImage;

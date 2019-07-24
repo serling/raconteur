@@ -23,13 +23,17 @@
             "name": "ArticleBody",
             "props": {
               "string": "<p>When all players involved in the game are on stage and have played the last scene, we start to peel back the onion, layer by layer. The last player to join finds a reason to leave the scene. And as he does, we continue the next-to-last scene with its corresponding characters. The character that originally established that scene finds a reason to leave -- and once again we pick up from the scene before that with its characters and corresponding player count.</br></br> The game is over when we’re back to one person on stage, and that character concludes his scene.</p>",
-              "imageIsRight": true,
-              "image": {
-                "thumbnailSrc": "../static/images/show.jpg",
-                "src": "../static/images/show.jpg",
-                "alt": "placeholder image alt text",
-                "text": "A perfect example of how an onion might look like"
-              }
+              "contentIsRight": true,
+              "contentHasFrame": true,
+              "inlineComponents": [
+                {
+                  "id": "dn208gkgjkgjkfgjkfg",
+                  "name": "RichText",
+                  "props": {
+                    "string": "<p>Here's a short list of fun facts:<ul><li>Thing that might amaze you</li><li>A little more</li><li>This one will blow you away</li></ul></p>"
+                  }
+                }
+              ]
             }
           },
           {
@@ -85,11 +89,18 @@
             "name": "ArticleBody",
             "props": {
               "string": "<p>Works best when the scene gets a minute to establish a platform without interruption, and where the players try not to go overboard with absurdity. </br></br>Requires players to make bold choices that strive to move the story forward. These are the funniest to intercept and change. Director needs to have a sense of moderation -- let the players justify the choices you’ve put them through, and try not to go overboard with stringing new choices until the end. Build-up.</p>",
-              "image": {
-                "thumbnailSrc": "../static/images/show2.jpg",
-                "src": "../static/images/show2.jpg",
-                "alt": "placeholder image alt text"
-              }
+              "inlineComponents": [
+                {
+                  "id": "dn208ggggggg",
+                  "name": "Image",
+                  "props": {
+                    "thumbnailSrc": "../static/images/show2.jpg",
+                    "src": "../static/images/show2.jpg",
+                    "alt": "placeholder image alt text",
+                    "text": "A perfect example of how an onion might look like"
+                  }
+                }
+              ]
             }
           }
         ]
@@ -117,11 +128,17 @@
             "name": "ArticleBody",
             "props": {
               "string": "<p>If the scene only has one player, the person doing the sound effects is encouraged to dub with gibberish as a substitute for dialogue.</br></br> With two people in the scene, there are some best-practices in order to make this game more palatable: <ul><li>The sound effects should wait for cues from the players</li><li>The sound effects should keep unprompted sounds to a minimum</li><li>Players should keep the scene simple and straight-forward and be clear when they’re waiting for a sound effect to take place</li></ul></p>",
-              "image": {
-                "thumbnailSrc": "../static/images/show3.jpg",
-                "src": "../static/images/show3.jpg",
-                "alt": "image of soud effect"
-              }
+              "inlineComponents": [
+                {
+                  "id": "dn208",
+                  "name": "Image",
+                  "props": {
+                    "thumbnailSrc": "../static/images/show3.jpg",
+                    "src": "../static/images/show3.jpg",
+                    "alt": "placeholder image alt text"
+                  }
+                }
+              ]
             }
           },
           {

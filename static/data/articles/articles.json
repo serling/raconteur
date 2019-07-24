@@ -60,13 +60,19 @@
             "name": "ArticleBody",
             "props": {
               "string": "<p>Exodus is one of many timed exclusives on the Epic Games Store. Epic is leveraging exclusives to entice newcomers to install the platform on their <i>computer</i> and create active user profiles. Some players have cried foul, claiming they’ve been forced to buy and play a game through a service that doesn’t have the functionality they’re accustomed to.</p><h2>Another chapter</h2><p>Exodus is one of many timed exclusives on the Epic Games Store. Epic is leveraging exclusives to entice newcomers to install the platform on their <i>computer</i> and create active user profiles. Some players have cried foul, claiming they’ve been forced to buy and play a game through a service that doesn’t have the functionality they’re accustomed to.</p><h3>More to the point</h3><p>Other critics speculate that competition in the marketplace — Steam has never had a true rival of its scale — could lead to better prices and deals for players, along with better revenue shares for game makers. Still others fear that intense pricing competition might <a href='#game-makers-link'>force game makers to cut their price tags</a> too low, too quickly. Here's a list of stuff you might consider: <ul><li>Helo</li><li>Helo</li><li>Oh no</li><li>Maye take a walk</li><li>Appelsinkjøtt</li></ul>Exodus is one of many timed exclusives on the Epic Games Store. Epic is leveraging exclusives to entice newcomers to install the platform.</p>",
-              "imageIsRight": true,
-              "image": {
-                "thumbnailSrc": "../static/images/show.jpg",
-                "src": "../static/images/show.jpg",
-                "alt": "placeholder image alt text",
-                "text": "this image has some filler text for descriptive pruporses"
-              }
+              "contentIsRight": true,
+              "inlineComponents": [
+                {
+                  "id": "dn20889998",
+                  "name": "Image",
+                  "props": {
+                    "thumbnailSrc": "../static/images/show.jpg",
+                    "src": "../static/images/show.jpg",
+                    "alt": "placeholder image alt text",
+                    "text": "A perfect example of how an onion might look like"
+                  }
+                }
+              ]
             }
           },
           {
@@ -92,10 +98,16 @@
                   "name": "ParagraphWithImage",
                   "props": {
                     "string": "<h3>A helping hand?</h3><p>Exodus is one of many timed exclusives on the Epic Games Store. Epic is leveraging exclusives to entice newcomers to install the platform on their <i>computer</i> and create active user profiles.</p><p>Exodus is one of many timed exclusives on the Epic Games Store. Epic is leveraging exclusives to entice newcomers to install the platform on their <i>computer</i> and create active user profiles.</p> ",
-                    "image": {
-                      "src": "../static/images/workshop2.jpg",
-                      "alt": "placeholder image alt text"
-                    }
+                    "inlineComponents": [
+                      {
+                        "id": "6h",
+                        "name": "Image",
+                        "props": {
+                          "src": "../static/images/workshop2.jpg",
+                          "alt": "placeholder image alt text"
+                        }
+                      }
+                    ]
                   }
                 }
               ]
@@ -106,11 +118,18 @@
             "name": "ArticleBody",
             "props": {
               "string": "<p>Exodus is one of many timed exclusives on the Epic Games Store. Epic is leveraging exclusives to entice newcomers to install the platform on their <i>computer</i> and create active user profiles. Some players have cried foul, claiming they’ve been forced to buy and play a game through a service that doesn’t have the functionality they’re accustomed to.</p><h2>Another chapter</h2><p>Exodus is one of many timed exclusives on the Epic Games Store. Epic is leveraging exclusives to entice newcomers to install the platform on their <i>computer</i> and create active user profiles. Some players have cried foul, claiming they’ve been forced to buy and play a game through a service that doesn’t have the functionality they’re accustomed to.</p>",
-              "image": {
-                "thumbnailSrc": "../static/images/workshop.jpg",
-                "src": "../static/images/workshop.jpg",
-                "alt": "placeholder image alt text"
-              }
+              "contentIsRight": true,
+              "inlineComponents": [
+                {
+                  "id": "dn204444448",
+                  "name": "Image",
+                  "props": {
+                    "thumbnailSrc": "../static/images/workshop.jpg",
+                    "src": "../static/images/workshop.jpg",
+                    "alt": "placeholder image alt text"
+                  }
+                }
+              ]
             }
           },
           {
@@ -147,7 +166,7 @@
             }
           },
           {
-            "id": "5534g343f",
+            "id": "5534g4343f",
             "name": "ArticleBody",
             "props": {
               "string": "<p>Hey, there. Thanks for stopping by.</p>"
@@ -158,12 +177,19 @@
             "name": "ArticleBody",
             "props": {
               "string": "<p>Exodus is one of many timed exclusives on the Epic Games Store. Epic is leveraging exclusives to entice newcomers to install the platform on their <i>computer</i> and create active user profiles. Some players have cried foul, claiming they’ve been forced to buy and play a game through a service that doesn’t have the functionality they’re accustomed to.</p>",
-              "imageIsRight": true,
-              "image": {
-                "thumbnailSrc": "../static/images/improv-form.jpg",
-                "src": "../static/images/improv-form.jpg",
-                "alt": "placeholder image alt text"
-              }
+              "contentIsRight": true,
+              "inlineComponents": [
+                {
+                  "id": "dn208fr4",
+                  "name": "Image",
+                  "props": {
+                    "thumbnailSrc": "../static/images/improv-form.jpg",
+                    "src": "../static/images/improv-form.jpg",
+                    "alt": "placeholder image alt text",
+                    "text": "A perfect example of how an onion might look like"
+                  }
+                }
+              ]
             }
           },
           {

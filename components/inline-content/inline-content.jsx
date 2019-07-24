@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
+import DynamicContent from '../dynamic-content/dynamic-content';
+
 import './inline-content.scss';
 
 const alignments = {
@@ -9,23 +11,34 @@ const alignments = {
   right: 'right'
 };
 
-const InlineContent = ({ children, alignment }) => (
+const themes = {
+  frame: 'frame'
+};
+
+const InlineContent = ({ components, alignment, theme }) => (
   <div
     className={cn('inline-content', {
-      [`inline-content--${alignments[alignment]}`]: alignments[alignment]
+      [`inline-content--aligned-${alignments[alignment]}`]: alignments[
+        alignment
+      ],
+      [`inline-content--${themes[theme]}`]: themes[theme]
     })}
   >
-    {children}
+    <div className="inline-content__inner">
+      <DynamicContent components={components} />
+    </div>
   </div>
 );
 
 InlineContent.propTypes = {
-  children: PropTypes.node.isRequired,
+  components: PropTypes.array.isRequired,
   alignment: PropTypes.oneOf(
     Object.keys(alignments).map(key => alignments[key])
-  )
+  ),
+  theme: PropTypes.oneOf(Object.keys(themes).map(key => themes[key]))
 };
 
 InlineContent.alignments = alignments;
+InlineContent.themes = themes;
 
 export default InlineContent;
