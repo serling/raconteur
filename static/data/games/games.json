@@ -30,7 +30,7 @@
                   "id": "dn208gkgjkgjkfgjkfg",
                   "name": "RichText",
                   "props": {
-                    "string": "<p>Here's a short list of fun facts:<ul><li>Thing that might amaze you</li><li>A little more</li><li>This one will blow you away</li></ul></p>"
+                    "string": "<p>Here's a short list of fun facts:</p><ul><li>Thing that might amaze you</li><li>A little more</li><li>This one will blow you away</li></ul>"
                   }
                 }
               ]
