@@ -84,13 +84,61 @@
             "id": "0fijs54530w23jf",
             "name": "ArticleBody",
             "props": {
-              "string": "<p>Works best when the scene gets a minute to establish a platform without interruption, and where the players try not to go overboard with absurdity. Requires players to make bold choices that strive to move the story forward. These are the funniest to intercept and change. Director needs to have a sense of moderation -- let the players justify the choices you’ve put them through, and try not to go overboard with stringing new choices until the end. Build-up.</p>",
+              "string": "<p>Works best when the scene gets a minute to establish a platform without interruption, and where the players try not to go overboard with absurdity. </br></br>Requires players to make bold choices that strive to move the story forward. These are the funniest to intercept and change. Director needs to have a sense of moderation -- let the players justify the choices you’ve put them through, and try not to go overboard with stringing new choices until the end. Build-up.</p>",
               "image": {
-                "imageIsRight": true,
                 "thumbnailSrc": "../static/images/show2.jpg",
                 "src": "../static/images/show2.jpg",
                 "alt": "placeholder image alt text"
               }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "game3",
+      "data": {
+        "pageTitle": "game - sound effects",
+        "header": {
+          "title": "Sound Effects",
+          "lead": "A regular scene where the sound and/or dialogue are delegated to improvisers that are off-stage.",
+          "categories": ["shortform", "spontenouity", "director"]
+        },
+        "components": [
+          {
+            "id": "32",
+            "name": "ArticleBody",
+            "props": {
+              "string": "<p>Sound effects works best as a two person scene, but can also be played as a four person scene with experienced players. For each pair, one plays in the scene while the other uses sound effects to verbally simulate the action on stage.</p>"
+            }
+          },
+          {
+            "id": "323444444444ff",
+            "name": "ArticleBody",
+            "props": {
+              "string": "<p>If the scene only has one player, the person doing the sound effects is encouraged to dub with gibberish as a substitute for dialogue.</br></br> With two people in the scene, there are some best-practices in order to make this game more palatable: <ul><li>The sound effects should wait for cues from the players</li><li>The sound effects should keep unprompted sounds to a minimum</li><li>Players should keep the scene simple and straight-forward and be clear when they’re waiting for a sound effect to take place</li></ul></p>",
+              "image": {
+                "thumbnailSrc": "../static/images/show3.jpg",
+                "src": "../static/images/show3.jpg",
+                "alt": "image of soud effect"
+              }
+            }
+          },
+          {
+            "id": "f43-2",
+            "name": "ArticleHeading",
+            "props": {
+              "heading": {
+                "text": "Teacher's Note",
+                "level": 3
+              }
+            }
+          },
+          {
+            "id": "f34y",
+            "name": "ArticleBody",
+            "props": {
+              "string": "<p>Most fun when the audience suggestion is a mundane activity. A fun variation on this is to ask audience members on stage to do the sound effects.</p>"
             }
           }
         ]

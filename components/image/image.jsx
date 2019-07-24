@@ -17,7 +17,7 @@ const Image = ({
   className,
   enforceAspectRatio
 }) => {
-  if (!src) return null;
+  if (!src || !alt) return null;
 
   return (
     <figure

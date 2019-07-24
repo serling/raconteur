@@ -15,23 +15,23 @@
         "games": [
           {
             "id": "jr40j3049jf9394",
-            "name": "hello from api #1",
+            "name": "The Onion",
             "href": "/games/game1",
-            "abstract": "a short abstract",
+            "abstract": "Onion game is a series a scenes with no real connection. For each scene that is played, we add layers to the metaphorical onion.",
             "categories": ["#shortform"]
           },
           {
             "id": "gg34g34g",
-            "name": "hello from api #2",
+            "name": "New Choice",
             "href": "/games/game2",
-            "abstract": "a short abstract",
+            "abstract": "New choice sees players through a regular scene, but one where the director at any time can ask the improvisers to change what they just did or said.",
             "categories": ["#justification"]
           },
           {
             "id": "45h45g45g",
-            "name": "hello from api #3",
+            "name": "Sound Effects",
             "href": "/games/game3",
-            "abstract": "a short abstract",
+            "abstract": "A regular scene where the sound and/or dialogue are delegated to improvisers that are off-stage.",
             "categories": ["#warmup"]
           }
         ]

@@ -8,21 +8,21 @@
         "articles": [
           {
             "id": "20fi3f2",
-            "href": "/articles/how-to",
-            "title": "how to",
-            "lead": "a small lead text that describes the article's content"
+            "href": "/articles/my-life",
+            "title": "Sound Tech",
+            "lead": "How to properly prepare and operate the sound booth."
           },
           {
             "id": "h46",
-            "href": "/articles/my-life",
-            "title": "my life",
-            "lead": "another article with a lead text"
+            "href": "/articles/how-to",
+            "title": "Generic",
+            "lead": "A generic template document that can be used for all sorts of things."
           },
           {
             "id": "h4434fg34f6",
             "href": "/articles/workshop-template-1",
             "title": "workshop template",
-            "lead": "level 1 workshop template"
+            "lead": "A template for how to manage and plan a workshop"
           }
         ]
       }

@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import Heading from '../heading/heading';
 import PageContent from '../page-content/page-content';
 import Text from '../text/text';
-import List from '../list/list';
 
 import './game-top.scss';
 
@@ -14,10 +13,7 @@ const GameTop = ({ title, subtitle, lead, categories }) => (
       <div className="game-top">
         <div className="game-top__heading">
           <Heading text={title} level={1} />
-          <Text text={subtitle} />
-        </div>
-        <div className="game-top__lead">
-          <Text text={lead} theme={Text.themes.lead} />
+          {subtitle && <Text text={subtitle} />}
         </div>
         <div className="game-top__meta">
           <ul className="game-top__list">
@@ -27,6 +23,9 @@ const GameTop = ({ title, subtitle, lead, categories }) => (
               </li>
             ))}
           </ul>
+        </div>
+        <div className="game-top__lead">
+          <Text text={lead} theme={Text.themes.lead} />
         </div>
       </div>
     </PageContent>
