@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import Router from 'next/router';
 
 import Layout from '../layout/layout';
+import PageLoader from '../page-loader/page-loader';
 import DynamicContent from '../dynamic-content/dynamic-content';
 
 class ArticleTemplate extends React.Component {
@@ -15,7 +17,15 @@ class ArticleTemplate extends React.Component {
     hasLoaded: false
   };
 
+  componentWillUnmount() {
+    Router.events.off('routeChangeStart');
+  }
+
   componentDidMount() {
+    Router.events.on('routeChangeStart', url => {
+      console.log(`Loading: ${url}`);
+    });
+
     this.setState(
       {
         hasLoaded: true
@@ -28,6 +38,7 @@ class ArticleTemplate extends React.Component {
 
   render() {
     if (!this.state.hasLoaded) return null;
+    // if (!this.state.hasLoaded) return <PageLoader />;
 
     const { pageTitle } = this.props.data;
 

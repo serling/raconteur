@@ -1,0 +1,11 @@
+{
+  "games": [
+    {
+      "id": "game1",
+      "data": {
+        "pageTitle": "game: arm expert",
+        "components": []
+      }
+    }
+  ]
+}
