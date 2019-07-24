@@ -50,7 +50,19 @@
             "id": "555555-2",
             "name": "ArticleBody",
             "props": {
-              "string": "<p>Difficult scene to explain, but fun to play. Usually has a logistical limit of 6 or 7 players. Requires players to play colorful and bold characters. Players have to coordinate, not to steal too much spotlight as the player count rises. Introduces an interesting shift in dynamics between the different player counts. One player is vastly different to two players; two players is vastly different to three players, etc.</p>"
+              "string": "<p>Difficult scene to explain, but fun to play. Usually has a logistical limit of 6 or 7 players. Requires players to play colorful and bold characters. Players have to coordinate, not to steal too much spotlight as the player count rises. Introduces an interesting shift in dynamics between the different player counts.</br></br> One player is vastly different to two players; two players is vastly different to three players, etc.</p>",
+              "inlineComponents": [
+                {
+                  "id": "dn208ggggggg",
+                  "name": "Image",
+                  "props": {
+                    "thumbnailSrc": "../static/images/show2.jpg",
+                    "src": "../static/images/show2.jpg",
+                    "alt": "placeholder image alt text",
+                    "text": "A perfect example of how an onion might look like"
+                  }
+                }
+              ]
             }
           }
         ]
