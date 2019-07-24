@@ -7,8 +7,12 @@
   margin: 0;
 
   &--level-1 {
-    font-size: 4rem;
+    font-size: 2rem;
     line-height: 1.1em;
+
+    @media screen and (min-width: $break-at-md) {
+      font-size: 4rem;
+    }
   }
 
   &--level-2 {

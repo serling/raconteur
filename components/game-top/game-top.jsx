@@ -21,8 +21,8 @@ const GameTop = ({ title, subtitle, lead, categories }) => (
         </div>
         <div className="game-top__meta">
           <ul className="game-top__list">
-            {categories.map(category => (
-              <li className="game-top__item">
+            {categories.map((category, index) => (
+              <li className="game-top__item" key={index}>
                 <span className="game-top__tag">{category}</span>
               </li>
             ))}

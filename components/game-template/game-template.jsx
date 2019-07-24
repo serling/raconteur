@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 
 import Layout from '../layout/layout';
 import DynamicContent from '../dynamic-content/dynamic-content';
+import GameTop from '../game-top/game-top';
 
-class ArticleTemplate extends React.Component {
+class GameTemplate extends React.Component {
   static propTypes = {
     data: PropTypes.object
   };
@@ -29,14 +30,15 @@ class ArticleTemplate extends React.Component {
   render() {
     if (!this.state.hasLoaded) return null;
 
-    const { pageTitle } = this.props.data;
+    const { pageTitle, header } = this.props.data;
 
     return (
       <Layout title={pageTitle}>
+        {header && <GameTop {...header} />}
         <DynamicContent {...this.props.data} />
       </Layout>
     );
   }
 }
 
-export default ArticleTemplate;
+export default GameTemplate;

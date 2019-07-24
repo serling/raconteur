@@ -3,7 +3,7 @@ import { server } from '../../js/server';
 import fetch from 'isomorphic-unfetch';
 
 import Error from 'next/error';
-import ArticleTemplate from '../../components/article-template/article-template';
+import GameTemplate from '../../components/game-template/game-template';
 import WithPageTransition from '../../components/with-page-transition/with-page-transitions';
 
 import '../../scss/global.scss';
@@ -15,7 +15,7 @@ const GamePage = props => {
 
   return (
     <WithPageTransition>
-      <ArticleTemplate data={data} />
+      <GameTemplate data={data} />
     </WithPageTransition>
   );
 };
