@@ -2,15 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
-import Heading from '../heading/heading';
+// import Heading from '../heading/heading';
 import Text from '../text/text';
-import Modal from '../modal/modal';
+import Link from '../link/link';
+// import Modal from '../modal/modal';
 
 import './game.scss';
 
 const Game = ({
   id,
   name,
+  href,
   alternativeNames,
   playerCount,
   abstract,
@@ -21,9 +23,9 @@ const Game = ({
 }) => {
   return (
     <div className="game">
-      <Heading>{name}</Heading>
+      <Link text={name} href={href} />
       <Text text={abstract}></Text>
-      <Modal
+      {/* <Modal
         onClose={() => {}}
         isVisible={false}
         isCloseable={true}
@@ -31,7 +33,7 @@ const Game = ({
         theme={Modal.themes.menu}
       >
         {name}
-      </Modal>
+      </Modal> */}
     </div>
   );
 };

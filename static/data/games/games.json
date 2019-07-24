@@ -3,8 +3,57 @@
     {
       "id": "game1",
       "data": {
-        "pageTitle": "game: arm expert",
-        "components": []
+        "pageTitle": "game - the onion",
+        "components": [
+          {
+            "id": "0fij3023jhf",
+            "name": "GameTop",
+            "props": {
+              "title": "The Onion",
+              "subtitle": "the aspiring montage",
+              "lead": "Onion game is a series a scenes with no real connection. For each scene that is played, we add layers to the metaphorical onion.",
+              "categories": ["shortform", "fun for the whole family"]
+            }
+          },
+          {
+            "id": "0fijs5453023jf",
+            "name": "ArticleBody",
+            "props": {
+              "string": "<p>Starts out with one player on stage playing a scene. </br></br>After a while, a new player enters the stage -- bringing a new scene with him. They now play in this new scene, with totally new characters. With enough time a third player enters the stage, prompting yet another scene -- now with three brand new characters.</p>"
+            }
+          },
+          {
+            "id": "0fijs5453023jf",
+            "name": "ArticleBody",
+            "props": {
+              "string": "<p>When all players involved in the game are on stage and have played the last scene, we start to peel back the onion, layer by layer. The last player to join finds a reason to leave the scene. And as he does, we continue the next-to-last scene with its corresponding characters. The character that originally established that scene finds a reason to leave -- and once again we pick up from the scene before that with its characters and corresponding player count.</br></br> The game is over when we’re back to one person on stage, and that character concludes his scene.</p>",
+              "imageIsRight": true,
+              "image": {
+                "thumbnailSrc": "../static/images/show.jpg",
+                "src": "../static/images/show.jpg",
+                "alt": "placeholder image alt text",
+                "text": "A perfect example of how an onion might look like"
+              }
+            }
+          },
+          {
+            "id": "0fijs302g453jf-2",
+            "name": "ArticleHeading",
+            "props": {
+              "heading": {
+                "text": "Teacher's Note",
+                "level": 3
+              }
+            }
+          },
+          {
+            "id": "0fijs53023jf-2",
+            "name": "ArticleBody",
+            "props": {
+              "string": "<p>Difficult scene to explain, but fun to play. Usually has a logistical limit of 6 or 7 players. Requires players to play colorful and bold characters. Players have to coordinate, not to steal too much spotlight as the player count rises. Introduces an interesting shift in dynamics between the different player counts. One player is vastly different to two players; two players is vastly different to three players, etc.</p>"
+            }
+          }
+        ]
       }
     }
   ]

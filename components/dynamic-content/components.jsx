@@ -11,6 +11,7 @@ import RichText from '../rich-text/rich-text';
 import Downloads from '../downloads/downloads';
 import InlineImage from '../inline-image/inline-image';
 import ParagraphWithImage from '../paragraph-with-image/paragraph-with-image';
+import GameTop from '../game-top/game-top';
 
 export default {
   ArticleBody,
@@ -25,5 +26,6 @@ export default {
   RichText,
   InlineImage,
   ParagraphWithImage,
-  Downloads
+  Downloads,
+  GameTop
 };

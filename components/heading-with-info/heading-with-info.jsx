@@ -21,7 +21,7 @@ const HeadingWithInfo = ({ heading, infoComponents }) => (
 
 HeadingWithInfo.propTypes = {
   heading: PropTypes.object.isRequired,
-  infoComponents: PropTypes.array.isRequired
+  infoComponents: PropTypes.array
 };
 
 export default HeadingWithInfo;
