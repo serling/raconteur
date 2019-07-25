@@ -10,7 +10,9 @@
           { "id": "shortform", "text": "shortform" },
           { "id": "longform", "text": "longform" },
           { "id": "justification", "text": "justification" },
-          { "id": "warmup", "text": "warm-up" }
+          { "id": "warmup", "text": "warm-up" },
+          { "id": "die", "text": "die" },
+          { "id": "yesand", "text": "yes, and..." }
         ],
         "games": [
           {
@@ -40,6 +42,20 @@
             "href": "/games/game4",
             "abstract": "A game all about pimping and challenging your partner, just like a director would.",
             "categories": ["warmup"]
+          },
+          {
+            "id": "fg464",
+            "name": "Sometimes not",
+            "href": "/games/game4",
+            "abstract": "A made up game that makes no sense",
+            "categories": ["yesand", "die", "longform"]
+          },
+          {
+            "id": "fg464",
+            "name": "What's my name?",
+            "href": "/games/game4",
+            "abstract": "Guess the persons name",
+            "categories": ["justification", "die", "longform", "warmup"]
           }
         ]
       }

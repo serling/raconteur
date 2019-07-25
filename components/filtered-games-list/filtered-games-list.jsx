@@ -47,9 +47,9 @@ class FilteredGamesList extends React.Component {
     });
 
     this.setState(previousState => ({
-      filteredGames: previousState.games.filter(
-        game => game.categories[0] === id
-      )
+      filteredGames: previousState.games.filter(game => {
+        if (game.categories.indexOf(id) !== 0) return game;
+      })
     }));
   };
 
