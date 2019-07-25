@@ -24,19 +24,32 @@ class FilteredGamesList extends React.Component {
   state = {
     games: orderAlphabetically(this.props.games, 'name'),
     filters: this.props.filters,
-    activeGames: []
+    activeFilters: [],
+    filteredGames: []
   };
 
   componentDidMount() {
     this.setState({
-      activeGames: this.state.games
+      filteredGames: this.state.games
     });
   }
 
   handleOnFilterClick = (e, id) => {
-    console.log(e, id);
+    console.log('clicked:', e, id);
+
+    this.state.filters.find(item => {
+      if (item.id === id) {
+        item.isActive = !item.isActive;
+        return;
+      }
+
+      return null;
+    });
+
     this.setState(previousState => ({
-      activeGames: previousState.games.filter(game => game.categories[0] === id)
+      filteredGames: previousState.games.filter(
+        game => game.categories[0] === id
+      )
     }));
   };
 
@@ -50,7 +63,7 @@ class FilteredGamesList extends React.Component {
               onClick={this.handleOnFilterClick}
             />
           </div>
-          <GamesList games={this.state.activeGames} />
+          <GamesList games={this.state.filteredGames} />
         </div>
       </PageContent>
     );

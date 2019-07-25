@@ -7,10 +7,10 @@
       "props": {
         "title": "Games",
         "filters": [
-          { "id": "#shortform", "text": "shortform" },
-          { "id": "#longform", "text": "longform" },
-          { "id": "#justification", "text": "justification" },
-          { "id": "#warmup", "text": "warm-up" }
+          { "id": "shortform", "text": "shortform" },
+          { "id": "longform", "text": "longform" },
+          { "id": "justification", "text": "justification" },
+          { "id": "warmup", "text": "warm-up" }
         ],
         "games": [
           {
@@ -18,28 +18,28 @@
             "name": "The Onion",
             "href": "/games/game1",
             "abstract": "Onion game is a series a scenes with no real connection. For each scene that is played, we add layers to the metaphorical onion.",
-            "categories": ["#shortform"]
+            "categories": ["shortform", "warmup", "justification"]
           },
           {
             "id": "gg34g34g",
             "name": "New Choice",
             "href": "/games/game2",
             "abstract": "New choice sees players through a regular scene, but one where the director at any time can ask the improvisers to change what they just did or said.",
-            "categories": ["#justification"]
+            "categories": ["justification", "shortform"]
           },
           {
             "id": "45h45g45g",
             "name": "Sound Effects",
             "href": "/games/game3",
             "abstract": "A regular scene where the sound and/or dialogue are delegated to improvisers that are off-stage.",
-            "categories": ["#warmup"]
+            "categories": ["warmup", "longform"]
           },
           {
             "id": "45h45g45g",
             "name": "Excuse me?",
             "href": "/games/game4",
             "abstract": "A game all about pimping and challenging your partner, just like a director would.",
-            "categories": ["#warmup"]
+            "categories": ["warmup"]
           }
         ]
       }
