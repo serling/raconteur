@@ -13,6 +13,7 @@ import InlineContent from '../inline-content/inline-content';
 import ParagraphWithImage from '../paragraph-with-image/paragraph-with-image';
 import GameTop from '../game-top/game-top';
 import Image from '../image/image';
+import Heading from '../heading/heading';
 
 export default {
   ArticleBody,
@@ -29,5 +30,6 @@ export default {
   ParagraphWithImage,
   Downloads,
   GameTop,
-  Image
+  Image,
+  Heading
 };

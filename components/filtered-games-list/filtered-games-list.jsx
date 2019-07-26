@@ -17,21 +17,34 @@ const orderAlphabetically = (list, propertyToOrderBy) => {
 
 class FilteredGamesList extends React.Component {
   static propTypes = {
-    games: PropTypes.array.isRequired,
-    filters: PropTypes.array.isRequired
+    games: PropTypes.array.isRequired
   };
 
   state = {
     games: orderAlphabetically(this.props.games, 'name'),
-    filters: this.props.filters,
-    activeFilters: [],
-    filteredGames: []
+    filters: [],
+    filteredGames: [],
+    activeFilters: []
+  };
+
+  getFilters = games => {
+    return games
+      .map(game => game.categories)
+      .reduce((accumulator, categories) => {
+        return accumulator.concat(categories);
+      }, []);
   };
 
   componentDidMount() {
-    this.setState({
-      filteredGames: this.state.games
-    });
+    this.setState(
+      {
+        filteredGames: this.state.games,
+        filters: this.getFilters(this.state.games)
+      },
+      () => {
+        console.log(this.state.filters);
+      }
+    );
   }
 
   handleOnFilterClick = (e, id) => {
@@ -55,17 +68,22 @@ class FilteredGamesList extends React.Component {
 
   render() {
     return (
-      <PageContent>
-        <div className="filtered-games-list">
+      <div className="filtered-games-list">
+        <PageContent
+          theme={PageContent.themes.wide}
+          backgroundColor={PageContent.colors.grey}
+        >
           <div className="filtered-games-list__filters">
             <Filters
               filters={this.state.filters}
               onClick={this.handleOnFilterClick}
             />
           </div>
+        </PageContent>
+        <PageContent>
           <GamesList games={this.state.filteredGames} />
-        </div>
-      </PageContent>
+        </PageContent>
+      </div>
     );
   }
 }

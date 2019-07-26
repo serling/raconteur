@@ -8,11 +8,15 @@ import './filters.scss';
 
 const Filters = ({ filters, onClick }) => {
   return (
-    <List theme={List.themes.grid}>
-      {filters.map((filter, index) => (
-        <Filter key={index} {...filter} onClick={onClick} />
-      ))}
-    </List>
+    <div className="filters">
+      <ul className="filters__list">
+        {filters.map((filter, index) => (
+          <li className="filters__item" key={index}>
+            <Filter {...filter} onClick={onClick} />
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 };
 
