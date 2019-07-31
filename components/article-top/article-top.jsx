@@ -6,8 +6,6 @@ import PageContent from '../page-content/page-content';
 import ChapterHeading from '../chapter-heading/chapter-heading';
 import Text from '../text/text';
 
-import './article-top.scss';
-
 const ArticleTop = ({
   title,
   subtitle,
@@ -32,16 +30,55 @@ const ArticleTop = ({
             />
           </div>
           {lead && (
-            <div
-              className={cn('article-top__lead', {
-                'article-top__lead--overlap': headingShouldOverlapImage
-              })}
-            >
-              <Text text={lead} theme={Text.themes.lead} />
-            </div>
+            <Lead
+              lead={lead}
+              headingShouldOverlapImage={headingShouldOverlapImage}
+            />
           )}
         </div>
       </PageContent>
+    </>
+  );
+};
+
+const Lead = ({ lead, headingShouldOverlapImage }) => {
+  return (
+    <>
+      <div
+        className={cn('article-lead', {
+          'article-lead--overlap': headingShouldOverlapImage
+        })}
+      >
+        <Text text={lead} theme={Text.themes.lead} />
+      </div>
+      <style jsx>
+        {`
+          $break-at-md: 50rem;
+
+          .article-lead {
+            max-width: 768px;
+            margin: 2rem auto 0 auto;
+          }
+
+          .article-lead--overlap {
+            margin-top: 1rem;
+          }
+
+          @media screen and (min-width: $break-at-md) {
+            .article-lead--overlap {
+              padding: 0.5rem 0 0 1rem;
+              margin-top: -2.5rem;
+              background-color: white;
+            }
+          }
+
+          @media screen and (min-width: $break-at-md) {
+            .article-lead {
+              padding: 0 1rem;
+            }
+          }
+        `}
+      </style>
     </>
   );
 };
