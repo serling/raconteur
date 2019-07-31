@@ -1,11 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import cn from 'classnames';
 
 import Article from './article';
 import List from '../list/list';
 
-import './articles-list.scss';
 import PageContent from '../page-content/page-content';
 
 const ArticlesList = ({ articles }) => (

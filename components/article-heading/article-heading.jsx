@@ -1,10 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import HeadingWithInfo from '../heading-with-info/heading-with-info';
 import PageContent from '../page-content/page-content';
-
-import './article-heading.scss';
 
 const ArticleHeading = props => (
   <PageContent

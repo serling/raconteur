@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import List from '../list/list';
 import Filter from './filter';
 
 import './filters.scss';

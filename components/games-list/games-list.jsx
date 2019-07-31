@@ -4,8 +4,6 @@ import PropTypes from 'prop-types';
 import List from '../list/list';
 import Game from '../game/game';
 
-import './games-list.scss';
-
 const GamesList = ({ games }) => {
   return (
     <div className="games-list">

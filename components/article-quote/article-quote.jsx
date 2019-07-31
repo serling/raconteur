@@ -4,8 +4,6 @@ import PropTypes from 'prop-types';
 import PageContent from '../page-content/page-content';
 import Quote from '../quote/quote';
 
-import './article-quote.scss';
-
 const ArticleQuote = ({ quote }) => (
   <PageContent
     backgroundColor={PageContent.colors.grey}

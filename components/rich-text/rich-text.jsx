@@ -5,19 +5,20 @@ import cn from 'classnames';
 import './rich-text.scss';
 
 const themes = {
-  lead: 'lead',
-  body: 'body'
+  lead: 'lead'
 };
 
 const RichText = ({ string, className, theme }) => (
-  <div
-    className={cn(
-      'rich-text',
-      { [`rich-text--${themes[theme]}`]: themes[theme] },
-      className
-    )}
-    dangerouslySetInnerHTML={{ __html: string }}
-  />
+  <>
+    <div
+      className={cn(
+        'rich-text',
+        { [`rich-text--${themes[theme]}`]: themes[theme] },
+        className
+      )}
+      dangerouslySetInnerHTML={{ __html: string }}
+    />
+  </>
 );
 
 RichText.propTypes = {

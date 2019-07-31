@@ -5,8 +5,6 @@ import GamesList from '../games-list/games-list';
 import Filters from '../filters/filters';
 import PageContent from '../page-content/page-content';
 
-import './filtered-games-list.scss';
-
 const orderAlphabetically = (list, propertyToOrderBy) => {
   return list.sort((a, b) => {
     if (!a[propertyToOrderBy] || !b[propertyToOrderBy]) return null;

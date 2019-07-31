@@ -5,8 +5,6 @@ import Button from '../button/button';
 import Modal from '../modal/modal';
 import DynamicContent from '../dynamic-content/dynamic-content';
 
-import './info-icon.scss';
-
 const InfoIcon = ({ components }) => {
   const [isVisible, setIsVisible] = useState(false);
 

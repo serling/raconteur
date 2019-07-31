@@ -3,8 +3,6 @@ import Head from 'next/head';
 import Header from '../header/header';
 import Footer from '../footer/footer';
 
-import './layout.scss';
-
 const Layout = ({ children, title }) => {
   return (
     <React.Fragment>
@@ -16,6 +14,11 @@ const Layout = ({ children, title }) => {
       <Header />
       <div className="layout__content">{children}</div>
       <Footer />
+      <style jsx>{`
+        .layout__content {
+          margin: 2rem 0;
+        }
+      `}</style>
     </React.Fragment>
   );
 };
