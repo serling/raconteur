@@ -5,8 +5,6 @@ import Heading from '../heading/heading';
 import PageContent from '../page-content/page-content';
 import Text from '../text/text';
 
-import './game-top.scss';
-
 const GameTop = ({ title, subtitle, lead, categories }) => (
   <>
     <PageContent theme={PageContent.themes.narrow}>
@@ -29,6 +27,51 @@ const GameTop = ({ title, subtitle, lead, categories }) => (
         </div>
       </div>
     </PageContent>
+    <style jsx>{`
+      .game-top {
+        $break-at-sm: 25rem; //400px
+        $break-at-md: 50rem; //800px
+        $break-at-lg: 64rem; //1024px
+
+        &__lead {
+          margin-top: 1rem;
+        }
+
+        &__meta {
+          margin-top: 1rem;
+          border-bottom: 1px solid black;
+        }
+
+        &__tag {
+          color: grey;
+          text-transform: uppercase;
+          font-size: 0.6rem;
+        }
+
+        &__list {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+
+          @media screen and (min-width: $break-at-sm) {
+            display: flex;
+            flex-wrap: wrap;
+          }
+        }
+
+        &__item {
+          flex: 0 1 auto;
+
+          @media screen and (min-width: $break-at-sm) {
+            margin-left: 1rem;
+
+            &:first-child {
+              margin-left: 0;
+            }
+          }
+        }
+      }
+    `}</style>
   </>
 );
 

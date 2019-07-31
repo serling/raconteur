@@ -8,7 +8,7 @@
         "class-properties": {},
         "styled-jsx": {
           "plugins": [
-            // ["styled-jsx-plugin-postcss", {}],
+            // ["styled-jsx-plugin-postcss", {}], TODO: look through loaders etc
             [
               "styled-jsx-plugin-sass",
               {

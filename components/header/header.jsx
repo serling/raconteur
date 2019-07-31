@@ -1,12 +1,8 @@
 import Route from 'next/link';
-import PropTypes from 'prop-types';
 
 import Button from '../button/button';
 import Link from '../link/link';
-import Icon from '../icon/icon';
 import MainMenu from '../main-menu/main-menu';
-
-import './header.scss';
 
 class Header extends React.Component {
   static propTypes = {};
@@ -33,14 +29,22 @@ class Header extends React.Component {
         <header className="header">
           <div className="header__content">
             <nav className="header__navigation">
-              <Link href="/index" className="header__logo">
-                Home
-              </Link>
-              <Route href="/articles">
-                <a>Articles</a>
-              </Route>
-              <Link href="/games">Games</Link>
-              <Link href="/utilities">Utilities</Link>
+              <div className="header__link">
+                <Link href="/index" className="header__logo">
+                  Home
+                </Link>
+              </div>
+              <div className="header__link">
+                <Route href="/articles">
+                  <a>Articles</a>
+                </Route>
+              </div>
+              <div className="header__link">
+                <Link href="/games">Games</Link>
+              </div>
+              <div className="header__link">
+                <Link href="/utilities">Utilities</Link>
+              </div>
             </nav>
             <div className="header__actions">
               <Button
@@ -55,6 +59,38 @@ class Header extends React.Component {
           onClose={() => this.handleOnCloseModal()}
           isVisible={this.state.menuIsVisible}
         />
+        <style jsx>{`
+          .header {
+            border-bottom: 1px solid black;
+
+            &__content {
+              max-width: 1240px;
+              margin: 0 auto;
+              padding: 1rem;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            }
+
+            &__actions {
+              display: flex;
+              align-items: center;
+            }
+
+            &__navigation {
+              display: flex;
+              align-items: center;
+            }
+
+            &__link {
+              margin-right: 1rem;
+
+              &:last-child {
+                margin-right: 0;
+              }
+            }
+          }
+        `}</style>
       </>
     );
   }

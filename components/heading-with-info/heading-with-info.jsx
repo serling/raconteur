@@ -4,19 +4,29 @@ import PropTypes from 'prop-types';
 import Heading from '../heading/heading';
 import InfoIcon from '../info-icon/info-icon';
 
-import './heading-with-info.scss';
-
 const HeadingWithInfo = ({ heading, infoComponents }) => (
-  <div className="heading-with-info">
-    <div className="heading-with-info__heading">
-      <Heading {...heading} />
-    </div>
-    {infoComponents && (
-      <div className="heading-with-info__info">
-        <InfoIcon components={infoComponents} />
+  <>
+    <div className="heading-with-info">
+      <div className="heading-with-info__heading">
+        <Heading {...heading} />
       </div>
-    )}
-  </div>
+      {infoComponents && (
+        <div className="heading-with-info__info">
+          <InfoIcon components={infoComponents} />
+        </div>
+      )}
+    </div>
+    <style jsx>{`
+      .heading-with-info {
+        display: flex;
+        align-items: flex-end;
+
+        &__info {
+          margin-left: 1rem;
+        }
+      }
+    `}</style>
+  </>
 );
 
 HeadingWithInfo.propTypes = {

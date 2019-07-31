@@ -4,18 +4,67 @@ import cn from 'classnames';
 
 import Icon from '../icon/icon';
 
-import './filter.scss';
-
 const Filter = ({ id, text, isActive, onClick }) => {
   return (
-    <div className={cn('filter', { 'filter--active': isActive })}>
-      <button onClick={e => onClick(e, id)} className="filter__button">
-        <div className="filter__frame">
-          <Icon name="close" className="filter__icon" size={Icon.sizes.tiny} />
-        </div>
-        <div className="filter__text">{text}</div>
-      </button>
-    </div>
+    <>
+      <div className={cn('filter', { 'filter--active': isActive })}>
+        <button onClick={e => onClick(e, id)} className="filter__button">
+          <div className="filter__frame">
+            <Icon
+              name="close"
+              className="filter__icon"
+              size={Icon.sizes.tiny}
+            />
+          </div>
+          <div className="filter__text">{text}</div>
+        </button>
+      </div>
+      <style jsx>{`
+        .filter {
+          $self: &;
+
+          #{$self}__icon {
+            display: none;
+          }
+
+          &--active {
+            #{$self}__icon {
+              display: block;
+            }
+          }
+
+          &__frame {
+            width: 24px;
+            height: 24px;
+            border: 2px solid black;
+            margin-right: 0.5rem;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+
+          &__button {
+            background: 0;
+            border: 0;
+            padding: 0.5rem;
+            cursor: pointer;
+
+            display: flex;
+            align-items: center;
+
+            &:hover,
+            &:focus {
+              text-decoration: underline;
+            }
+          }
+
+          &__text {
+            font-size: 1rem;
+          }
+        }
+      `}</style>
+    </>
   );
 };
 

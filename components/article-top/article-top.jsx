@@ -58,23 +58,19 @@ const Lead = ({ lead, headingShouldOverlapImage }) => {
           .article-lead {
             max-width: 768px;
             margin: 2rem auto 0 auto;
-          }
 
-          .article-lead--overlap {
-            margin-top: 1rem;
-          }
-
-          @media screen and (min-width: $break-at-md) {
-            .article-lead--overlap {
-              padding: 0.5rem 0 0 1rem;
-              margin-top: -2.5rem;
-              background-color: white;
-            }
-          }
-
-          @media screen and (min-width: $break-at-md) {
-            .article-lead {
+            @media screen and (min-width: $break-at-md) {
               padding: 0 1rem;
+            }
+
+            &--overlap {
+              margin-top: 1rem;
+
+              @media screen and (min-width: $break-at-md) {
+                padding: 0.5rem 0 0 1rem;
+                margin-top: -2.5rem;
+                background-color: white;
+              }
             }
           }
         `}

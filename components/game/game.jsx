@@ -7,8 +7,6 @@ import Text from '../text/text';
 import Link from '../link/link';
 // import Modal from '../modal/modal';
 
-import './game.scss';
-
 const Game = ({
   id,
   name,

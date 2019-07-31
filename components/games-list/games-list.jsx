@@ -6,13 +6,11 @@ import Game from '../game/game';
 
 const GamesList = ({ games }) => {
   return (
-    <div className="games-list">
-      <List>
-        {games.map((game, index) => (
-          <Game key={index} {...game} />
-        ))}
-      </List>
-    </div>
+    <List>
+      {games.map((game, index) => (
+        <Game key={index} {...game} />
+      ))}
+    </List>
   );
 };
 

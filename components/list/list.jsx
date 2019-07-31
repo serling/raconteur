@@ -32,32 +32,35 @@ const List = ({ children, className, isCentered, theme, gridColumns }) => {
       <style jsx>
         {`
           .list {
+            $self: &;
             margin: 0;
             padding: 0;
             list-style: none;
-          }
 
-          .list .list__item {
-            margin-top: 1rem;
-          }
+            &__item {
+              margin-top: 1rem;
+            }
 
-          .list.list--unordered:first-child {
-            margin-top: 0;
-          }
+            &--unordered {
+              &:first-child {
+                margin-top: 0;
+              }
+            }
 
-          .list--grid.list--centered {
-            justify-content: center;
-          }
+            &--centered {
+              justify-content: center;
+            }
 
-          .list.list--grid {
-            display: flex;
-            flex-wrap: wrap;
-            margin-left: -2rem;
-            margin-top: -2rem;
-          }
+            &--grid {
+              display: flex;
+              flex-wrap: wrap;
+              margin-left: -2rem;
+              margin-top: -2rem;
 
-          .list--grid .list-item {
-            margin: 2rem 0 0 2rem;
+              #{$self}__item {
+                margin: 2rem 0 0 2rem;
+              }
+            }
           }
         `}
       </style>
