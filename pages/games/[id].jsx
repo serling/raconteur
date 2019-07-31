@@ -6,8 +6,6 @@ import Error from 'next/error';
 import GameTemplate from '../../components/game-template/game-template';
 import WithPageTransition from '../../components/with-page-transition/with-page-transitions';
 
-import '../../scss/global.scss';
-
 const GamePage = props => {
   const { data } = props;
 

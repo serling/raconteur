@@ -6,8 +6,6 @@ import Error from 'next/error';
 import ArticleTemplate from '../../components/article-template/article-template';
 import WithPageTransition from '../../components/with-page-transition/with-page-transitions';
 
-import '../../scss/global.scss';
-
 const GamesIndex = props => {
   const { data } = props;
 

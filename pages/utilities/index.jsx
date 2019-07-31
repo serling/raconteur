@@ -5,8 +5,6 @@ import { server } from '../../js/server';
 import ArticleTemplate from '../../components/article-template/article-template';
 import WithPageTransition from '../../components/with-page-transition/with-page-transitions';
 
-import '../../scss/global.scss';
-
 const Utilities = ({ data, error }) => {
   if (error) {
     return <Error statusCode="Request Error" />;
