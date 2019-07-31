@@ -5,8 +5,18 @@
       {
         "preset-env": {},
         "transform-runtime": {},
-        "styled-jsx": {},
-        "class-properties": {}
+        "class-properties": {},
+        "styled-jsx": {
+          "plugins": [
+            // ["styled-jsx-plugin-postcss", {}],
+            [
+              "styled-jsx-plugin-sass",
+              {
+                "sassOptions": {}
+              }
+            ]
+          ]
+        }
       }
     ]
   ],
