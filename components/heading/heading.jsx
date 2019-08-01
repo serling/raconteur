@@ -12,7 +12,6 @@ const Heading = ({ children, text, className, level, theme }) => {
   const Component = `h${level}`;
 
   const props = {
-    theme,
     className: cn(
       'button',
       {
@@ -25,7 +24,9 @@ const Heading = ({ children, text, className, level, theme }) => {
 
   return (
     <>
-      <Component {...props}>{text || children}</Component>
+      <Component {...props}>
+        <span className="heading__text">{text || children}</span>
+      </Component>
       <style jsx>
         {`
           .heading {
@@ -64,10 +65,11 @@ const Heading = ({ children, text, className, level, theme }) => {
             &--headline {
               font-size: 2rem;
               line-height: 1.1em;
-              margin-top: 1rem;
+              margin: 1rem 0 0 0;
 
               @media screen and (min-width: $break-at-md) {
                 font-size: 4rem;
+                margin: 0;
               }
 
               #{$self}__text {
