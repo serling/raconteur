@@ -52,7 +52,11 @@ export default class MyDocument extends Document {
             width: 100%;
           }
 
-          $break-at-md: 50rem;
+          :global(.remove-list-styles) {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+          }
         `}</style>
       </html>
     );

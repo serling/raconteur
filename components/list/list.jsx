@@ -12,7 +12,7 @@ const List = ({ children, className, isCentered, theme, gridColumns }) => {
     <>
       <ul
         className={cn(
-          'list',
+          'list remove-list-styles',
           {
             'list--centered': isCentered,
             [`list--${themes[theme]}`]: themes[theme]
@@ -33,9 +33,6 @@ const List = ({ children, className, isCentered, theme, gridColumns }) => {
         {`
           .list {
             $self: &;
-            margin: 0;
-            padding: 0;
-            list-style: none;
 
             &__item {
               margin-top: 1rem;

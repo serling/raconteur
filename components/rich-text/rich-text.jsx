@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
-import './rich-text.scss';
-
 const themes = {
   lead: 'lead'
 };
