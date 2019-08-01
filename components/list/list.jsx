@@ -21,18 +21,16 @@ const List = ({ children, className, isCentered, theme, gridColumns }) => {
         )}
       >
         {React.Children.map(children, child => (
-          <li
-            className={cn('list__item')}
-            style={{ flex: `0 0 calc(100% / ${gridColumns} - 2rem)` }}
-          >
-            {child}
-          </li>
+          <li className="list__item">{child}</li>
         ))}
       </ul>
       <style jsx>
         {`
           .list {
             $self: &;
+            $break-at-sm: 25rem; //400px
+            $break-at-md: 50rem; //800px
+            $break-at-lg: 64rem; //1024px
 
             &__item {
               margin-top: 1rem;
@@ -49,13 +47,18 @@ const List = ({ children, className, isCentered, theme, gridColumns }) => {
             }
 
             &--grid {
-              display: flex;
-              flex-wrap: wrap;
-              margin-left: -2rem;
-              margin-top: -2rem;
+              @media screen and (min-width: $break-at-sm) {
+                display: flex;
+                flex-wrap: wrap;
+                margin-left: -2rem;
+                margin-top: -2rem;
+              }
 
               #{$self}__item {
-                margin: 2rem 0 0 2rem;
+                @media screen and (min-width: $break-at-sm) {
+                  margin: 2rem 0 0 2rem;
+                  flex: 0 0 calc(100% / ${gridColumns} - 2rem);
+                }
               }
             }
           }

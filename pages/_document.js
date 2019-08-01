@@ -58,7 +58,7 @@ export default class MyDocument extends Document {
             margin: 0;
           }
 
-          :global (.remove-link-styles) {
+          :global(.remove-link-styles) {
             text-decoration: none;
             color: inherit;
           }
