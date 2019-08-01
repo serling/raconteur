@@ -15,6 +15,7 @@ const InfoIcon = ({ components }) => {
   return (
     <div className="info-icon">
       <Button
+        textIsHidden={true}
         onClick={toggleOnClick}
         iconName="info"
         iconSize={Button.iconSizes.small}

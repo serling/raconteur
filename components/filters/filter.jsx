@@ -10,11 +10,9 @@ const Filter = ({ id, text, isActive, onClick }) => {
       <div className={cn('filter', { 'filter--active': isActive })}>
         <button onClick={e => onClick(e, id)} className="filter__button">
           <div className="filter__frame">
-            <Icon
-              name="close"
-              className="filter__icon"
-              size={Icon.sizes.tiny}
-            />
+            <div className="filter__icon">
+              <Icon name="close" size={Icon.sizes.tiny} />
+            </div>
           </div>
           <div className="filter__text">{text}</div>
         </button>

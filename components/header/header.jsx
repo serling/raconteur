@@ -48,6 +48,7 @@ class Header extends React.Component {
             </nav>
             <div className="header__actions">
               <Button
+                textIsHidden={true}
                 iconName="hamburger"
                 text="open main menu"
                 onClick={() => this.handleOnOpenModal()}

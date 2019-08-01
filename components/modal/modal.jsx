@@ -48,6 +48,7 @@ class Modal extends React.Component {
         <div className="modal__content">
           {this.props.isCloseable && (
             <Button
+              textIsHidden={true}
               onClick={this.props.onClose}
               text="close modal"
               iconName="close"

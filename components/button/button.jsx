@@ -15,8 +15,11 @@ const Button = ({
   children,
   className,
   onClick,
+  isActive,
   disabled,
+  textIsHidden,
   iconName,
+  activeIconName,
   iconSize,
   theme,
   text
@@ -24,25 +27,43 @@ const Button = ({
   return (
     <>
       <button
-        className={cn('button', className)}
+        className={cn(
+          'button',
+          {
+            [`button--${themes[theme]}`]: themes[theme]
+          },
+          className
+        )}
         onClick={onClick}
         disabled={disabled}
-        theme={theme}
       >
         {iconName && (
           <div
             className={cn('button__icon', {
+              'button--active': isActive,
               [`button__icon--${Icon.sizes[iconSize]}`]: Icon.sizes[iconSize]
             })}
           >
-            <Icon name={iconName} size={iconSize} />
-            <VisuallyHidden>{children || text}</VisuallyHidden>
+            {activeIconName && (
+              <div className={cn('button__active-icon')}>
+                <Icon name={activeIconName} size={iconSize} />
+              </div>
+            )}
+            <div className={cn('button__inactive-icon')}>
+              <Icon name={iconName} size={iconSize} />
+            </div>
+            {textIsHidden && (
+              <VisuallyHidden>{children || text}</VisuallyHidden>
+            )}
           </div>
         )}
-        {children || text}
+        {!textIsHidden && (
+          <span className="button__text">{children || text}</span>
+        )}
       </button>
       <style jsx>{`
         .button {
+          $self: &;
           cursor: pointer;
           width: auto;
           height: auto;
@@ -53,6 +74,9 @@ const Button = ({
           text-decoration: none;
           transform: translateZ(0);
           background-color: transparent;
+
+          display: flex;
+          align-items: center;
 
           &:hover,
           &:focus {
@@ -65,6 +89,20 @@ const Button = ({
 
           &:focus {
             outline: 1px solid black;
+          }
+
+          &__active-icon {
+            display: none;
+          }
+
+          &--active {
+            #{$self}__inactive-icon {
+              display: none;
+            }
+
+            #{$self}__active-icon {
+              display: block;
+            }
           }
 
           &--colored {
@@ -87,6 +125,15 @@ const Button = ({
 
           &__icon {
             display: inline-block;
+            padding: 0.5rem;
+
+            + #{$self}__text {
+              margin-right: 0.5rem;
+            }
+          }
+
+          &__text {
+            margin-right: 0.5rem;
           }
         }
       `}</style>
@@ -105,11 +152,8 @@ Button.propTypes = {
   onClick: PropTypes.func,
   theme: PropTypes.oneOf(Object.keys(themes).map(key => themes[key])),
   disabled: PropTypes.bool,
-  text: PropTypes.string
-};
-
-Button.defaultProps = {
-  theme: themes.colored
+  text: PropTypes.string,
+  textIsHidden: PropTypes.bool
 };
 
 Button.iconSizes = iconSizes;

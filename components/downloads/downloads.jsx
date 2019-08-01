@@ -14,7 +14,7 @@ const Downloads = ({ links }) => (
             key={index}
             {...link}
             theme={Link.themes.download}
-            iconName="close"
+            iconName="download"
           />
         ))}
       </List>

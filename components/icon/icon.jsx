@@ -29,8 +29,9 @@ const Icon = ({ className, name, size }) =>
           icon-missing: '../../static/icons/icon-missing.svg',
           hamburger: '../../static/icons/hamburger.svg',
           close: '../../static/icons/close.svg',
-          info: '../../static/icons/hamburger.svg',
-          expand: '../../static/icons/hamburger.svg'
+          info: '../../static/icons/icon-missing.svg',
+          expand: '../../static/icons/icon-missing.svg',
+          download: '../../static/icons/icon-missing.svg'
         );
 
         .icon {

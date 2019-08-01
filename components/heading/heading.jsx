@@ -2,8 +2,6 @@ import cn from 'classnames';
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './heading.scss';
-
 const themes = {
   page: 'page',
   bold: 'bold',
@@ -11,19 +9,76 @@ const themes = {
 };
 
 const Heading = ({ children, text, className, level, theme }) => {
-  return React.createElement(
-    `h${level}`,
-    {
-      className: cn(
-        'heading',
-        {
-          [`heading--level-${level}`]: !themes[theme],
-          [`heading--${themes[theme]}`]: themes[theme]
-        },
-        className
-      )
-    },
-    <span className="heading__text">{children || text}</span>
+  const Component = `h${level}`;
+
+  const props = {
+    theme,
+    className: cn(
+      'button',
+      {
+        [`heading--level-${level}`]: !themes[theme],
+        [`heading--${themes[theme]}`]: themes[theme]
+      },
+      className
+    )
+  };
+
+  return (
+    <>
+      <Component {...props}>{text || children}</Component>
+      <style jsx>
+        {`
+          .heading {
+            $self: &;
+            $break-at-sm: 25rem; //400px
+            $break-at-md: 50rem; //800px
+            $break-at-lg: 64rem; //1024px
+
+            margin: 0;
+
+            &--level-1 {
+              font-size: 2rem;
+              line-height: 1.1em;
+
+              @media screen and (min-width: $break-at-md) {
+                font-size: 4rem;
+              }
+            }
+
+            &--level-2 {
+              font-size: 2rem;
+            }
+            &--level-3 {
+              font-size: 1rem;
+            }
+            &--level-4 {
+              font-size: 1rem;
+            }
+            &--level-5 {
+              font-size: 1rem;
+            }
+            &--level-6 {
+              font-size: 1rem;
+            }
+
+            &--headline {
+              font-size: 2rem;
+              line-height: 1.1em;
+              margin-top: 1rem;
+
+              @media screen and (min-width: $break-at-md) {
+                font-size: 4rem;
+              }
+
+              #{$self}__text {
+                padding-right: 0.5rem;
+                background-color: white;
+              }
+            }
+          }
+        `}
+      </style>
+    </>
   );
 };
 

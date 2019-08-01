@@ -19,7 +19,7 @@ const HeadingWithInfo = ({ heading, infoComponents }) => (
     <style jsx>{`
       .heading-with-info {
         display: flex;
-        align-items: flex-end;
+        align-items: center;
 
         &__info {
           margin-left: 1rem;
