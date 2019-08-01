@@ -57,6 +57,33 @@ export default class MyDocument extends Document {
             padding: 0;
             margin: 0;
           }
+
+          :global (.remove-link-styles) {
+            text-decoration: none;
+            color: inherit;
+          }
+
+          :global(.remove-button-styles) {
+            appearance: none;
+            background: transparent;
+            border: none;
+            border-radius: 0;
+            padding: 0;
+          }
+
+          :global(.cf) {
+            *zoom: 1;
+
+            &:before,
+            &:after {
+              content: ' ';
+              display: table;
+            }
+
+            &:after {
+              clear: both;
+            }
+          }
         `}</style>
       </html>
     );
