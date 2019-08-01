@@ -5,22 +5,8 @@ import cn from 'classnames';
 import Icon from '../icon/icon';
 import VisuallyHidden from '../visually-hidden/visually-hidden';
 
-import './button.scss';
-
 const themes = {
   colored: 'colored'
-};
-
-const types = {
-  button: 'button',
-  link: 'link',
-  submit: 'submit'
-};
-
-const elements = {
-  [types.button]: 'button',
-  [types.link]: 'a',
-  [types.submit]: 'button'
 };
 
 const iconSizes = Icon.sizes;
@@ -33,53 +19,78 @@ const Button = ({
   iconName,
   iconSize,
   theme,
-  type,
-  href,
-  shouldOpenInNewTab,
   text
 }) => {
-  const buttonAttributes = href
-    ? { href }
-    : { disabled, type: types[type] || types.button };
-  const element = href ? elements[types.link] : elements[type];
-  const targetAttributes =
-    href && shouldOpenInNewTab
-      ? {
-          target: '_blank',
-          rel: 'noopener noreferrer'
-        }
-      : {};
-
-  return React.createElement(
-    element,
-    Object.assign(
-      {
-        className: cn(
-          'button',
-          {
-            [`button--${themes[theme]}`]: themes[theme],
-            'button--icon': iconName,
-            'button--text': !iconName
-          },
-          className
-        ),
-        onClick
-      },
-      buttonAttributes,
-      targetAttributes
-    ),
-    iconName ? (
-      <div
-        className={cn('button__icon', {
-          [`button__icon--${Icon.sizes[iconSize]}`]: Icon.sizes[iconSize]
-        })}
+  return (
+    <>
+      <button
+        className={cn('button', className)}
+        onClick={onClick}
+        disabled={disabled}
+        theme={theme}
       >
-        <Icon name={iconName} size={iconSize} />
-        <VisuallyHidden>{children || text}</VisuallyHidden>
-      </div>
-    ) : (
-      children || text
-    )
+        {iconName && (
+          <div
+            className={cn('button__icon', {
+              [`button__icon--${Icon.sizes[iconSize]}`]: Icon.sizes[iconSize]
+            })}
+          >
+            <Icon name={iconName} size={iconSize} />
+            <VisuallyHidden>{children || text}</VisuallyHidden>
+          </div>
+        )}
+        {children || text}
+      </button>
+      <style jsx>{`
+        .button {
+          cursor: pointer;
+          width: auto;
+          height: auto;
+          border: 0;
+          padding: 0;
+          margin: 0;
+          text-align: center;
+          text-decoration: none;
+          transform: translateZ(0);
+          background-color: transparent;
+
+          &:hover,
+          &:focus {
+            text-decoration: none;
+          }
+
+          &[disabled] {
+            cursor: not-allowed;
+          }
+
+          &:focus {
+            outline: 1px solid black;
+          }
+
+          &--colored {
+            background-color: rgb(82, 11, 11);
+            color: white;
+            padding: 1rem 2rem;
+
+            &:hover,
+            &:focus {
+              outline: none;
+              color: black;
+            }
+          }
+
+          &--icon {
+            display: block;
+            background: transparent;
+            padding: 0;
+          }
+
+          &__icon {
+            display: inline-block;
+          }
+        }
+      `}</style>
+    </>
   );
 };
 
@@ -93,15 +104,11 @@ Button.propTypes = {
   iconSize: PropTypes.string,
   onClick: PropTypes.func,
   theme: PropTypes.oneOf(Object.keys(themes).map(key => themes[key])),
-  type: PropTypes.string,
   disabled: PropTypes.bool,
-  href: PropTypes.string,
-  shouldOpenInNewTab: PropTypes.bool,
   text: PropTypes.string
 };
 
 Button.defaultProps = {
-  type: types.button,
   theme: themes.colored
 };
 
