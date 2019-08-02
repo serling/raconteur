@@ -2,6 +2,7 @@ const withPlugins = require('next-compose-plugins');
 
 const withSass = require('@zeit/next-sass');
 const withImages = require('next-images');
+const withFonts = require('next-fonts');
 const withProgressBar = require('next-progressbar');
 
 const nextConfig = {
@@ -22,14 +23,19 @@ const SassConfig = {
 
 const progressBarConfig = {
   progressBar: {
-    profile: true
+    // profile: true
   }
+};
+
+const fontsConfig = {
+  enableSvg: true
 };
 
 const plugins = [
   withImages,
   [withSass, SassConfig],
-  [withProgressBar, progressBarConfig]
+  [withProgressBar, progressBarConfig],
+  [withFonts, fontsConfig]
 ];
 
 module.exports = withPlugins([...plugins], nextConfig);
