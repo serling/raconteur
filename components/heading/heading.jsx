@@ -13,7 +13,7 @@ const Heading = ({ children, text, className, level, theme }) => {
 
   const props = {
     className: cn(
-      'button',
+      'heading',
       {
         [`heading--level-${level}`]: !themes[theme],
         [`heading--${themes[theme]}`]: themes[theme]
