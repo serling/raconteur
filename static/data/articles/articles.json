@@ -12,7 +12,7 @@
               "title": "Splendid Article With A Long Title",
               "lead": "The successes and failures of today’s new releases could influence the future of the industry",
               "image": {
-                "src": "../static/images/view.jpg",
+                "src": "view.jpg",
                 "alt": "placeholder image alt text"
               }
             }
@@ -28,7 +28,7 @@
             "id": "34f3",
             "name": "ArticleImage",
             "props": {
-              "src": "../static/images/show3.jpg",
+              "src": "show3.jpg",
               "alt": "placeholder image alt text",
               "text": "this image has some filler text for descriptive pruporses"
             }
@@ -50,7 +50,7 @@
               "headingShouldOverlapImage": true,
               "lead": "The successes and failures of today’s new releases could influence the future of the industry",
               "image": {
-                "src": "../static/images/show2.jpg",
+                "src": "show2.jpg",
                 "alt": "placeholder image alt text"
               }
             }
@@ -66,8 +66,8 @@
                   "id": "dn20889998",
                   "name": "Image",
                   "props": {
-                    "thumbnailSrc": "../static/images/show.jpg",
-                    "src": "../static/images/show.jpg",
+                    "thumbnailSrc": "show.jpg",
+                    "src": "show.jpg",
                     "alt": "placeholder image alt text",
                     "text": "A perfect example of how an onion might look like"
                   }
@@ -79,7 +79,7 @@
             "id": "34f3",
             "name": "ArticleImage",
             "props": {
-              "src": "../static/images/workshop3.jpg",
+              "src": "workshop3.jpg",
               "alt": "placeholder image alt text",
               "text": "this image has some filler text for descriptive pruporses"
             }
@@ -103,7 +103,7 @@
                         "id": "6h",
                         "name": "Image",
                         "props": {
-                          "src": "../static/images/workshop2.jpg",
+                          "src": "workshop2.jpg",
                           "alt": "placeholder image alt text"
                         }
                       }
@@ -124,8 +124,8 @@
                   "id": "dn204444448",
                   "name": "Image",
                   "props": {
-                    "thumbnailSrc": "../static/images/workshop.jpg",
-                    "src": "../static/images/workshop.jpg",
+                    "thumbnailSrc": "workshop.jpg",
+                    "src": "workshop.jpg",
                     "alt": "placeholder image alt text"
                   }
                 }
@@ -183,8 +183,8 @@
                   "id": "dn208fr4",
                   "name": "Image",
                   "props": {
-                    "thumbnailSrc": "../static/images/improv-form.jpg",
-                    "src": "../static/images/improv-form.jpg",
+                    "thumbnailSrc": "improv-form.jpg",
+                    "src": "improv-form.jpg",
                     "alt": "placeholder image alt text",
                     "text": "A perfect example of how an onion might look like"
                   }

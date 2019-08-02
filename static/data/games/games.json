@@ -56,8 +56,8 @@
                   "id": "dn208ggggggg",
                   "name": "Image",
                   "props": {
-                    "thumbnailSrc": "../static/images/show2.jpg",
-                    "src": "../static/images/show2.jpg",
+                    "thumbnailSrc": "show2.jpg",
+                    "src": "show2.jpg",
                     "alt": "placeholder image alt text",
                     "text": "A perfect example of how an onion might look like"
                   }
@@ -106,8 +106,8 @@
                   "id": "dn208ggggggg",
                   "name": "Image",
                   "props": {
-                    "thumbnailSrc": "../static/images/show2.jpg",
-                    "src": "../static/images/show2.jpg",
+                    "thumbnailSrc": "show2.jpg",
+                    "src": "show2.jpg",
                     "alt": "placeholder image alt text",
                     "text": "A perfect example of how an onion might look like"
                   }
@@ -145,8 +145,8 @@
                   "id": "dn208",
                   "name": "Image",
                   "props": {
-                    "thumbnailSrc": "../static/images/show3.jpg",
-                    "src": "../static/images/show3.jpg",
+                    "thumbnailSrc": "show3.jpg",
+                    "src": "show3.jpg",
                     "alt": "placeholder image alt text"
                   }
                 }
