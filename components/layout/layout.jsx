@@ -19,6 +19,72 @@ const Layout = ({ children, title }) => {
           margin: 2rem 0;
         }
       `}</style>
+
+      <style jsx global>
+        {`
+          *,
+          *:before,
+          *:after {
+            box-sizing: border-box;
+          }
+
+          html,
+          body {
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+          }
+
+          html {
+            font-size: 20px;
+            font-family: 'arial';
+            line-height: 1.5em;
+          }
+
+          body {
+            font-size: 1rem;
+            overflow-y: auto;
+            overflow-x: hidden;
+            width: 100%;
+          }
+
+          :global(.remove-list-styles) {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+          }
+
+          :global(.remove-link-styles) {
+            text-decoration: none;
+            color: inherit;
+          }
+
+          :global(.remove-button-styles) {
+            appearance: none;
+            background: transparent;
+            border: none;
+            border-radius: 0;
+            padding: 0;
+          }
+
+          :global(.cf) {
+            *zoom: 1;
+
+            &:before,
+            &:after {
+              content: ' ';
+              display: table;
+            }
+
+            &:after {
+              clear: both;
+            }
+          }
+        `}
+      </style>
     </React.Fragment>
   );
 };
