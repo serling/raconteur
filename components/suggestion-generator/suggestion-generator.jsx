@@ -4,8 +4,6 @@ import Button from '../../components/button/button';
 import List from '../../components/list/list';
 import PageContent from '../../components/page-content/page-content';
 
-import './suggestion-generator.scss';
-
 const SuggestionGenerator = () => {
   const [activeWord, setActiveWord] = useState('generator');
   const [isLoading, setIsLoading] = useState(false);
@@ -51,6 +49,16 @@ const SuggestionGenerator = () => {
           <Button text="Emotion" onClick={handleOnClick} />
         </List>
       </PageContent>
+      <style jsx>
+        {`
+          .suggestion-generator {
+            &__canvas {
+              text-align: center;
+              font-size: 8rem;
+            }
+          }
+        `}
+      </style>
     </>
   );
 };
