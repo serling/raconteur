@@ -76,9 +76,9 @@ const GameTop = ({ title, subtitle, lead, categories }) => (
 );
 
 GameTop.propTypes = {
-  title: PropTypes.text,
-  subtitle: PropTypes.text,
-  lead: PropTypes.text,
+  title: PropTypes.string.isRequired,
+  subtitle: PropTypes.string,
+  lead: PropTypes.string,
   categories: PropTypes.array
 };
 
