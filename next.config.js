@@ -1,6 +1,7 @@
-const withPlugins = require('next-compose-plugins');
-
 const withSass = require('@zeit/next-sass');
+const withBundleAnalyzer = require('@zeit/next-bundle-analyzer');
+
+const withPlugins = require('next-compose-plugins');
 const withImages = require('next-images');
 const withFonts = require('next-fonts');
 const withSize = require('next-size');
@@ -32,12 +33,28 @@ const fontsConfig = {
   enableSvg: true
 };
 
+const bundleAnalyzerConfig = {
+  analyzeServer: ['server', 'both'].includes(process.env.BUNDLE_ANALYZE),
+  analyzeBrowser: ['browser', 'both'].includes(process.env.BUNDLE_ANALYZE),
+  bundleAnalyzerConfig: {
+    server: {
+      analyzerMode: 'static',
+      reportFilename: '../bundles/server.html'
+    },
+    browser: {
+      analyzerMode: 'static',
+      reportFilename: '../bundles/client.html'
+    }
+  }
+};
+
 const plugins = [
   withImages,
   withSize,
   [withSass, SassConfig],
   [withProgressBar, progressBarConfig],
-  [withFonts, fontsConfig]
+  [withFonts, fontsConfig],
+  [withBundleAnalyzer, bundleAnalyzerConfig]
 ];
 
 module.exports = withPlugins([...plugins], nextConfig);
