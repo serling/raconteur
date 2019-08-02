@@ -2,6 +2,7 @@ const withPlugins = require('next-compose-plugins');
 
 const withSass = require('@zeit/next-sass');
 const withImages = require('next-images');
+const withProgressBar = require('next-progressbar');
 
 const nextConfig = {
   webpack: (config, options) => {
@@ -19,6 +20,16 @@ const SassConfig = {
   }
 };
 
-const plugins = [withImages, [withSass, SassConfig]];
+const progressBarConfig = {
+  progressBar: {
+    profile: true
+  }
+};
+
+const plugins = [
+  withImages,
+  [withSass, SassConfig],
+  [withProgressBar, progressBarConfig]
+];
 
 module.exports = withPlugins([...plugins], nextConfig);
