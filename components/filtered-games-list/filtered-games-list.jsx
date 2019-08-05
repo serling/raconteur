@@ -26,11 +26,23 @@ class FilteredGamesList extends React.Component {
   };
 
   getFilters = games => {
-    return games
+    const filters = games
       .map(game => game.categories)
       .reduce((accumulator, categories) => {
         return accumulator.concat(categories);
       }, []);
+
+    const result = [];
+    const map = new Map();
+
+    for (const filter of filters) {
+      if (!map.has(filter.id)) {
+        map.set(filter.id, true);
+        result.push(filter);
+      }
+    }
+
+    return result;
   };
 
   componentDidMount() {
