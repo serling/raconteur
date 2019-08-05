@@ -1,5 +1,5 @@
 const withSass = require('@zeit/next-sass');
-const withBundleAnalyzer = require('@zeit/next-bundle-analyzer');
+const withBundleAnalyzer = require('@next/bundle-analyzer');
 
 const withPlugins = require('next-compose-plugins');
 const withImages = require('next-images');
