@@ -4,7 +4,7 @@ const withSass = require('@zeit/next-sass');
 const withPlugins = require('next-compose-plugins');
 const withImages = require('next-images');
 // const withFonts = require('next-fonts');
-// const withSize = require('next-size');
+const withSize = require('next-size');
 // const withProgressBar = require('next-progressbar');
 
 const nextConfig = {
@@ -43,7 +43,7 @@ const bundleAnalyzerConfig = {
 
 const plugins = [
   withImages,
-  // withSize,
+  withSize,
   [withSass, SassConfig]
   // [withProgressBar, progressBarConfig],
   // [withFonts, fontsConfig],
