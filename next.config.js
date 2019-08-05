@@ -5,7 +5,7 @@ const withPlugins = require('next-compose-plugins');
 const withImages = require('next-images');
 const withFonts = require('next-fonts');
 const withSize = require('next-size');
-// const withProgressBar = require('next-progressbar');
+const withProgressBar = require('next-progressbar');
 
 const nextConfig = {
   webpack: (config, options) => {
@@ -45,7 +45,7 @@ const plugins = [
   withImages,
   withSize,
   [withSass, SassConfig],
-  // [withProgressBar, progressBarConfig],
+  [withProgressBar, progressBarConfig],
   [withFonts, fontsConfig]
   // [withBundleAnalyzer, bundleAnalyzerConfig]
 ];
