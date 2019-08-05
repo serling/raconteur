@@ -6,6 +6,9 @@ import ModalImage from 'react-modal-image';
 import Text from '../text/text';
 import Icon from '../icon/icon';
 
+// https://github.com/cyrilwanner/next-optimized-images/issues/16
+// https://github.com/cyrilwanner/next-optimized-images/issues/63
+
 const Image = ({
   text,
   alt,
@@ -16,8 +19,6 @@ const Image = ({
   enforceAspectRatio
 }) => {
   if (!src || !alt) return null;
-
-  const responsiveImage = require(`../../static/images/${src}?resize`);
 
   return (
     <>
@@ -31,12 +32,26 @@ const Image = ({
         )}
       >
         <div className="image__wrapper">
-          <img
-            srcSet={responsiveImage.srcSet}
-            src={responsiveImage.src}
-            alt={alt}
-            className="image__image"
-          />
+          {thumbnailSrc ? (
+            <>
+              <div className="image__icon">
+                <Icon name="expand" />
+              </div>
+              <ModalImage
+                className="image__image"
+                hideDownload={true}
+                hideZoom={true}
+                showRotate={false}
+                alt={text || alt}
+                small={thumbnailSrc}
+                medium={src}
+              />
+            </>
+          ) : (
+            <>
+              <img src={src} alt={alt} className="image__image" />
+            </>
+          )}
         </div>
         {text && (
           <figcaption className="image__meta">

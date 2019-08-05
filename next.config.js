@@ -6,7 +6,6 @@ const withSize = require('next-size');
 const withProgressBar = require('next-progressbar');
 const withOptimizedImage = require('next-optimized-images');
 
-
 const nextConfig = {
   webpack: (config, options) => {
     return config;
@@ -24,13 +23,7 @@ const SassConfig = {
 };
 
 const optimizedImageConfig = {
-  handleImages: ['jpeg', 'png', 'svg', 'webp', 'gif'],
-  defaultImageLoader: 'responsive-loader',
-  responsive: {
-    // https://github.com/herrstucki/responsive-loader
-    optimizeImagesInDev: false,
-    sizes: [600, 1200]
-  }
+  handleImages: ['jpeg', 'png', 'svg', 'webp', 'gif']
 };
 
 const progressBarConfig = {
