@@ -1,10 +1,11 @@
 const withSass = require('@zeit/next-sass');
 
 const withPlugins = require('next-compose-plugins');
-const withImages = require('next-images');
 const withFonts = require('next-fonts');
 const withSize = require('next-size');
 const withProgressBar = require('next-progressbar');
+const withOptimizedImage = require('next-optimized-images');
+
 
 const nextConfig = {
   webpack: (config, options) => {
@@ -22,6 +23,16 @@ const SassConfig = {
   }
 };
 
+const optimizedImageConfig = {
+  handleImages: ['jpeg', 'png', 'svg', 'webp', 'gif'],
+  defaultImageLoader: 'responsive-loader',
+  responsive: {
+    // https://github.com/herrstucki/responsive-loader
+    optimizeImagesInDev: false,
+    sizes: [600, 1200]
+  }
+};
+
 const progressBarConfig = {
   progressBar: {
     // profile: true
@@ -33,11 +44,11 @@ const fontsConfig = {
 };
 
 const plugins = [
-  withImages,
   withSize,
   [withSass, SassConfig],
   [withProgressBar, progressBarConfig],
-  [withFonts, fontsConfig]
+  [withFonts, fontsConfig],
+  [withOptimizedImage, optimizedImageConfig]
 ];
 
 module.exports = withPlugins([...plugins], nextConfig);

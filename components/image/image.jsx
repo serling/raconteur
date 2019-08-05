@@ -17,6 +17,8 @@ const Image = ({
 }) => {
   if (!src || !alt) return null;
 
+  const responsiveImage = require(`../../static/images/${src}?resize`);
+
   return (
     <>
       <figure
@@ -29,24 +31,12 @@ const Image = ({
         )}
       >
         <div className="image__wrapper">
-          {thumbnailSrc ? (
-            <>
-              <div className="image__icon">
-                <Icon name="expand" />
-              </div>
-              <ModalImage
-                className="image__image"
-                hideDownload={true}
-                hideZoom={true}
-                showRotate={false}
-                alt={text || alt}
-                small={thumbnailSrc}
-                medium={src}
-              />
-            </>
-          ) : (
-            <img src={src} alt={alt} className="image__image" />
-          )}
+          <img
+            srcSet={responsiveImage.srcSet}
+            src={responsiveImage.src}
+            alt={alt}
+            className="image__image"
+          />
         </div>
         {text && (
           <figcaption className="image__meta">
