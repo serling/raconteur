@@ -38,8 +38,7 @@
     "dev": "next",
     "build": "next build",
     "start": "next start -p $PORT",
-    "export": "npm run build && next export",
-    "analyze": "cross-env ANALYZE=true yarn build"
+    "export": "npm run build && next export"
   },
   "heroku-run-build-script": true,
   "prettier": {
