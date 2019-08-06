@@ -2,10 +2,11 @@ import React from 'react';
 import absoluteUrl from '../js/absoluteUrl';
 import fetch from 'isomorphic-unfetch';
 
-import FrontPage from '../components/front-page/front-page';
+import Error from 'next/error';
+import ArticleTemplate from '../components/article-template/article-template';
 import WithPageTransition from '../components/with-page-transition/with-page-transitions';
 
-const Index = props => {
+const Articles = props => {
   const { data } = props;
 
   if (data.error)
@@ -18,21 +19,22 @@ const Index = props => {
 
   return (
     <WithPageTransition>
-      <FrontPage {...data} />
+      <ArticleTemplate data={data} />
     </WithPageTransition>
   );
 };
 
-Index.getInitialProps = async ctx => {
-  const { req, res } = ctx;
+Articles.getInitialProps = async ctx => {
+  const { res, req } = ctx;
 
   const { protocol, host } = absoluteUrl(req);
 
-  const endpoint = `${protocol}//${host}/api/home`;
+  const endpoint = `${protocol}//${host}/api/articles`;
   const response = await fetch(endpoint);
+
   const data = await response.json();
 
   return { data };
 };
 
-export default Index;
+export default Articles;

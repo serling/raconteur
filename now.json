@@ -1,0 +1,10 @@
+{
+  "name": "raconteur",
+  "version": 2,
+  "env": {},
+  "build": {
+    "env": {
+      "VARIABLE_NAME": ""
+    }
+  }
+}

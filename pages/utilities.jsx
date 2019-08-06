@@ -1,9 +1,10 @@
 import React from 'react';
 import Error from 'next/error';
-import { server } from '../../js/server';
+import absoluteUrl from '../js/absoluteUrl';
+import fetch from 'isomorphic-unfetch';
 
-import ArticleTemplate from '../../components/article-template/article-template';
-import WithPageTransition from '../../components/with-page-transition/with-page-transitions';
+import ArticleTemplate from '../components/article-template/article-template';
+import WithPageTransition from '../components/with-page-transition/with-page-transitions';
 
 const Utilities = ({ data, error }) => {
   if (error) {
@@ -18,16 +19,14 @@ const Utilities = ({ data, error }) => {
 };
 
 Utilities.getInitialProps = async ctx => {
-  const { res } = ctx;
+  const { res, req } = ctx;
 
-  const endpoint = `${server + `/api/utilities/index`}`;
+  const { protocol, host } = absoluteUrl(req);
+
+  const endpoint = `${protocol}//${host}/api/utilities`;
   const response = await fetch(endpoint);
 
   const data = await response.json();
-
-  if (data.error && res) {
-    res.statusCode = 404;
-  }
 
   return { data };
 };

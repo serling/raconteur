@@ -1,6 +1,7 @@
 import React from 'react';
 import Error from 'next/error';
-import { server } from '../../js/server';
+import absoluteUrl from '../../js/absoluteUrl';
+import fetch from 'isomorphic-unfetch';
 
 import ArticleTemplate from '../../components/article-template/article-template';
 import WithPageTransition from '../../components/with-page-transition/with-page-transitions';
@@ -18,9 +19,11 @@ const SuggestionOnDemand = ({ data, error }) => {
 };
 
 SuggestionOnDemand.getInitialProps = async ctx => {
-  const { res } = ctx;
+  const { res, req } = ctx;
 
-  const endpoint = `${server + `/api/utilities/suggestion-on-demand`}`;
+  const { protocol, host } = absoluteUrl(req);
+
+  const endpoint = `${protocol}//${host}/api/utilities/suggestion-on-demand`;
   const response = await fetch(endpoint);
 
   const data = await response.json();

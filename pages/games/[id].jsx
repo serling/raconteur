@@ -1,5 +1,5 @@
 import React from 'react';
-import { server } from '../../js/server';
+import absoluteUrl from '../../js/absoluteUrl';
 import fetch from 'isomorphic-unfetch';
 
 import Error from 'next/error';
@@ -21,7 +21,9 @@ const GamePage = props => {
 GamePage.getInitialProps = async ctx => {
   const { query, res, req } = ctx;
 
-  const endpoint = `${server + `/api/games/${query.id}`}`;
+  const { protocol, host } = absoluteUrl(req);
+
+  const endpoint = `${protocol}//${host}/api/games/${query.id}`;
   const response = await fetch(endpoint);
 
   const data = await response.json();

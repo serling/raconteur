@@ -1,5 +1,5 @@
 import React from 'react';
-import { server } from '../../js/server';
+import absoluteUrl from '../../js/absoluteUrl';
 import fetch from 'isomorphic-unfetch';
 
 import Error from 'next/error';
@@ -21,14 +21,12 @@ const ArticlePage = props => {
 ArticlePage.getInitialProps = async ctx => {
   const { query, res, req } = ctx;
 
-  const endpoint = `${server + `/api/articles/${query.id}`}`;
+  const { protocol, host } = absoluteUrl(req);
+
+  const endpoint = `${protocol}//${host}/api/articles/${query.id}`;
   const response = await fetch(endpoint);
 
   const data = await response.json();
-
-  if (data.error && res) {
-    res.statusCode = 404;
-  }
 
   return { data };
 };

@@ -1,14 +1,21 @@
 import React from 'react';
-import Error from 'next/error';
-import { server } from '../js/server';
+import absoluteUrl from '../js/absoluteUrl';
+import fetch from 'isomorphic-unfetch';
 
+import Error from 'next/error';
 import ArticleTemplate from '../components/article-template/article-template';
 import WithPageTransition from '../components/with-page-transition/with-page-transitions';
 
-const Games = ({ data, error }) => {
-  if (error) {
-    return <Error statusCode="Request Error" />;
-  }
+const Games = props => {
+  const { data } = props;
+
+  if (data.error)
+    return (
+      <Error
+        title={data.error.message || 'generic error message'}
+        statusCode={404}
+      />
+    );
 
   return (
     <WithPageTransition>
@@ -18,16 +25,14 @@ const Games = ({ data, error }) => {
 };
 
 Games.getInitialProps = async ctx => {
-  const { res } = ctx;
+  const { res, req } = ctx;
 
-  const endpoint = `${server + `/api/games`}`;
+  const { protocol, host } = absoluteUrl(req);
+
+  const endpoint = `${protocol}//${host}/api/games`;
   const response = await fetch(endpoint);
 
   const data = await response.json();
-
-  if (data.error && res) {
-    res.statusCode = 404;
-  }
 
   return { data };
 };

@@ -6,7 +6,6 @@
   "description": "Raconteur",
   "main": "index.js",
   "engines": {
-    "node": "12.x",
     "npm": "6.5.0"
   },
   "dependencies": {
