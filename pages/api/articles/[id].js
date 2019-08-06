@@ -1,15 +1,23 @@
-import { articles } from '../../../static/data/articles/articles';
+import articles from '../../../static/data/articles/articles';
 
 export default ({ query }, res) => {
-  const filtered = articles.filter(article => article.id === query.id);
+  const { payload } = articles;
 
-  if (filtered.length > 0) {
-    res.status(200).json(filtered[0].data);
-  } else {
-    let error = {
-      message: 'Article not found'
+  const filtered = payload.articles.filter(article => article.id === query.id);
+
+  if (filtered.length <= 0) {
+    const errorObject = {
+      statusCode: 404,
+      title: 'Could not find article'
     };
 
-    res.status(404).json({ error });
+    res.status(404).json({ error: errorObject });
   }
+
+  const data = {
+    ...articles,
+    payload: { ...filtered[0].data }
+  };
+
+  res.status(200).json(data);
 };

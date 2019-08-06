@@ -9,13 +9,7 @@ import { getInitialData } from '../../js/api-helper';
 const GamePage = props => {
   const { data, error } = props;
 
-  if (error)
-    return (
-      <Error
-        title={error.message || 'generic error message'}
-        statusCode={404}
-      />
-    );
+  if (error) return <Error {...error} />;
 
   return (
     <WithPageTransition>
@@ -27,9 +21,9 @@ const GamePage = props => {
 GamePage.getInitialProps = async ctx => {
   const { query, req } = ctx;
 
-  const initialData = await getInitialData(req, '/api/games', query.id);
+  const { payload, error } = await getInitialData(req, '/api/games', query.id);
 
-  return { data: initialData };
+  return { data: payload, error };
 };
 
 export default GamePage;

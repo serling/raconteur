@@ -17,6 +17,7 @@ function absoluteUrl(req, localHost = LOCAL_HOST) {
   };
 }
 
+//TODO: implement this in individual api files
 const getInitialData = async (req, apiRoute, resourceId) => {
   const { protocol, host } = absoluteUrl(req);
 
@@ -26,7 +27,24 @@ const getInitialData = async (req, apiRoute, resourceId) => {
 
   const response = await fetch(endpoint);
 
-  return await response.json();
+  const responseData = await response.json().then(data => {
+    const { success, payload, error } = data;
+
+    if (!success) {
+      const genericErrorObject = {
+        title: 'generic fetch error',
+        statusCode: 'Oh no!'
+      };
+
+      return {
+        error: { ...genericErrorObject, ...error }
+      };
+    }
+
+    return { payload };
+  });
+
+  return { ...responseData };
 };
 
 module.exports = {

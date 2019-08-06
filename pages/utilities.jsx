@@ -9,13 +9,7 @@ import { getInitialData } from '../js/api-helper';
 const Utilities = props => {
   const { data, error } = props;
 
-  if (error)
-    return (
-      <Error
-        title={error.message || 'generic error message'}
-        statusCode={404}
-      />
-    );
+  if (error) return <Error {...error} />;
 
   return (
     <WithPageTransition>
@@ -27,9 +21,9 @@ const Utilities = props => {
 Utilities.getInitialProps = async ctx => {
   const { req } = ctx;
 
-  const initialData = await getInitialData(req, '/api/utilities');
+  const { payload, error } = await getInitialData(req, '/api/utilities');
 
-  return { data: initialData };
+  return { data: payload, error };
 };
 
 export default Utilities;

@@ -1,29 +1,32 @@
 {
-  "pageTitle": "utilities page",
-  "components": [
-    {
-      "id": "34f3-34j89",
-      "name": "UtilitiesList",
-      "props": {
-        "links": [
-          {
-            "text": "Suggestion-on-demand",
-            "href": "/utilities/suggestion-on-demand"
-          },
-          {
-            "text": "Utility 2",
-            "href": "#href"
-          },
-          {
-            "text": "Utility 3",
-            "href": "#href"
-          },
-          {
-            "text": "Utility 4",
-            "href": "#href"
-          }
-        ]
+  "success": true,
+  "payload": {
+    "pageTitle": "utilities page",
+    "components": [
+      {
+        "id": "34f3-34j89",
+        "name": "UtilitiesList",
+        "props": {
+          "links": [
+            {
+              "text": "Suggestion-on-demand",
+              "href": "/utilities/suggestion-on-demand"
+            },
+            {
+              "text": "Utility 2",
+              "href": "#href"
+            },
+            {
+              "text": "Utility 3",
+              "href": "#href"
+            },
+            {
+              "text": "Utility 4",
+              "href": "#href"
+            }
+          ]
+        }
       }
-    }
-  ]
+    ]
+  }
 }

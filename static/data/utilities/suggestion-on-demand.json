@@ -1,10 +1,13 @@
 {
-  "pageTitle": "utility - suggestion on demand",
-  "components": [
-    {
-      "id": "1",
-      "name": "SuggestionGenerator",
-      "props": {}
-    }
-  ]
+  "success": true,
+  "payload": {
+    "pageTitle": "utility - suggestion on demand",
+    "components": [
+      {
+        "id": "1",
+        "name": "SuggestionGenerator",
+        "props": {}
+      }
+    ]
+  }
 }

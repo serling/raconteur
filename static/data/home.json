@@ -1,4 +1,7 @@
 {
-  "pageTitle": "front page",
-  "title": "Raconteur"
+  "success": true,
+  "payload": {
+    "pageTitle": "front page",
+    "title": "Raconteur"
+  }
 }

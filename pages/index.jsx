@@ -8,13 +8,7 @@ import WithPageTransition from '../components/with-page-transition/with-page-tra
 const Index = props => {
   const { data, error } = props;
 
-  if (error)
-    return (
-      <Error
-        title={error.message || 'generic error message'}
-        statusCode={404}
-      />
-    );
+  if (error) return <Error {...error} />;
 
   return (
     <WithPageTransition>
@@ -26,9 +20,9 @@ const Index = props => {
 Index.getInitialProps = async ctx => {
   const { req } = ctx;
 
-  const initialData = await getInitialData(req, '/api/home');
+  const { payload, error } = await getInitialData(req, '/api/home');
 
-  return { data: initialData };
+  return { data: payload, error };
 };
 
 export default Index;
