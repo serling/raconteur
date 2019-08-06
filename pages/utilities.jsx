@@ -1,15 +1,21 @@
 import React from 'react';
 import Error from 'next/error';
-import absoluteUrl from '../js/absoluteUrl';
-import fetch from 'isomorphic-unfetch';
 
 import ArticleTemplate from '../components/article-template/article-template';
 import WithPageTransition from '../components/with-page-transition/with-page-transitions';
 
-const Utilities = ({ data, error }) => {
-  if (error) {
-    return <Error statusCode="Request Error" />;
-  }
+import { getInitialData } from '../js/api-helper';
+
+const Utilities = props => {
+  const { data, error } = props;
+
+  if (error)
+    return (
+      <Error
+        title={error.message || 'generic error message'}
+        statusCode={404}
+      />
+    );
 
   return (
     <WithPageTransition>
@@ -19,16 +25,11 @@ const Utilities = ({ data, error }) => {
 };
 
 Utilities.getInitialProps = async ctx => {
-  const { res, req } = ctx;
+  const { req } = ctx;
 
-  const { protocol, host } = absoluteUrl(req);
+  const initialData = await getInitialData(req, '/api/utilities');
 
-  const endpoint = `${protocol}//${host}/api/utilities`;
-  const response = await fetch(endpoint);
-
-  const data = await response.json();
-
-  return { data };
+  return { data: initialData };
 };
 
 export default Utilities;

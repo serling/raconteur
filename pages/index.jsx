@@ -1,17 +1,17 @@
 import React from 'react';
-import absoluteUrl from '../js/absoluteUrl';
-import fetch from 'isomorphic-unfetch';
+import Error from 'next/error';
 
+import { getInitialData } from '../js/api-helper';
 import FrontPage from '../components/front-page/front-page';
 import WithPageTransition from '../components/with-page-transition/with-page-transitions';
 
 const Index = props => {
-  const { data } = props;
+  const { data, error } = props;
 
-  if (data.error)
+  if (error)
     return (
       <Error
-        title={data.error.message || 'generic error message'}
+        title={error.message || 'generic error message'}
         statusCode={404}
       />
     );
@@ -24,15 +24,11 @@ const Index = props => {
 };
 
 Index.getInitialProps = async ctx => {
-  const { req, res } = ctx;
+  const { req } = ctx;
 
-  const { protocol, host } = absoluteUrl(req);
+  const initialData = await getInitialData(req, '/api/home');
 
-  const endpoint = `${protocol}//${host}/api/home`;
-  const response = await fetch(endpoint);
-  const data = await response.json();
-
-  return { data };
+  return { data: initialData };
 };
 
 export default Index;
