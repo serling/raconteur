@@ -27,12 +27,12 @@ const SuggestionOnDemand = props => {
 SuggestionOnDemand.getInitialProps = async ctx => {
   const { req } = ctx;
 
-  const initialData = await getInitialData(
+  const { payload, error } = await getInitialData(
     req,
     '/api/utilities/suggestion-on-demand'
   );
 
-  return { data: initialData };
+  return { data: payload, error };
 };
 
 export default SuggestionOnDemand;
