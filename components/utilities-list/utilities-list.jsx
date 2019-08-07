@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Route from 'next/link';
 
 import List from '../list/list';
 import Link from '../link/link';
@@ -9,7 +10,11 @@ const UtilitiesList = ({ links }) => (
   <PageContent>
     <List theme={List.themes.grid} gridColumns={3}>
       {links.map((link, index) => (
-        <Link key={index} {...link} />
+        <div key={index}>
+          <Route href={link.href}>
+            <a>{link.text}</a>
+          </Route>
+        </div>
       ))}
     </List>
   </PageContent>

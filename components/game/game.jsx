@@ -5,6 +5,7 @@ import cn from 'classnames';
 // import Heading from '../heading/heading';
 import Text from '../text/text';
 import Link from '../link/link';
+import Route from 'next/link';
 // import Modal from '../modal/modal';
 
 const Game = ({
@@ -21,7 +22,9 @@ const Game = ({
 }) => {
   return (
     <div className="game">
-      <Link text={name} href={href} />
+      <Route href={href}>
+        <a>{name}</a>
+      </Route>
       <Text text={abstract}></Text>
       {/* <Modal
         onClose={() => {}}

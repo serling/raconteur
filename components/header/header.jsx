@@ -30,9 +30,9 @@ class Header extends React.Component {
           <div className="header__content">
             <nav className="header__navigation">
               <div className="header__link">
-                <Link href="/index" className="header__logo">
-                  Home
-                </Link>
+                <Route href="/index">
+                  <a>Home</a>
+                </Route>
               </div>
               <div className="header__link">
                 <Route href="/articles">
@@ -40,10 +40,14 @@ class Header extends React.Component {
                 </Route>
               </div>
               <div className="header__link">
-                <Link href="/games">Games</Link>
+                <Route href="/games">
+                  <a>Games</a>
+                </Route>
               </div>
               <div className="header__link">
-                <Link href="/utilities">Utilities</Link>
+                <Route href="/utilities">
+                  <a>Utilities</a>
+                </Route>
               </div>
             </nav>
             <div className="header__actions">
