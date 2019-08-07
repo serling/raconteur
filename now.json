@@ -1,7 +1,9 @@
 {
   "name": "raconteur",
   "version": 2,
-  "env": {},
+  "env": {
+    "MONGODB_URI": "@mongodb-uri"
+  },
   "build": {
     "env": {
       "VARIABLE_NAME": ""
