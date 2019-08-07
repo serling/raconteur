@@ -1,45 +1,9 @@
-import url from 'url';
-import { MongoClient } from 'mongodb';
+import { getAllArticles, getArticleById } from '../../js/db-helper';
 
-// Create cached connection variable
-let cachedDb = null;
+export default async (req, res) => {
+  const data = await getArticleById('5d4aa443c7f7873ed0e8e029');
 
-// A function for connecting to MongoDB,
-// taking a single paramater of the connection string
-async function connectToDatabase(uri) {
-  // If the database connection is cached,
-  // use it instead of creating a new connection
-  if (cachedDb) {
-    return cachedDb;
-  }
+  console.log('got', data);
 
-  // If no connection is cached, create a new one
-  const client = await MongoClient.connect(uri, { useNewUrlParser: true });
-
-  // Select the database through the connection,
-  // using the database path of the connection string
-  const db = await client.db(url.parse(uri).pathname.substr(1));
-
-  // Cache the database connection and return the connection
-  cachedDb = db;
-  return db;
-}
-
-// The main, exported, function of the endpoint,
-// dealing with the request and subsequent response
-module.exports = async (req, res) => {
-  // Get a database connection, cached or otherwise,
-  // using the connection string environment variable as the argument
-  const db = await connectToDatabase(process.env.MONGODB_URI);
-
-  // Select the "users" collection from the database
-  const collection = await db.collection('movies');
-
-  // Select the users collection from the database
-  const users = await collection.find({ title: 'Blacksmith Scene' }).toArray();
-
-  console.log('data from db:', users);
-
-  // Respond with a JSON string of all users in the collection
-  res.status(200).json({ hello: 'hey', users });
+  res.status(200).json({ data });
 };

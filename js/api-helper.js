@@ -2,6 +2,16 @@ import fetch from 'isomorphic-unfetch';
 
 const LOCAL_HOST = 'localhost:3000';
 
+const genericError = {
+  title: 'generic fetch error',
+  statusCode: 'Oh no!'
+};
+
+const fatalError = {
+  title: 'fatal fetch error',
+  statusCode: "You're a gonnar now, buddy!!"
+};
+
 function absoluteUrl(req, localHost = LOCAL_HOST) {
   var protocol = 'https:';
 
@@ -17,7 +27,6 @@ function absoluteUrl(req, localHost = LOCAL_HOST) {
   };
 }
 
-//TODO: implement this in individual api files
 const getInitialData = async (req, apiRoute, resourceId) => {
   const { protocol, host } = absoluteUrl(req);
 
@@ -27,22 +36,28 @@ const getInitialData = async (req, apiRoute, resourceId) => {
 
   const response = await fetch(endpoint);
 
-  const responseData = await response.json().then(data => {
-    const { success, payload, error } = data;
+  const responseData = await response
+    .json()
+    .then(data => {
+      const { success, payload, error } = data;
 
-    if (!success) {
-      const genericErrorObject = {
-        title: 'generic fetch error',
-        statusCode: 'Oh no!'
-      };
+      if (!success) {
+        console.log('response not successfull');
+
+        return {
+          error: { ...genericError, ...error }
+        };
+      }
+
+      return { payload };
+    })
+    .catch(err => {
+      console.log('fatal error', err);
 
       return {
-        error: { ...genericErrorObject, ...error }
+        error: { ...fatalError, ...error }
       };
-    }
-
-    return { payload };
-  });
+    });
 
   return { ...responseData };
 };

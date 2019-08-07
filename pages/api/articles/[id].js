@@ -1,23 +1,19 @@
-import articles from '../../../static/data/articles/articles';
+import { getArticleById } from '../../../js/db-helper';
 
-export default ({ query }, res) => {
-  const { payload } = articles;
+export default async (req, res) => {
+  console.log('***opening dynamic page***');
+  const { query } = req;
 
-  const filtered = payload.articles.filter(article => article.id === query.id);
-
-  if (filtered.length <= 0) {
-    const errorObject = {
-      statusCode: 404,
-      title: 'Could not find article'
-    };
-
-    res.status(404).json({ error: errorObject });
-  }
-
-  const data = {
-    ...articles,
-    payload: { ...filtered[0].data }
+  const errorObject = {
+    statusCode: 404,
+    title: 'Could not find article -- or something'
   };
 
-  res.status(200).json(data);
+  await getArticleById(query.id)
+    .then(response => {
+      res.status(200).json({ success: true, payload: response });
+    })
+    .catch(err => {
+      res.status(404).json({ error: errorObject });
+    });
 };
