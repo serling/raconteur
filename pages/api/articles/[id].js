@@ -1,7 +1,6 @@
 import { getArticleById } from '../../../js/db-helper';
 
 export default async (req, res) => {
-  console.log('***opening dynamic page***');
   const { query } = req;
 
   const errorObject = {
@@ -14,6 +13,8 @@ export default async (req, res) => {
       res.status(200).json({ success: true, payload: response });
     })
     .catch(err => {
+      console.log('error in articles', err);
+
       res.status(404).json({ error: errorObject });
     });
 };
