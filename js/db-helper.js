@@ -31,14 +31,19 @@ async function getAllArticles() {
   const collection = await db.collection('articles');
 
   const data = await collection
-    .find({})
+    .find({}) //Projection to only retrieve href, id, etc
     .toArray()
     .then(items => {
       console.log(`Successfully found ${items.length} documents.`);
       items.forEach(console.log);
       return items;
     })
-    .catch(err => console.error(`Failed to find documents: ${err}`));
+    .catch(err => {
+      console.log('db error - ', err);
+      console.error(`Failed to find documents: ${err}`);
+
+      return {};
+    });
 
   return data;
 }
@@ -51,6 +56,7 @@ async function getArticleById(id) {
   const data = await collection.findOne({ _id: ObjectId(id) }).catch(err => {
     console.log('db error - ', err);
     console.error(`Failed to find document: ${err}`);
+
     return {};
   });
 
