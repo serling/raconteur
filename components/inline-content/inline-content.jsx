@@ -74,6 +74,10 @@ InlineContent.propTypes = {
   theme: PropTypes.oneOf(Object.keys(themes).map(key => themes[key]))
 };
 
+InlineContent.defaultProps = {
+  components: []
+};
+
 InlineContent.alignments = alignments;
 InlineContent.themes = themes;
 
