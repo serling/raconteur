@@ -1,8 +1,9 @@
 import React from 'react';
 import Error from 'next/error';
 
-import ArticleTemplate from '../components/article-template/article-template';
 import WithPageTransition from '../components/with-page-transition/with-page-transitions';
+import ArticlesList from '../components/articles-list/articles-list';
+import Layout from '../components/layout/layout';
 
 import { getInitialData } from '../js/api-helper';
 
@@ -13,7 +14,9 @@ const Articles = props => {
 
   return (
     <WithPageTransition>
-      <ArticleTemplate data={data} />
+      <Layout title="articles page">
+        <ArticlesList articles={data} />
+      </Layout>
     </WithPageTransition>
   );
 };

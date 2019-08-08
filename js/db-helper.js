@@ -28,15 +28,39 @@ async function connectToDatabase(uri) {
 async function getAllArticles() {
   const db = await connectToDatabase(process.env.MONGODB_URI);
 
-  const collection = await db.collection('articles');
+  const articles = await db.collection('articles');
 
-  const data = await collection
-    .find({}) //Projection to only retrieve href, id, etc
+  const modifiedArticles = await articles
+    .aggregate([
+      {
+        $lookup: {
+          from: 'articles',
+          localField: '_id',
+          foreignField: 'id',
+          as: 'articles'
+        }
+      },
+      {
+        $addFields: {
+          id: '$_id'
+          // 'meta.href': '$_id'
+        }
+      },
+      {
+        $project: {
+          meta: true,
+          id: true,
+          _id: false
+        }
+      }
+    ])
     .toArray()
-    .then(items => {
-      console.log(`Successfully found ${items.length} documents.`);
-      items.forEach(console.log);
-      return items;
+    .then(response => {
+      // this step is unnecessary if we aggregate the db query with $replaceRoot
+      return response.map(data => {
+        const { meta, id } = data;
+        return { ...meta, id };
+      });
     })
     .catch(err => {
       console.log('db error - ', err);
@@ -45,7 +69,7 @@ async function getAllArticles() {
       return {};
     });
 
-  return data;
+  return modifiedArticles;
 }
 
 async function getArticleById(id) {

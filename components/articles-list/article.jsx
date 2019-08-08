@@ -6,7 +6,7 @@ import cn from 'classnames';
 const Article = ({ id, title, lead, href }) => (
   <div className={cn('article', `article--${id}`)}>
     <div className="article__title">
-      <Route href="/articles/[id]" as={href}>
+      <Route href="/articles/[id]" as={`/articles/${id}`}>
         <a>{title}</a>
       </Route>
     </div>
