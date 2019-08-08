@@ -8,7 +8,7 @@ const errorObject = {
 export default async (req, res) => {
   await getAllArticles()
     .then(response => {
-      console.log('got...', response);
+      // console.log('got...', response);
 
       res.status(200).json({ success: true, payload: response });
     })
