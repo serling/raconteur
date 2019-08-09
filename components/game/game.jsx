@@ -22,7 +22,7 @@ const Game = ({
 }) => {
   return (
     <div className="game">
-      <Route href={href}>
+      <Route href="/games/[id]" as={`/games/${id}`}>
         <a>{name}</a>
       </Route>
       <Text text={abstract}></Text>

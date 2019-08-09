@@ -7,15 +7,20 @@ import Game from '../game/game';
 const GamesList = ({ games }) => {
   return (
     <List>
-      {games.map((game, index) => (
-        <Game key={index} {...game} />
-      ))}
+      {games.map(game => {
+        const { id } = game;
+        return <Game key={id} {...game} />;
+      })}
     </List>
   );
 };
 
 GamesList.propTypes = {
-  games: PropTypes.array.isRequired
+  games: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired
+    })
+  ).isRequired
 };
 
 GamesList.defaultProps = {

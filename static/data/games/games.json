@@ -6,6 +6,16 @@
         "id": "game1",
         "data": {
           "pageTitle": "game - the onion",
+          "meta": {
+            "name": "The Onion",
+            "href": "/games/game1",
+            "abstract": "Onion game is a series a scenes with no real connection.",
+            "categories": [
+              { "id": "shortform", "text": "shortform" },
+              { "id": "warmup", "text": "warmup" },
+              { "id": "justification", "text": "justification" }
+            ]
+          },
           "header": {
             "title": "The Onion",
             "subtitle": "the aspiring montage",

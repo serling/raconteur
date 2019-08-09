@@ -72,12 +72,73 @@ async function getAllArticles() {
   return modifiedArticles;
 }
 
+async function getAllGames() {
+  const db = await connectToDatabase(process.env.MONGODB_URI);
+
+  const games = await db.collection('games');
+
+  const modifiedGames = await games
+    .aggregate([
+      {
+        $lookup: {
+          from: 'games',
+          localField: '_id',
+          foreignField: 'id',
+          as: 'games'
+        }
+      },
+      {
+        $addFields: {
+          id: '$_id'
+        }
+      },
+      {
+        $project: {
+          meta: true,
+          id: true,
+          _id: false
+        }
+      }
+    ])
+    .toArray()
+    .then(response => {
+      // this step is unnecessary if we aggregate the db query with $replaceRoot
+      return response.map(data => {
+        const { meta, id } = data;
+        return { ...meta, id };
+      });
+    })
+    .catch(err => {
+      console.log('db error - ', err);
+      console.error(`Failed to find documents: ${err}`);
+
+      return {};
+    });
+
+  return modifiedGames;
+}
+
 async function getArticleById(id) {
   const db = await connectToDatabase(process.env.MONGODB_URI);
 
-  const collection = await db.collection('articles');
+  const articles = await db.collection('articles');
 
-  const data = await collection.findOne({ _id: ObjectId(id) }).catch(err => {
+  const data = await articles.findOne({ _id: ObjectId(id) }).catch(err => {
+    console.log('db error - ', err);
+    console.error(`Failed to find document: ${err}`);
+
+    return {};
+  });
+
+  return data;
+}
+
+async function getGameById(id) {
+  const db = await connectToDatabase(process.env.MONGODB_URI);
+
+  const games = await db.collection('games');
+
+  const data = await games.findOne({ _id: ObjectId(id) }).catch(err => {
     console.log('db error - ', err);
     console.error(`Failed to find document: ${err}`);
 
@@ -89,5 +150,7 @@ async function getArticleById(id) {
 
 module.exports = {
   getAllArticles,
-  getArticleById
+  getAllGames,
+  getArticleById,
+  getGameById
 };
