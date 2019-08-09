@@ -8,7 +8,7 @@ const errorObject = {
 export default async (req, res) => {
   const { query } = req;
 
-  await getArticleById(query.id)
+  await getArticleById(query.slug)
     .then(response => {
       res.status(200).json({ success: true, payload: response });
     })

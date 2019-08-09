@@ -1,5 +1,5 @@
 import url from 'url';
-import { MongoClient, ObjectId } from 'mongodb';
+import { MongoClient } from 'mongodb';
 
 // Create cached connection variable
 let cachedDb = null;
@@ -49,6 +49,7 @@ async function getAllArticles() {
       {
         $project: {
           meta: true,
+          slug: true,
           id: true,
           _id: false
         }
@@ -58,8 +59,8 @@ async function getAllArticles() {
     .then(response => {
       // this step is unnecessary if we aggregate the db query with $replaceRoot
       return response.map(data => {
-        const { meta, id } = data;
-        return { ...meta, id };
+        const { meta, id, slug } = data;
+        return { ...meta, id, slug };
       });
     })
     .catch(err => {
@@ -83,7 +84,7 @@ async function getAllGames() {
         $lookup: {
           from: 'games',
           localField: '_id',
-          foreignField: 'id',
+          foreignField: 'id', //TODO id vs slug?
           as: 'games'
         }
       },
@@ -95,6 +96,7 @@ async function getAllGames() {
       {
         $project: {
           meta: true,
+          slug: true,
           id: true,
           _id: false
         }
@@ -104,8 +106,8 @@ async function getAllGames() {
     .then(response => {
       // this step is unnecessary if we aggregate the db query with $replaceRoot
       return response.map(data => {
-        const { meta, id } = data;
-        return { ...meta, id };
+        const { meta, id, slug } = data;
+        return { ...meta, id, slug };
       });
     })
     .catch(err => {
@@ -118,12 +120,12 @@ async function getAllGames() {
   return modifiedGames;
 }
 
-async function getArticleById(id) {
+async function getArticleById(slug) {
   const db = await connectToDatabase(process.env.MONGODB_URI);
 
   const articles = await db.collection('articles');
 
-  const data = await articles.findOne({ _id: ObjectId(id) }).catch(err => {
+  const data = await articles.findOne({ slug }).catch(err => {
     console.log('db error - ', err);
     console.error(`Failed to find document: ${err}`);
 
@@ -133,12 +135,12 @@ async function getArticleById(id) {
   return data;
 }
 
-async function getGameById(id) {
+async function getGameById(slug) {
   const db = await connectToDatabase(process.env.MONGODB_URI);
 
   const games = await db.collection('games');
 
-  const data = await games.findOne({ _id: ObjectId(id) }).catch(err => {
+  const data = await games.findOne({ slug }).catch(err => {
     console.log('db error - ', err);
     console.error(`Failed to find document: ${err}`);
 

@@ -11,6 +11,7 @@ import Route from 'next/link';
 const Game = ({
   id,
   name,
+  slug,
   href,
   alternativeNames,
   playerCount,
@@ -22,7 +23,7 @@ const Game = ({
 }) => {
   return (
     <div className="game">
-      <Route href="/games/[id]" as={`/games/${id}`}>
+      <Route href="/games/[slug]" as={`/games/${slug}`}>
         <a>{name}</a>
       </Route>
       <Text text={abstract}></Text>
@@ -42,6 +43,7 @@ const Game = ({
 Game.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
+  slug: PropTypes.string.isRequired,
   alternativeNames: PropTypes.array,
   playerCount: PropTypes.string,
   abstract: PropTypes.string,

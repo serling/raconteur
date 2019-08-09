@@ -8,7 +8,7 @@ const errorObject = {
 export default async (req, res) => {
   const { query } = req;
 
-  await getGameById(query.id)
+  await getGameById(query.slug)
     .then(response => {
       res.status(200).json({ success: true, payload: response });
     })

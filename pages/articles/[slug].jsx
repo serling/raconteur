@@ -1,29 +1,33 @@
 import React from 'react';
 import Error from 'next/error';
 
-import GameTemplate from '../../components/game-template/game-template';
+import ArticleTemplate from '../../components/article-template/article-template';
 import WithPageTransition from '../../components/with-page-transition/with-page-transitions';
 
 import { getInitialData } from '../../js/api-helper';
 
-const GamePage = props => {
+const ArticlePage = props => {
   const { data, error } = props;
 
   if (error) return <Error {...error} />;
 
   return (
     <WithPageTransition>
-      <GameTemplate data={data} />
+      <ArticleTemplate data={data} />
     </WithPageTransition>
   );
 };
 
-GamePage.getInitialProps = async ctx => {
+ArticlePage.getInitialProps = async ctx => {
   const { query, req } = ctx;
 
-  const { payload, error } = await getInitialData(req, '/api/games', query.id);
+  const { payload, error } = await getInitialData(
+    req,
+    '/api/articles',
+    query.slug
+  );
 
   return { data: payload, error };
 };
 
-export default GamePage;
+export default ArticlePage;
