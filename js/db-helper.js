@@ -25,36 +25,39 @@ async function connectToDatabase(uri) {
   return db;
 }
 
+const allOfType = type => {
+  return [
+    {
+      $lookup: {
+        from: type,
+        localField: '_id',
+        foreignField: 'id',
+        as: type
+      }
+    },
+    {
+      $addFields: {
+        id: '$_id'
+      }
+    },
+    {
+      $project: {
+        meta: true,
+        slug: true,
+        id: true,
+        _id: false
+      }
+    }
+  ];
+};
+
 async function getAllArticles() {
   const db = await connectToDatabase(process.env.MONGODB_URI);
 
   const articles = await db.collection('articles');
 
   const modifiedArticles = await articles
-    .aggregate([
-      {
-        $lookup: {
-          from: 'articles',
-          localField: '_id',
-          foreignField: 'id',
-          as: 'articles'
-        }
-      },
-      {
-        $addFields: {
-          id: '$_id'
-          // 'meta.href': '$_id'
-        }
-      },
-      {
-        $project: {
-          meta: true,
-          slug: true,
-          id: true,
-          _id: false
-        }
-      }
-    ])
+    .aggregate(allOfType('articles'))
     .toArray()
     .then(response => {
       // this step is unnecessary if we aggregate the db query with $replaceRoot
@@ -79,29 +82,7 @@ async function getAllGames() {
   const games = await db.collection('games');
 
   const modifiedGames = await games
-    .aggregate([
-      {
-        $lookup: {
-          from: 'games',
-          localField: '_id',
-          foreignField: 'id', //TODO id vs slug?
-          as: 'games'
-        }
-      },
-      {
-        $addFields: {
-          id: '$_id'
-        }
-      },
-      {
-        $project: {
-          meta: true,
-          slug: true,
-          id: true,
-          _id: false
-        }
-      }
-    ])
+    .aggregate(allOfType('games'))
     .toArray()
     .then(response => {
       // this step is unnecessary if we aggregate the db query with $replaceRoot
