@@ -4,31 +4,26 @@ import Button from '../../components/button/button';
 import List from '../../components/list/list';
 import PageContent from '../../components/page-content/page-content';
 
-const SuggestionGenerator = () => {
-  const [activeWord, setActiveWord] = useState('generator');
+const SuggestionGenerator = props => {
+  const { endpoint } = props;
+
+  const [activeProfession, setActiveProfession] = useState('generator');
   const [isLoading, setIsLoading] = useState(false);
 
-  const apiKey = '8O23WFPE'; //https://random-word-api.herokuapp.com/
-  const numberOfWords = 1;
-
-  const getWord = async () => {
+  const getWord = async type => {
     setIsLoading(true);
-    const endpoint = `https://random-word-api.herokuapp.com/word?key=${apiKey}&number=${numberOfWords}`;
-    const response = await fetch(endpoint);
 
-    const data = await response.json();
+    const response = await fetch(`${endpoint}?type=${type}`);
 
-    if (!data.length > 0) {
-      console.log('api returned no results');
-    }
+    const { payload, error } = await response.json();
 
-    return { word: data[0] };
+    return { word: payload };
   };
 
-  const handleOnClick = () => {
-    getWord().then(({ word }) => {
+  const handleOnClick = type => {
+    getWord(type).then(({ word }) => {
       setIsLoading(false);
-      setActiveWord(word);
+      setActiveProfession(word);
     });
   };
 
@@ -38,15 +33,24 @@ const SuggestionGenerator = () => {
         theme={PageContent.themes.full}
         backgroundColor={PageContent.colors.grey}
       >
+        {isLoading && (
+          <div className="suggestion-generator__loader">
+            <div>Loading...</div>
+          </div>
+        )}
         <div className="suggestion-generator__canvas">
-          <span>{activeWord}</span>
+          <span>{activeProfession}</span>
         </div>
       </PageContent>
       <PageContent theme={PageContent.themes.full}>
         <List theme={List.themes.grid} isCentered={true}>
-          <Button text="Word" onClick={handleOnClick} />
-          <Button text="Location" onClick={handleOnClick} />
-          <Button text="Emotion" onClick={handleOnClick} />
+          <Button
+            text="Profession"
+            onClick={() => handleOnClick('professions')}
+          />
+          <Button text="Emotion" onClick={() => handleOnClick('emotions')} />
+          <Button text="Name" onClick={() => handleOnClick('names')} />
+          <Button text="Agenda" onClick={() => handleOnClick('agendas')} />
         </List>
       </PageContent>
       <style jsx>

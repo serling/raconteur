@@ -6,7 +6,9 @@
       {
         "id": "1",
         "name": "SuggestionGenerator",
-        "props": {}
+        "props": {
+          "endpoint": "/api/word"
+        }
       }
     ]
   }

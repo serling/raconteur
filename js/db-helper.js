@@ -1,6 +1,8 @@
 import url from 'url';
 import { MongoClient } from 'mongodb';
 
+import LOCAL_WORDS_DB from '../static/data/words.json';
+
 // Create cached connection variable
 let cachedDb = null;
 
@@ -131,9 +133,52 @@ async function getGameById(slug) {
   return data;
 }
 
+async function getWordsByType(type) {
+  const db = await connectToDatabase(process.env.MONGODB_URI);
+
+  const wordCollection = await db.collection('words');
+
+  const singleWord = await wordCollection
+    .aggregate([
+      {
+        $lookup: {
+          from: 'words',
+          localField: '_id',
+          foreignField: '_id',
+          as: 'words'
+        }
+      },
+      {
+        $project: {
+          _id: false,
+          [`${type}`]: true
+        }
+      }
+    ])
+    .toArray()
+    .then(response => {
+      // this step is unnecessary if we aggregate the db query with $replaceRoot
+      // pick one random from the whole set of a type
+      return response.map(dataObject => {
+        const words = dataObject[type];
+
+        return words[Math.floor(Math.random() * words.length)];
+      });
+    })
+    .catch(err => {
+      console.log('db error - ', err);
+      console.error(`Failed to find words: ${err}`);
+
+      return {};
+    });
+
+  return singleWord;
+}
+
 module.exports = {
   getAllArticles,
   getAllGames,
   getArticleById,
-  getGameById
+  getGameById,
+  getWordsByType
 };

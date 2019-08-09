@@ -26,8 +26,6 @@ Games.getInitialProps = async ctx => {
 
   const { payload, error } = await getInitialData(req, '/api/games');
 
-  console.log('payload:', payload);
-
   return { data: payload, error };
 };
 
