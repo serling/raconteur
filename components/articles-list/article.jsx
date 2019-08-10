@@ -3,8 +3,13 @@ import PropTypes from 'prop-types';
 import Route from 'next/link';
 import cn from 'classnames';
 
-const Article = ({ id, title, lead, href, slug }) => (
-  <div className={cn('article', `article--${id}`)}>
+import Image from '../image/image';
+
+const Article = ({ title, lead, image, slug }) => (
+  <div className="article">
+    <div className="article__image">
+      <Image {...image} />
+    </div>
     <div className="article__title">
       <Route href="/articles/[slug]" as={`/articles/${slug}`}>
         <a>{title}</a>
@@ -15,11 +20,10 @@ const Article = ({ id, title, lead, href, slug }) => (
 );
 
 Article.propTypes = {
-  id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   slug: PropTypes.string.isRequired,
   lead: PropTypes.string.isRequired,
-  href: PropTypes.string.isRequired
+  image: PropTypes.string
 };
 
 export default Article;

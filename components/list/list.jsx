@@ -69,7 +69,8 @@ const List = ({ children, className, isCentered, theme, gridColumns }) => {
 };
 
 List.defaultProps = {
-  theme: themes.unordered
+  theme: themes.unordered,
+  gridColumns: 3
 };
 
 List.propTypes = {

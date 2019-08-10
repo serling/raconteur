@@ -8,7 +8,7 @@ import PageContent from '../page-content/page-content';
 const ArticlesList = ({ articles }) => (
   <PageContent>
     <div className="articles-list">
-      <List>
+      <List theme={List.themes.grid}>
         {articles.map(article => {
           const { id } = article;
           return <Article key={id} {...article} />;
