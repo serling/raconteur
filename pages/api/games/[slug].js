@@ -1,4 +1,4 @@
-import { getGameById } from '../../../js/db-helper';
+import { getGameBySlug } from '../../../js/db-helper';
 
 const errorObject = {
   statusCode: 404,
@@ -8,7 +8,7 @@ const errorObject = {
 export default async (req, res) => {
   const { query } = req;
 
-  await getGameById(query.slug)
+  await getGameBySlug(query.slug)
     .then(response => {
       res.status(200).json({ success: true, payload: response });
     })

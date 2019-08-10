@@ -1,4 +1,4 @@
-import { getArticleById } from '../../../js/db-helper';
+import { getArticleBySlug } from '../../../js/db-helper';
 
 const errorObject = {
   statusCode: 404,
@@ -8,7 +8,7 @@ const errorObject = {
 export default async (req, res) => {
   const { query } = req;
 
-  await getArticleById(query.slug)
+  await getArticleBySlug(query.slug)
     .then(response => {
       res.status(200).json({ success: true, payload: response });
     })

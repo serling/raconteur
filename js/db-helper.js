@@ -1,8 +1,6 @@
 import url from 'url';
 import { MongoClient } from 'mongodb';
 
-import LOCAL_WORDS_DB from '../static/data/words.json';
-
 // Create cached connection variable
 let cachedDb = null;
 
@@ -103,7 +101,7 @@ async function getAllGames() {
   return modifiedGames;
 }
 
-async function getArticleById(slug) {
+async function getArticleBySlug(slug) {
   const db = await connectToDatabase(process.env.MONGODB_URI);
 
   const articles = await db.collection('articles');
@@ -118,7 +116,7 @@ async function getArticleById(slug) {
   return data;
 }
 
-async function getGameById(slug) {
+async function getGameBySlug(slug) {
   const db = await connectToDatabase(process.env.MONGODB_URI);
 
   const games = await db.collection('games');
@@ -135,8 +133,14 @@ async function getGameById(slug) {
 
 async function getWordsByType(type) {
   const db = await connectToDatabase(process.env.MONGODB_URI);
+  // .catch(err => {
+  //   return;
+  // });
 
   const wordCollection = await db.collection('words');
+  // .catch(err => {
+  //   return;
+  // });
 
   const singleWord = await wordCollection
     .aggregate([
@@ -178,7 +182,7 @@ async function getWordsByType(type) {
 module.exports = {
   getAllArticles,
   getAllGames,
-  getArticleById,
-  getGameById,
+  getArticleBySlug,
+  getGameBySlug,
   getWordsByType
 };

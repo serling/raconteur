@@ -7,15 +7,17 @@ import Image from '../image/image';
 
 const Article = ({ title, lead, image, slug }) => (
   <div className="article">
-    <div className="article__image">
-      <Image {...image} />
-    </div>
-    <div className="article__title">
-      <Route href="/articles/[slug]" as={`/articles/${slug}`}>
-        <a>{title}</a>
-      </Route>
-    </div>
-    <div className="article__lead">{lead}</div>
+    <Route href="/articles/[slug]" as={`/articles/${slug}`}>
+      <a className="article__content">
+        <div className="article__image">
+          <Image {...image} />
+        </div>
+        <div className="article__text">
+          <div className="article__title">{title}</div>
+          <div className="article__lead">{lead}</div>
+        </div>
+      </a>
+    </Route>
   </div>
 );
 
@@ -23,7 +25,7 @@ Article.propTypes = {
   title: PropTypes.string.isRequired,
   slug: PropTypes.string.isRequired,
   lead: PropTypes.string.isRequired,
-  image: PropTypes.string
+  image: PropTypes.object
 };
 
 export default Article;
