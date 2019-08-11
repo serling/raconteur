@@ -45,12 +45,25 @@ const SuggestionGenerator = props => {
       <PageContent theme={PageContent.themes.full}>
         <List theme={List.themes.grid} isCentered={true}>
           <Button
+            theme={Button.themes.primary}
             text="Profession"
             onClick={() => handleOnClick('professions')}
           />
-          <Button text="Emotion" onClick={() => handleOnClick('emotions')} />
-          <Button text="Name" onClick={() => handleOnClick('names')} />
-          <Button text="Agenda" onClick={() => handleOnClick('agendas')} />
+          <Button
+            theme={Button.themes.primary}
+            text="Emotion"
+            onClick={() => handleOnClick('emotions')}
+          />
+          <Button
+            theme={Button.themes.primary}
+            text="Name"
+            onClick={() => handleOnClick('names')}
+          />
+          <Button
+            theme={Button.themes.primary}
+            text="Agenda"
+            onClick={() => handleOnClick('agendas')}
+          />
         </List>
       </PageContent>
       <style jsx>

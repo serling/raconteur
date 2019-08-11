@@ -6,7 +6,7 @@ import Icon from '../icon/icon';
 import VisuallyHidden from '../visually-hidden/visually-hidden';
 
 const themes = {
-  colored: 'colored'
+  primary: 'primary'
 };
 
 const iconSizes = Icon.sizes;
@@ -105,15 +105,15 @@ const Button = ({
             }
           }
 
-          &--colored {
-            background-color: rgb(82, 11, 11);
+          &--primary {
+            background-color: #2164f3;
             color: white;
             padding: 1rem 2rem;
 
             &:hover,
             &:focus {
               outline: none;
-              color: black;
+              text-decoration: underline;
             }
           }
 
@@ -133,7 +133,6 @@ const Button = ({
           }
 
           &__text {
-            margin-right: 0.5rem;
           }
         }
       `}</style>
