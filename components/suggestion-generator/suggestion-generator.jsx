@@ -7,7 +7,7 @@ import PageContent from '../../components/page-content/page-content';
 const SuggestionGenerator = props => {
   const { endpoint } = props;
 
-  const [activeProfession, setActiveProfession] = useState('generator');
+  const [activeWord, setActiveWord] = useState('generator');
   const [isLoading, setIsLoading] = useState(false);
 
   const getWord = async type => {
@@ -23,7 +23,7 @@ const SuggestionGenerator = props => {
   const handleOnClick = type => {
     getWord(type).then(({ word }) => {
       setIsLoading(false);
-      setActiveProfession(word);
+      setActiveWord(word);
     });
   };
 
@@ -39,7 +39,7 @@ const SuggestionGenerator = props => {
           </div>
         )}
         <div className="suggestion-generator__canvas">
-          <span>{activeProfession}</span>
+          <span>{activeWord}</span>
         </div>
       </PageContent>
       <PageContent theme={PageContent.themes.full}>

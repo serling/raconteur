@@ -49,6 +49,10 @@ const List = ({
 
             &__item {
               margin-top: 1rem;
+
+              @media screen and (min-width: $break-at-sm) {
+                flex: 0 0 calc(100% / 2 - 0.5rem);
+              }
             }
 
             &--unordered {
@@ -77,6 +81,9 @@ const List = ({
               #{$self}__item {
                 @media screen and (min-width: $break-at-sm) {
                   margin: 0.5rem 0 0 0.5rem;
+                }
+
+                @media screen and (min-width: $break-at-md) {
                   flex: 0 0 calc(100% / ${numberOfGridColumns} - 0.5rem);
                 }
               }
@@ -91,6 +98,9 @@ const List = ({
               #{$self}__item {
                 @media screen and (min-width: $break-at-sm) {
                   margin: 2rem 0 0 2rem;
+                }
+
+                @media screen and (min-width: $break-at-md) {
                   flex: 0 0 calc(100% / ${numberOfGridColumns} - 2rem);
                 }
               }

@@ -73,11 +73,16 @@ const RichText = ({ string, className, theme, hasDropCap }) => (
 
           a {
             text-decoration: none;
-            border-bottom: 2px solid blue;
+            border-bottom: 1px solid #da0050;
+            padding-bottom: 1px;
+            color: #da0050;
+            text-decoration: none;
 
             &:hover,
             &:focus {
               border: 0;
+              border-color: #a7003d;
+              color: #a7003d;
             }
 
             &[href*='//'] {
