@@ -7,7 +7,13 @@ const themes = {
   unordered: 'unordered'
 };
 
-const List = ({ children, className, isCentered, theme, gridColumns }) => {
+const List = ({
+  children,
+  className,
+  isCentered,
+  theme,
+  numberOfGridColumns
+}) => {
   return (
     <>
       <ul
@@ -57,7 +63,7 @@ const List = ({ children, className, isCentered, theme, gridColumns }) => {
               #{$self}__item {
                 @media screen and (min-width: $break-at-sm) {
                   margin: 2rem 0 0 2rem;
-                  flex: 0 0 calc(100% / ${gridColumns} - 2rem);
+                  flex: 0 0 calc(100% / ${numberOfGridColumns} - 2rem);
                 }
               }
             }
@@ -70,13 +76,13 @@ const List = ({ children, className, isCentered, theme, gridColumns }) => {
 
 List.defaultProps = {
   theme: themes.unordered,
-  gridColumns: 3
+  numberOfGridColumns: 3
 };
 
 List.propTypes = {
   children: PropTypes.node.isRequired,
   isCentered: PropTypes.bool,
-  gridColumns: PropTypes.oneOf([1, 2, 3, 4, 5, 6]),
+  numberOfGridColumns: PropTypes.oneOf([1, 2, 3, 4, 5, 6]),
   className: PropTypes.string,
   theme: PropTypes.oneOf(Object.keys(themes).map(key => themes[key]))
 };

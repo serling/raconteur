@@ -8,7 +8,7 @@ import PageContent from '../page-content/page-content';
 const Downloads = ({ links }) => (
   <PageContent theme={PageContent.themes.narrow}>
     <div className="downloads">
-      <List gridColumns={2} theme={List.themes.grid}>
+      <List numberOfGridColumns={2} theme={List.themes.grid}>
         {links.map((link, index) => (
           <Link
             key={index}

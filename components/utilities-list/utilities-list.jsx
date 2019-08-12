@@ -8,7 +8,7 @@ import PageContent from '../page-content/page-content';
 
 const UtilitiesList = ({ links }) => (
   <PageContent>
-    <List theme={List.themes.grid} gridColumns={3}>
+    <List theme={List.themes.grid} numberOfGridColumns={3}>
       {links.map((link, index) => (
         <div key={index}>
           <Route href={link.href}>
