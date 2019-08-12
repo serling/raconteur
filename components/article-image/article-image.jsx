@@ -5,8 +5,12 @@ import PageContent from '../page-content/page-content';
 
 const ArticleImage = props => {
   return (
-    <PageContent>
-      <Image {...props} enforceAspectRatio={true} />
+    <PageContent theme={PageContent.themes.wide}>
+      <Image
+        {...props}
+        enforceAspectRatio={true}
+        theme={Image.themes.centerpiece}
+      />
     </PageContent>
   );
 };

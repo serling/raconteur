@@ -38,6 +38,7 @@ const Article = ({ title, lead, image, type, slug, theme }) => (
     </div>
     <style jsx>{`
       .article {
+        $self: &;
         position: relative;
 
         &__link {
@@ -71,21 +72,21 @@ const Article = ({ title, lead, image, type, slug, theme }) => (
         }
 
         &--horizontal {
-          .article__content {
+          #{$self}__content {
             display: flex;
             align-items: flex-start;
           }
 
-          .article__image {
+          #{$self}__image {
             flex: 0 0 60%;
           }
 
-          .article__title {
+          #{$self}__title {
             margin-top: 0.5rem;
             font-size: 2rem;
           }
 
-          .article__lead {
+          #{$self}__lead {
             margin-top: 0.5rem;
             font-size: 1rem;
             line-height: inherit;
@@ -93,21 +94,21 @@ const Article = ({ title, lead, image, type, slug, theme }) => (
         }
 
         &--vertical {
-          .article__text-wrapper {
+          #{$self}__text-wrapper {
             margin-top: -1rem;
           }
 
-          .article__image {
+          #{$self}__image {
             z-index: -1;
           }
 
-          .article__text {
+          #{$self}__text {
             z-index: 1;
           }
         }
 
         &--overlay {
-          .article__text-wrapper {
+          #{$self}__text-wrapper {
             position: absolute;
             top: 0;
             left: 0;
@@ -115,7 +116,7 @@ const Article = ({ title, lead, image, type, slug, theme }) => (
             height: 100%;
           }
 
-          .article__text {
+          #{$self}__text {
             color: #ffffff;
             margin-bottom: 1rem;
           }

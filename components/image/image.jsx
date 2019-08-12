@@ -9,12 +9,17 @@ import Icon from '../icon/icon';
 // https://github.com/cyrilwanner/next-optimized-images/issues/16
 // https://github.com/cyrilwanner/next-optimized-images/issues/63
 
+const themes = {
+  centerpiece: 'centerpiece'
+};
+
 const Image = ({
   text,
   alt,
   src,
   thumbnailSrc,
   credit,
+  theme,
   className,
   enforceAspectRatio
 }) => {
@@ -26,7 +31,8 @@ const Image = ({
         className={cn(
           'image',
           {
-            'image--enforce-aspect-ratio': enforceAspectRatio
+            'image--enforce-aspect-ratio': enforceAspectRatio,
+            [`image--${themes[theme]}`]: themes[theme]
           },
           className
         )}
@@ -55,8 +61,10 @@ const Image = ({
         </div>
         {text && (
           <figcaption className="image__meta">
-            {text && <Text text={text} theme={Text.themes.small} />}
-            {credit && <span className="image__credit">{credit}</span>}
+            <div className="image__meta-content">
+              {text && <Text text={text} theme={Text.themes.small} />}
+              {credit && <span className="image__credit">{credit}</span>}
+            </div>
           </figcaption>
         )}
       </figure>
@@ -64,7 +72,11 @@ const Image = ({
         {`
           .image {
             $self: &;
+            $break-at-sm: 25rem; //400px
+            $break-at-md: 50rem; //800px
+            $break-at-lg: 64rem; //1024px
             $aspect-ratio--sixteen-nine: 56.25%;
+            $aspect-ratio--narrow: 30%;
 
             margin: 0;
 
@@ -109,13 +121,26 @@ const Image = ({
               pointer-events: none;
             }
 
-            &__meta {
-              padding: 0 0.25rem;
+            &__meta-content {
               font-size: 0.8rem;
               margin-top: 0.25rem;
               padding-bottom: 0.25rem;
 
               border-bottom: 1px solid #d4d2d2;
+            }
+
+            &--centerpiece {
+              #{$self}__meta-content {
+                @media screen and (min-width: $break-at-sm) {
+                  padding-left: 1rem;
+                  padding-right: 1rem;
+                }
+              }
+
+              #{$self}__meta {
+                margin: 0 auto;
+                max-width: 768px;
+              }
             }
           }
         `}
@@ -131,7 +156,10 @@ Image.propTypes = {
   src: PropTypes.string.isRequired,
   thumbnailSrc: PropTypes.string,
   credit: PropTypes.string,
+  theme: PropTypes.string,
   enforceAspectRatio: PropTypes.bool
 };
+
+Image.themes = themes;
 
 export default Image;

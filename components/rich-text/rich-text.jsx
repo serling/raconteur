@@ -6,12 +6,15 @@ const themes = {
   lead: 'lead'
 };
 
-const RichText = ({ string, className, theme }) => (
+const RichText = ({ string, className, theme, hasDropCap }) => (
   <>
     <div
       className={cn(
         'rich-text',
-        { [`rich-text--${themes[theme]}`]: themes[theme] },
+        {
+          [`rich-text--${themes[theme]}`]: themes[theme],
+          'rich-text--dropcap': hasDropCap
+        },
         className
       )}
       dangerouslySetInnerHTML={{ __html: string }}
@@ -19,6 +22,14 @@ const RichText = ({ string, className, theme }) => (
     <style jsx global>
       {`
         .rich-text {
+          &--dropcap {
+            > p:first-child::first-letter {
+              color: #da0050;
+              font-size: 2em;
+              font-weight: 600;
+            }
+          }
+
           ul,
           li {
             list-style: inside dot;
@@ -89,7 +100,8 @@ const RichText = ({ string, className, theme }) => (
 RichText.propTypes = {
   string: PropTypes.string.isRequired,
   theme: PropTypes.oneOf(Object.keys(themes).map(key => themes[key])),
-  className: PropTypes.string
+  className: PropTypes.string,
+  hasDropCap: PropTypes.bool
 };
 
 RichText.defaultProps = {

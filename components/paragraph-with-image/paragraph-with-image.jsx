@@ -5,7 +5,7 @@ import RichText from '../rich-text/rich-text';
 import InlineContent from '../inline-content/inline-content';
 
 const ParagraphWithImage = ({
-  string,
+  content,
   inlineComponents,
   contentIsRight,
   contentHasFrame
@@ -22,12 +22,12 @@ const ParagraphWithImage = ({
         }
       />
     )}
-    <RichText string={string} />
+    <RichText {...content} />
   </>
 );
 
 ParagraphWithImage.propTypes = {
-  string: PropTypes.string,
+  content: PropTypes.object,
   inlineComponents: PropTypes.array,
   contentIsRight: PropTypes.bool,
   contentHasFrame: PropTypes.bool
