@@ -8,11 +8,15 @@ import PageContent from '../page-content/page-content';
 const ArticlesList = ({ articles }) => (
   <PageContent>
     <div className="articles-list">
-      <List theme={List.themes.grid} numberOfGridColumns={2}>
+      <List
+        theme={List.themes.grid}
+        numberOfGridColumns={3}
+        gutterSize={List.gutterSizes.small}
+      >
         {articles.map(article => {
           const { id } = article;
           return (
-            <Article key={id} {...article} theme={Article.themes.overlay} />
+            <Article key={id} {...article} theme={Article.themes.vertical} />
           );
         })}
       </List>

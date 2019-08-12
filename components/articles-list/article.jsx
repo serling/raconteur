@@ -7,8 +7,9 @@ import Image from '../image/image';
 import Label from '../label/label';
 
 const themes = {
-  default: 'default',
-  overlay: 'overlay'
+  vertical: 'vertical',
+  overlay: 'overlay',
+  horizontal: 'horizontal'
 };
 
 const Article = ({ title, lead, image, type, slug, theme }) => (
@@ -19,12 +20,12 @@ const Article = ({ title, lead, image, type, slug, theme }) => (
       })}
     >
       <Route href="/articles/[slug]" as={`/articles/${slug}`}>
-        <a className="article__link">
+        <a className="article__link remove-link-styles">
           <div className="article__content">
             <div className="article__image">
-              <Image {...image} />
+              <Image {...image} enforceAspectRatio={true} />
             </div>
-            <div className="article__wrapper">
+            <div className="article__text-wrapper">
               <div className="article__text">
                 {type && <Label text={type} />}
                 <div className="article__title">{title}</div>
@@ -48,7 +49,7 @@ const Article = ({ title, lead, image, type, slug, theme }) => (
           }
         }
 
-        &__wrapper {
+        &__text-wrapper {
           display: flex;
           align-items: flex-end;
         }
@@ -69,8 +70,30 @@ const Article = ({ title, lead, image, type, slug, theme }) => (
           line-height: 1;
         }
 
-        &--default {
-          .article__wrapper {
+        &--horizontal {
+          .article__content {
+            display: flex;
+            align-items: flex-start;
+          }
+
+          .article__image {
+            flex: 0 0 60%;
+          }
+
+          .article__title {
+            margin-top: 0.5rem;
+            font-size: 2rem;
+          }
+
+          .article__lead {
+            margin-top: 0.5rem;
+            font-size: 1rem;
+            line-height: inherit;
+          }
+        }
+
+        &--vertical {
+          .article__text-wrapper {
             margin-top: -1rem;
           }
 
@@ -84,7 +107,7 @@ const Article = ({ title, lead, image, type, slug, theme }) => (
         }
 
         &--overlay {
-          .article__wrapper {
+          .article__text-wrapper {
             position: absolute;
             top: 0;
             left: 0;
@@ -111,7 +134,7 @@ Article.propTypes = {
 };
 
 Article.defaultProps = {
-  theme: themes.default
+  theme: themes.vertical
 };
 
 Article.themes = themes;

@@ -7,12 +7,18 @@ const themes = {
   unordered: 'unordered'
 };
 
+const gutterSizes = {
+  default: 'default',
+  small: 'small'
+};
+
 const List = ({
   children,
   className,
   isCentered,
   theme,
-  numberOfGridColumns
+  numberOfGridColumns,
+  gutterSize
 }) => {
   return (
     <>
@@ -21,7 +27,10 @@ const List = ({
           'list remove-list-styles',
           {
             'list--centered': isCentered,
-            [`list--${themes[theme]}`]: themes[theme]
+            [`list--${themes[theme]}`]: themes[theme],
+            [`list--gutter-size-${gutterSizes[gutterSize]}`]: gutterSizes[
+              gutterSize
+            ]
           },
           className
         )}
@@ -56,6 +65,25 @@ const List = ({
               @media screen and (min-width: $break-at-sm) {
                 display: flex;
                 flex-wrap: wrap;
+              }
+            }
+
+            &--gutter-size-small {
+              @media screen and (min-width: $break-at-sm) {
+                margin-left: -0.5rem;
+                margin-top: -0.5rem;
+              }
+
+              #{$self}__item {
+                @media screen and (min-width: $break-at-sm) {
+                  margin: 0.5rem 0 0 0.5rem;
+                  flex: 0 0 calc(100% / ${numberOfGridColumns} - 0.5rem);
+                }
+              }
+            }
+
+            &--gutter-size-default {
+              @media screen and (min-width: $break-at-sm) {
                 margin-left: -2rem;
                 margin-top: -2rem;
               }
@@ -76,7 +104,8 @@ const List = ({
 
 List.defaultProps = {
   theme: themes.unordered,
-  numberOfGridColumns: 3
+  numberOfGridColumns: 3,
+  gutterSize: gutterSizes.default
 };
 
 List.propTypes = {
@@ -84,9 +113,11 @@ List.propTypes = {
   isCentered: PropTypes.bool,
   numberOfGridColumns: PropTypes.oneOf([1, 2, 3, 4, 5, 6]),
   className: PropTypes.string,
+  gutterSize: PropTypes.string,
   theme: PropTypes.oneOf(Object.keys(themes).map(key => themes[key]))
 };
 
 List.themes = themes;
+List.gutterSizes = gutterSizes;
 
 export default List;
