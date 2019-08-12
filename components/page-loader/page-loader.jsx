@@ -5,7 +5,8 @@ const PageLoader = () => (
     <style jsx>{`
       .page-loader {
         position: absolute;
-        top: 0;
+        left: 50%;
+        top: 50%;
         border: 8px solid #f3f3f3;
         border-top: 8px solid #3498db;
         border-radius: 50%;

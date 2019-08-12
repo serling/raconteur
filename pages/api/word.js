@@ -14,7 +14,8 @@ const validTypes = {
   professions: 'professions',
   emotions: 'emotions',
   names: 'names',
-  agendas: 'agendas'
+  needs: 'needs',
+  quirks: 'quirks'
 };
 
 export default async (req, res) => {

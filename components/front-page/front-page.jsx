@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import Layout from '../layout/layout';
 import PageTitle from '../page-title/page-title';
+import PageLoader from '../page-loader/page-loader';
 
 class FrontPage extends React.Component {
   static pageTransitionDelayEnter = true;
@@ -10,6 +11,9 @@ class FrontPage extends React.Component {
   state = { hasLoaded: false };
 
   componentDidMount() {
+    // setTimeout(() => {
+
+    // }, 0);
     this.setState(
       {
         hasLoaded: true

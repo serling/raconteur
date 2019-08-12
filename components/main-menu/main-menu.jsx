@@ -14,7 +14,9 @@ const MainMenu = ({ onClose, isVisible }) => (
       theme={Modal.themes.menu}
     >
       <div className="main-menu">
-        <Heading level={2} text="Main menu" />
+        <div className="main-menu__heading">
+          <Heading level={2} text="Main menu" />
+        </div>
         <div className="main-menu__content">
           <menu>
             <li>thing</li>
@@ -30,6 +32,10 @@ const MainMenu = ({ onClose, isVisible }) => (
           margin-top: 0.5rem;
           padding-top: 0.5rem;
           border-top: 1px solid black;
+        }
+
+        &__heading {
+          margin-bottom: 1rem;
         }
       }
     `}</style>

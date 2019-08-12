@@ -133,14 +133,8 @@ async function getGameBySlug(slug) {
 
 async function getWordsByType(type) {
   const db = await connectToDatabase(process.env.MONGODB_URI);
-  // .catch(err => {
-  //   return;
-  // });
 
   const wordCollection = await db.collection('words');
-  // .catch(err => {
-  //   return;
-  // });
 
   const singleWord = await wordCollection
     .aggregate([
@@ -161,9 +155,8 @@ async function getWordsByType(type) {
     ])
     .toArray()
     .then(response => {
-      // this step is unnecessary if we aggregate the db query with $replaceRoot
-      // pick one random from the whole set of a type
       return response.map(dataObject => {
+        // pick one random from the whole set of a type
         const words = dataObject[type];
 
         return words[Math.floor(Math.random() * words.length)];
