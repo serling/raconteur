@@ -131,6 +131,52 @@ async function getGameBySlug(slug) {
   return data;
 }
 
+async function getFrontPage() {
+  const db = await connectToDatabase(process.env.MONGODB_URI);
+
+  const frontPage = await db.collection('pages');
+
+  const page = await frontPage
+    .aggregate([
+      {
+        $match: {
+          slug: 'home'
+        }
+      },
+      {
+        $lookup: {
+          from: 'articles',
+          localField: 'articleId',
+          foreignField: 'articleId',
+          as: 'articles'
+        }
+      },
+      {
+        $project: {
+          pageTitle: '$pageTitle',
+          title: '$title',
+          articles: {
+            $map: {
+              input: '$articles',
+              as: 'article',
+              in: '$$article.meta'
+            }
+          }
+        }
+      },
+      {
+        $replaceRoot: { newRoot: { $mergeObjects: [ { articles: "$articles" }, "$$ROOT" ] } }
+      }
+    ])
+    .toArray();
+
+  console.log('PAGE AGGREGATE:', page);
+
+  const data = page[0];
+
+  return data;
+}
+
 async function getWordsByType(type) {
   const db = await connectToDatabase(process.env.MONGODB_URI);
 
@@ -177,5 +223,6 @@ module.exports = {
   getAllGames,
   getArticleBySlug,
   getGameBySlug,
-  getWordsByType
+  getWordsByType,
+  getFrontPage
 };
