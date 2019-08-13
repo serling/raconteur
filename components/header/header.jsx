@@ -45,8 +45,8 @@ class Header extends React.Component {
                 </Route>
               </div>
               <div className="header__link">
-                <Route href="/utilities">
-                  <a>Utilities</a>
+                <Route href="/suggestions">
+                  <a>Suggestions</a>
                 </Route>
               </div>
             </nav>

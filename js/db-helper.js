@@ -81,6 +81,17 @@ const queryFrontPage = () => {
   ]
 }
 
+const querySuggestionsPage = () => {
+  return [
+    {
+      $match: {
+        slug: 'suggestions'
+      }
+    }
+  ]
+}
+
+
 async function getAllArticles() {
   const db = await connectToDatabase(process.env.MONGODB_URI);
 
@@ -164,16 +175,30 @@ async function getGameBySlug(slug) {
 async function getFrontPage() {
   const db = await connectToDatabase(process.env.MONGODB_URI);
 
-  const frontPage = await db.collection('pages');
+  const pages = await db.collection('pages');
 
-  const page = await frontPage
+  const frontPage = await pages
     .aggregate(queryFrontPage())
     .toArray();
 
-  console.log('PAGE AGGREGATE:', page);
+    
+  const data = frontPage[0];
 
-  const data = page[0];
+  return data;
+}
 
+async function getSuggestionsPage() {
+  const db = await connectToDatabase(process.env.MONGODB_URI);
+
+  const pages = await db.collection('pages');
+
+  const suggestionsPage = await pages
+    .aggregate(querySuggestionsPage())
+    .toArray();
+
+    
+  const data = suggestionsPage[0];
+    
   return data;
 }
 
@@ -224,5 +249,6 @@ module.exports = {
   getArticleBySlug,
   getGameBySlug,
   getWordsByType,
-  getFrontPage
+  getFrontPage,
+  getSuggestionsPage
 };
