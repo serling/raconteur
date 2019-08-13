@@ -70,7 +70,7 @@ const queryFrontPage = () => {
           $map: {
             input: '$articles',
             as: 'article',
-            in: { $mergeObjects : ['$$article.meta', { id: '$$article.id' }, { slug: '$$article.slug' }] }
+            in: { $mergeObjects : ['$$article.meta', '$$article'] }
           }
         }
       }
