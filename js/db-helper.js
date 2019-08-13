@@ -25,19 +25,14 @@ async function connectToDatabase(uri) {
   return db;
 }
 
-const allOfType = type => {
+const queryAllOfType = type => {
   return [
     {
       $lookup: {
         from: type,
-        localField: '_id',
+        localField: 'id',
         foreignField: 'id',
         as: type
-      }
-    },
-    {
-      $addFields: {
-        id: '$_id'
       }
     },
     {
@@ -51,13 +46,48 @@ const allOfType = type => {
   ];
 };
 
+const queryFrontPage = () => {
+  return [
+    {
+      $match: {
+        slug: 'home'
+      }
+    },
+    {
+      $lookup: {
+        from: 'articles',
+        localField: 'articleId',
+        foreignField: 'articleId',
+        as: 'articles'
+      }
+    },
+    {
+      $project: {
+        pageTitle: true,
+        title: true,
+        _id: false,
+        articles: {
+          $map: {
+            input: '$articles',
+            as: 'article',
+            in: { $mergeObjects : ['$$article.meta', { id: '$$article.id' }, { slug: '$$article.slug' }] }
+          }
+        }
+      }
+    },
+    {
+      $replaceRoot: { newRoot: { $mergeObjects: [ { articles: "$articles" }, "$$ROOT" ] } }
+    }
+  ]
+}
+
 async function getAllArticles() {
   const db = await connectToDatabase(process.env.MONGODB_URI);
 
   const articles = await db.collection('articles');
 
   const modifiedArticles = await articles
-    .aggregate(allOfType('articles'))
+    .aggregate(queryAllOfType('articles'))
     .toArray()
     .then(response => {
       // this step is unnecessary if we aggregate the db query with $replaceRoot
@@ -82,7 +112,7 @@ async function getAllGames() {
   const games = await db.collection('games');
 
   const modifiedGames = await games
-    .aggregate(allOfType('games'))
+    .aggregate(queryAllOfType('games'))
     .toArray()
     .then(response => {
       // this step is unnecessary if we aggregate the db query with $replaceRoot
@@ -137,37 +167,7 @@ async function getFrontPage() {
   const frontPage = await db.collection('pages');
 
   const page = await frontPage
-    .aggregate([
-      {
-        $match: {
-          slug: 'home'
-        }
-      },
-      {
-        $lookup: {
-          from: 'articles',
-          localField: 'articleId',
-          foreignField: 'articleId',
-          as: 'articles'
-        }
-      },
-      {
-        $project: {
-          pageTitle: '$pageTitle',
-          title: '$title',
-          articles: {
-            $map: {
-              input: '$articles',
-              as: 'article',
-              in: '$$article.meta'
-            }
-          }
-        }
-      },
-      {
-        $replaceRoot: { newRoot: { $mergeObjects: [ { articles: "$articles" }, "$$ROOT" ] } }
-      }
-    ])
+    .aggregate(queryFrontPage())
     .toArray();
 
   console.log('PAGE AGGREGATE:', page);
@@ -187,8 +187,8 @@ async function getWordsByType(type) {
       {
         $lookup: {
           from: 'words',
-          localField: '_id',
-          foreignField: '_id',
+          localField: 'wordId',
+          foreignField: 'wordId',
           as: 'words'
         }
       },
