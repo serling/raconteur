@@ -56,9 +56,10 @@ const queryFrontPage = () => {
     {
       $lookup: {
         from: 'articles',
-        localField: 'articleId',
-        foreignField: 'articleId',
-        as: 'articles'
+        as: 'articles',
+        pipeline: [
+          { $limit: 3 }
+        ]
       }
     },
     {
