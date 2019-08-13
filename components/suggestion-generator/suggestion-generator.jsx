@@ -61,8 +61,13 @@ const SuggestionGenerator = props => {
           />
           <Button
             theme={Button.themes.primary}
-            text="Agenda"
-            onClick={() => handleOnClick('agendas')}
+            text="Quirk"
+            onClick={() => handleOnClick('quirks')}
+          />
+          <Button
+            theme={Button.themes.primary}
+            text="Need"
+            onClick={() => handleOnClick('needs')}
           />
         </List>
       </PageContent>
