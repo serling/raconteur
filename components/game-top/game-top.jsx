@@ -9,8 +9,8 @@ import Text from '../text/text';
 
 const GameTop = ({ title, subtitle, lead, categories }) => (
   <>
-    <PageContent theme={PageContent.themes.narrow} backgroundColor='black'>
       <div className="game-top">
+    <PageContent theme={PageContent.themes.narrow} backgroundColor='black'>
         <div className="game-top__heading">
           game
           <Heading text={title} level={1} />
@@ -31,13 +31,16 @@ const GameTop = ({ title, subtitle, lead, categories }) => (
         <div className="game-top__highlights">
             info that pops out
         </div>
-      </div>
     </PageContent>
+      </div>
     <style jsx>{`
       .game-top {
         $break-at-sm: 25rem; //400px
         $break-at-md: 50rem; //800px
         $break-at-lg: 64rem; //1024px
+
+        margin-bottom: 2rem;
+        border-bottom: 1rem solid #da0050;
 
         &__heading {
           color: white;
