@@ -15,7 +15,7 @@ const ArticlesGrid = ({ articles, readMore }) => (
         {articles.map((article, index) => {
           const { id } = article;
           return (
-            <Article key={id} {...article} theme={index === 1 ? Article.themes.vertical : Article.themes.overlay } imageAspect={index === 0 ? Image.aspects.wider : undefined}  />
+            <Article key={id} {...article} theme={index === 0 ? Article.themes.hero : undefined || index === 1 ? Article.themes.vertical : Article.themes.overlay } imageAspect={index === 0 ? Image.aspects.wider : undefined}  />
           );
         })}
       </Grid>

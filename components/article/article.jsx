@@ -9,6 +9,7 @@ import Label from '../label/label';
 const themes = {
   vertical: 'vertical',
   overlay: 'overlay',
+  hero: 'hero',
   horizontal: 'horizontal'
 };
 
@@ -39,6 +40,10 @@ const Article = ({ title, lead, image, type, slug, theme, imageAspect }) => (
     <style jsx>{`
       .article {
         $self: &;
+        $break-at-sm: 25rem; //400px
+        $break-at-md: 50rem; //800px
+        $break-at-lg: 64rem; //1024px
+
         position: relative;
 
         &__link {
@@ -107,6 +112,28 @@ const Article = ({ title, lead, image, type, slug, theme, imageAspect }) => (
           }
         }
 
+        &--hero {
+            #{$self}__text-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+          }
+
+          #{$self}__text {
+            color: #ffffff;
+            margin-bottom: 1rem;
+          }
+
+          #{$self}__title {
+            @media screen and (min-width: $break-at-md) {
+              font-size: 2rem;
+              line-height: 1.5;            
+            }
+          }
+        }
+
         &--overlay {
           #{$self}__text-wrapper {
             position: absolute;
@@ -120,6 +147,8 @@ const Article = ({ title, lead, image, type, slug, theme, imageAspect }) => (
             color: #ffffff;
             margin-bottom: 1rem;
           }
+
+          
         }
       }
     `}</style>
