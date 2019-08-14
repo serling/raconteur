@@ -29,7 +29,7 @@ const GameTop = ({ title, subtitle, lead, categories }) => (
           <Text text={lead} theme={Text.themes.lead} />
         </div>
         <div className="game-top__highlights">
-              info that pops out
+            info that pops out
         </div>
       </div>
     </PageContent>
@@ -39,8 +39,6 @@ const GameTop = ({ title, subtitle, lead, categories }) => (
         $break-at-md: 50rem; //800px
         $break-at-lg: 64rem; //1024px
 
-        position: relative;
-
         &__heading {
           color: white;
         }
@@ -48,6 +46,7 @@ const GameTop = ({ title, subtitle, lead, categories }) => (
         &__lead {
           margin-top: 1rem;
           color: white;
+          margin-bottom: 2rem;
         }
 
         &__meta {
@@ -65,8 +64,6 @@ const GameTop = ({ title, subtitle, lead, categories }) => (
           box-shadow: 2px 2px 5px 0px black;
           background-color: white;
           padding: 1.5rem;
-          position: absolute;
-           width: 100%;
         }
 
         &__list {

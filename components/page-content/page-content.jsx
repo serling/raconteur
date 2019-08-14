@@ -18,7 +18,7 @@ const margins = {
 
 const colors = Colors;
 
-const PageContent = ({ theme, margin, children, backgroundColor, backgroundImageHref }) => (
+const PageContent = ({ theme, margin, children, backgroundColor, backgroundImageHref, className }) => (
   <>
     <div
       className={cn('page-content', {
@@ -26,7 +26,7 @@ const PageContent = ({ theme, margin, children, backgroundColor, backgroundImage
         [`page-content--margins-${margins[margin]}`]: margins[margin],
         [`page-content--${colors[backgroundColor]}`]: colors[backgroundColor],
         'page-content--background': !!colors[backgroundColor] || backgroundImageHref
-      })}
+      }, className)}
       style={backgroundImageHref ? {background:`url(${backgroundImageHref}) no-repeat center`}: undefined}
     >
       <div className="page-content__inner">{children}</div>
@@ -120,7 +120,8 @@ PageContent.propTypes = {
   children: PropTypes.node,
   backgroundColor: PropTypes.oneOf(Object.keys(colors).map(key => colors[key])),
   theme: PropTypes.oneOf(Object.keys(themes).map(key => themes[key])),
-  margins: PropTypes.oneOf(Object.keys(margins).map(key => margins[key]))
+  margins: PropTypes.oneOf(Object.keys(margins).map(key => margins[key])),
+  className: PropTypes.string
 };
 
 PageContent.defaultProps = {
