@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import cn from 'classnames';
 
 import DynamicContent from '../dynamic-content/dynamic-content';
+import Frame from '../frame/frame';
 
 const alignments = {
   left: 'left',
@@ -23,9 +24,8 @@ const InlineContent = ({ components, alignment, theme }) => (
         [`inline-content--${themes[theme]}`]: themes[theme]
       })}
     >
-      <div className="inline-content__inner">
-        <DynamicContent components={components} />
-      </div>
+      {theme === themes.frame ? <Frame><DynamicContent components={components} /></Frame> : <DynamicContent components={components} />}
+        
     </div>
     <style jsx>
       {`
@@ -51,13 +51,6 @@ const InlineContent = ({ components, alignment, theme }) => (
               float: right;
               width: 50%;
               margin: 0 0 1rem $gutter;
-            }
-          }
-
-          &--frame {
-            #{$self}__inner {
-              background-color: lightgrey;
-              padding: 1rem;
             }
           }
         }

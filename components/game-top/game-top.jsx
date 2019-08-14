@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Heading from '../heading/heading';
 import PageContent from '../page-content/page-content';
 import Text from '../text/text';
+import Frame from '../frame/frame';
 
 // https://css-tricks.com/snippets/css/complete-guide-grid/
 
@@ -29,7 +30,9 @@ const GameTop = ({ title, subtitle, lead, categories }) => (
           <Text text={lead} theme={Text.themes.lead} />
         </div>
         <div className="game-top__highlights">
+          <Frame>
             info that pops out
+          </Frame>
         </div>
     </PageContent>
       </div>
@@ -38,10 +41,16 @@ const GameTop = ({ title, subtitle, lead, categories }) => (
         $break-at-sm: 25rem; //400px
         $break-at-md: 50rem; //800px
         $break-at-lg: 64rem; //1024px
+        $underline-color: #da0050;
 
+        border-bottom: 0.5rem solid $underline-color;
         margin-bottom: 2rem;
-        border-bottom: 1rem solid #da0050;
-
+        
+        @media screen and (min-width: $break-at-md) {
+          margin-bottom: 4rem;
+          border-bottom: 1rem solid $underline-color;
+        }
+        
         &__heading {
           color: white;
         }
@@ -64,9 +73,9 @@ const GameTop = ({ title, subtitle, lead, categories }) => (
         }
 
         &__highlights {
-          box-shadow: 2px 2px 5px 0px black;
-          background-color: white;
-          padding: 1.5rem;
+          @media screen and (min-width: $break-at-md) {
+            position: absolute;
+          }
         }
 
         &__list {
