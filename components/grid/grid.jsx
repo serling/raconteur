@@ -28,6 +28,7 @@ const Grid = ({ children, theme }) => {
     <style jsx>
     {`
       .grid {
+        $self: &;
         display: grid;
         grid-template-rows: auto;
         grid-column-gap: 0.5rem;
@@ -35,10 +36,37 @@ const Grid = ({ children, theme }) => {
 
         &--default {
           grid-template-columns: 1fr 1fr 1fr 1fr;
-          grid-template-areas: 
-            "first first first second"
-            "third third fourth fourth"
-            "fifth sixth seventh eighth";
+
+        #{$self}__item--0 {
+          grid-row: 1 / span 2;
+          grid-column: 1 / span 3;
+        }
+
+        #{$self}__item--1 {
+          grid-row: 1 / span 1;
+        }
+
+        #{$self}__item--2 {
+        }
+
+        #{$self}__item--3 {
+          grid-column: 1 / span 2;
+        }
+
+        #{$self}__item--4 {
+          grid-column: 3 / span 2;
+        }
+
+        #{$self}__item--5 {
+          
+        }
+
+        #{$self}__item--6 {
+        }
+
+        #{$self}__item--7 {
+        }
+          
         }
 
         &--uniform {
@@ -50,43 +78,38 @@ const Grid = ({ children, theme }) => {
         }
 
         &__item--0 {
-          grid-area: first;
+          grid-row: 1 / span 2;
+          grid-column: 1 / span 3;
           background-color: blue;
         }
 
         &__item--1 {
-          grid-area: second;
+          grid-row: 3 / span 1;
           background-color: yellow;
         }
 
         &__item--2 {
-          grid-area: third;
           background-color: cyan;
         }
 
         &__item--3 {
-          grid-area: fourth;
           background-color: purple;
         }
 
         &__item--4 {
-          grid-area: fifth;
           background-color: magenta;
         }
 
         &__item--5 {
-          grid-area: sixth;
           background-color: black;
           color: white;
         }
 
         &__item--6 {
-          grid-area: seventh;
           background-color: green;
         }
 
         &__item--7 {
-          grid-area: eighth;
           background-color: darkred;
         }
       }
