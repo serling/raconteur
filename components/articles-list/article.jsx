@@ -12,7 +12,7 @@ const themes = {
   horizontal: 'horizontal'
 };
 
-const Article = ({ title, lead, image, type, slug, theme }) => (
+const Article = ({ title, lead, image, type, slug, theme, imageAspect }) => (
   <>
     <div
       className={cn('article', {
@@ -23,7 +23,7 @@ const Article = ({ title, lead, image, type, slug, theme }) => (
         <a className="article__link remove-link-styles">
           <div className="article__content">
             <div className="article__image">
-              <Image {...image} enforceAspectRatio={true} />
+              <Image {...image} aspect={imageAspect} />
             </div>
             <div className="article__text-wrapper">
               <div className="article__text">
@@ -131,7 +131,8 @@ Article.propTypes = {
   type: PropTypes.string,
   slug: PropTypes.string.isRequired,
   lead: PropTypes.string,
-  image: PropTypes.object
+  image: PropTypes.object,
+  imageAspect: PropTypes.string
 };
 
 Article.defaultProps = {

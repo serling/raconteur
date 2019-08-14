@@ -6,6 +6,7 @@ import PageTitle from '../page-title/page-title';
 import ArticlesList from '../articles-list/articles-list';
 import Grid from '../grid/grid';
 import Article from '../articles-list/article';
+import Image from '../image/image';
 
 class FrontPage extends React.Component {
   static pageTransitionDelayEnter = true;
@@ -35,17 +36,9 @@ class FrontPage extends React.Component {
         <PageTitle text={title} />
         <ArticlesList articles={articles} />
         <Grid>
-        {/* {articles.map(article => (
-          <Article {...article} />
-        ))} */}
-          <div>1</div>
-          <div>2</div>
-          <div>3</div>
-          <div>4</div>
-          <div>5</div>
-          <div>6</div>
-          <div>7</div>
-          <div>8</div>
+        {articles.map((article, index) => (
+          <Article {...article} theme={index === 1 ? Article.themes.vertical : Article.themes.overlay } imageAspect={index === 0 ? Image.aspects.wider : undefined} />
+        ))}
         </Grid>
       </Layout>
     );

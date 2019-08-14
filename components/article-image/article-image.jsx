@@ -8,7 +8,7 @@ const ArticleImage = props => {
     <PageContent theme={PageContent.themes.wide}>
       <Image
         {...props}
-        enforceAspectRatio={true}
+        aspect={Image.aspects.wide}
         theme={Image.themes.centerpiece}
       />
     </PageContent>

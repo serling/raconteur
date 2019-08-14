@@ -36,6 +36,8 @@ const Layout = ({ children, title }) => {
 
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+
+            background-color: #f9f8f3fc;
           }
 
           html {

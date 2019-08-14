@@ -74,7 +74,7 @@ const Heading = ({ children, text, className, level, theme }) => {
 
               #{$self}__text {
                 padding-right: 0.5rem;
-                background-color: white;
+                background-color: transparent;
               }
             }
           }

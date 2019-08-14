@@ -13,6 +13,11 @@ const themes = {
   centerpiece: 'centerpiece'
 };
 
+const aspects = {
+  wide: 'wide',
+  wider: 'wider'
+};
+
 const Image = ({
   text,
   alt,
@@ -21,7 +26,7 @@ const Image = ({
   credit,
   theme,
   className,
-  enforceAspectRatio
+  aspect
 }) => {
   if (!src || !alt) return null;
 
@@ -31,8 +36,9 @@ const Image = ({
         className={cn(
           'image',
           {
-            'image--enforce-aspect-ratio': enforceAspectRatio,
-            [`image--${themes[theme]}`]: themes[theme]
+            'image--forced-aspect': !!aspect,
+            [`image--${themes[theme]}`]: themes[theme],
+            [`image--${aspects[aspect]}`]: aspects[aspect]
           },
           className
         )}
@@ -75,16 +81,15 @@ const Image = ({
             $break-at-sm: 25rem; //400px
             $break-at-md: 50rem; //800px
             $break-at-lg: 64rem; //1024px
-            $aspect-ratio--sixteen-nine: 56.25%;
-            $aspect-ratio--narrow: 30%;
+            $aspect-ratio--wide: 56.25%;
+            $aspect-ratio--wider: 43%;
 
             margin: 0;
 
-            &--enforce-aspect-ratio {
+            &--forced-aspect {
               #{$self}__wrapper {
                 height: 0;
                 overflow: hidden;
-                padding-top: $aspect-ratio--sixteen-nine;
               }
 
               #{$self}__image {
@@ -97,6 +102,18 @@ const Image = ({
                 right: 0;
                 top: 50%;
                 transform: translateY(-50%);
+              }
+            }
+
+            &--wide {
+              #{$self}__wrapper {
+                padding-top: $aspect-ratio--wide;
+              }
+            }
+
+            &--wider {
+              #{$self}__wrapper {
+                padding-top: $aspect-ratio--wider;
               }
             }
 
@@ -157,9 +174,10 @@ Image.propTypes = {
   thumbnailSrc: PropTypes.string,
   credit: PropTypes.string,
   theme: PropTypes.string,
-  enforceAspectRatio: PropTypes.bool
+  aspect: PropTypes.string
 };
 
 Image.themes = themes;
+Image.aspects = aspects;
 
 export default Image;

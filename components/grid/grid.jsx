@@ -12,7 +12,7 @@ const themes = {
 const Grid = ({ children, theme }) => {
   return (
       <>
-      <PageContent>
+      <PageContent theme={PageContent.themes.wide}>
     <div className={cn("grid", {
       [`grid--${themes[theme]}`]: themes[theme]
     })}>
@@ -35,26 +35,44 @@ const Grid = ({ children, theme }) => {
         grid-row-gap: 0.5rem;
 
         &--default {
-          grid-template-columns: 1fr 1fr 1fr 1fr;
+          grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 
         #{$self}__item--0 {
           grid-row: 1 / span 2;
-          grid-column: 1 / span 3;
+          grid-column: 1 / span 6;
+          position: relative;
+
+          &::after {
+            display: block;
+            width: 0;
+            height: 0;
+            border: 0 solid transparent;
+            border-right-color: #f9f8f3fc;
+            border-width: 0 2rem 2rem 0;
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 0;
+            z-index: 5;
+          }
         }
 
         #{$self}__item--1 {
-          grid-row: 1 / span 1;
+          grid-row: 1 / span 2;
+          grid-column: 7 / span 3;
+          padding-top: 2rem;
         }
 
         #{$self}__item--2 {
+          grid-column: 1 / span 3;
         }
 
         #{$self}__item--3 {
-          grid-column: 1 / span 2;
+          grid-column: 4 / span 3;
         }
 
         #{$self}__item--4 {
-          grid-column: 3 / span 2;
+          grid-column: 7 / span 3;
         }
 
         #{$self}__item--5 {
@@ -74,43 +92,30 @@ const Grid = ({ children, theme }) => {
         }
         
         &__item {
-          background-color: gray;
         }
 
         &__item--0 {
-          grid-row: 1 / span 2;
-          grid-column: 1 / span 3;
-          background-color: blue;
         }
 
         &__item--1 {
-          grid-row: 3 / span 1;
-          background-color: yellow;
         }
 
         &__item--2 {
-          background-color: cyan;
         }
 
         &__item--3 {
-          background-color: purple;
         }
 
         &__item--4 {
-          background-color: magenta;
         }
 
         &__item--5 {
-          background-color: black;
-          color: white;
         }
 
         &__item--6 {
-          background-color: green;
         }
 
         &__item--7 {
-          background-color: darkred;
         }
       }
     `}

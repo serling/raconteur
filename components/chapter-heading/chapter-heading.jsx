@@ -19,7 +19,7 @@ const ChapterHeading = ({ title, subtitle, image, theme }) => (
     >
       {image && (
         <div className="chapter-heading__image">
-          <Image {...image} enforceAspectRatio={true} />
+          <Image {...image} aspect={Image.aspects.wide} />
         </div>
       )}
       <div className="chapter-heading__text">
