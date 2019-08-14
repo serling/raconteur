@@ -58,7 +58,7 @@ const queryFrontPage = () => {
         from: 'articles',
         as: 'articles',
         pipeline: [
-          { $limit: 3 }
+          { $limit: 5 }
         ]
       }
     },

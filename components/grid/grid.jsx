@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
-import PageContent from '../page-content/page-content';
-
 const themes = {
   default: "default",
   uniform: "uniform"
@@ -11,8 +9,7 @@ const themes = {
 
 const Grid = ({ children, theme }) => {
   return (
-      <>
-      <PageContent theme={PageContent.themes.wide}>
+    <>
     <div className={cn("grid", {
       [`grid--${themes[theme]}`]: themes[theme]
     })}>
@@ -24,15 +21,21 @@ const Grid = ({ children, theme }) => {
         );
       })}
     </div>
-    </PageContent>
     <style jsx>
     {`
       .grid {
         $self: &;
+        $break-at-sm: 25rem; //400px
+        $break-at-md: 50rem; //800px
+        $break-at-lg: 64rem; //1024px
+
         display: grid;
         grid-template-rows: auto;
         grid-column-gap: 0.5rem;
-        grid-row-gap: 0.5rem;
+        grid-row-gap: 0.5rem; 
+        
+        @media screen and (min-width: $break-at-md) {
+        }
 
         &--default {
           grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;

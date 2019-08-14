@@ -19,7 +19,7 @@ const ChapterHeading = ({ title, subtitle, image, theme }) => (
     >
       {image && (
         <div className="chapter-heading__image">
-          <Image {...image} aspect={Image.aspects.wide} />
+          <Image {...image} aspect={Image.aspects.wider} />
         </div>
       )}
       <div className="chapter-heading__text">
@@ -39,10 +39,10 @@ const ChapterHeading = ({ title, subtitle, image, theme }) => (
           $self: &;
           $gutter: 2rem;
           $break-at-md: 50rem; //800px
+          $backgroundColor: #f9f8f3fc;
 
           &--overlap {
             position: relative;
-            z-index: -1; //TODO: workaround for pulling out the lead text
 
             #{$self}__text {
               @media screen and (min-width: $break-at-md) {
@@ -50,6 +50,10 @@ const ChapterHeading = ({ title, subtitle, image, theme }) => (
                 left: 0;
                 top: 2rem;
                 z-index: 10;
+              }
+
+              #{$self}__heading {
+                background-color: $backgroundColor;
               }
             }
 
@@ -69,7 +73,7 @@ const ChapterHeading = ({ title, subtitle, image, theme }) => (
           &__subtitle {
             line-height: 1;
             margin-top: 0.5rem;
-            background-color: white;
+            background-color: $backgroundColor;
             display: inline-block;
 
             @media screen and (min-width: $break-at-md) {

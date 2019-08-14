@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Article from './article';
+import Article from '../article/article';
 import List from '../list/list';
 import PageContent from '../page-content/page-content';
 

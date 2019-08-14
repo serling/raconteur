@@ -1,7 +1,6 @@
 import Route from 'next/link';
 
 import Button from '../button/button';
-import Link from '../link/link';
 import MainMenu from '../main-menu/main-menu';
 
 class Header extends React.Component {
@@ -32,11 +31,6 @@ class Header extends React.Component {
               <div className="header__link">
                 <Route href="/index">
                   <a>Home</a>
-                </Route>
-              </div>
-              <div className="header__link">
-                <Route href="/articles">
-                  <a>Articles</a>
                 </Route>
               </div>
               <div className="header__link">

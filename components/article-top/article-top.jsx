@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import cn from 'classnames';
 
 import PageContent from '../page-content/page-content';
 import ChapterHeading from '../chapter-heading/chapter-heading';
@@ -17,64 +16,23 @@ const ArticleTop = ({
     <>
       <PageContent theme={PageContent.themes.wide}>
         <div className="article-top">
-          <div className="article-top__heading">
-            <ChapterHeading
-              title={title}
-              subtitle={subtitle}
-              image={image}
-              theme={
-                headingShouldOverlapImage
-                  ? ChapterHeading.themes.overlap
-                  : undefined
-              }
-            />
-          </div>
-          {lead && (
-            <Lead
-              lead={lead}
-              headingShouldOverlapImage={headingShouldOverlapImage}
-            />
-          )}
+          <ChapterHeading
+            title={title}
+            subtitle={subtitle}
+            image={image}
+            theme={
+              headingShouldOverlapImage
+                ? ChapterHeading.themes.overlap
+                : undefined
+            }
+          />
         </div>
       </PageContent>
-    </>
-  );
-};
-
-const Lead = ({ lead, headingShouldOverlapImage }) => {
-  return (
-    <>
-      <div
-        className={cn('article-lead', {
-          'article-lead--overlap': headingShouldOverlapImage
-        })}
-      >
-        <Text text={lead} theme={Text.themes.lead} />
-      </div>
-      <style jsx>
-        {`
-          $break-at-md: 50rem;
-
-          .article-lead {
-            max-width: 768px;
-            margin: 2rem auto 0 auto;
-
-            @media screen and (min-width: $break-at-md) {
-              padding: 0 1rem;
-            }
-
-            &--overlap {
-              margin-top: 1rem;
-
-              @media screen and (min-width: $break-at-md) {
-                padding: 0.5rem 0 0 1rem;
-                margin-top: -2.5rem;
-                background-color: white;
-              }
-            }
-          }
-        `}
-      </style>
+      {lead && 
+        <PageContent theme={PageContent.themes.narrow}>
+          <Text text={lead} theme={Text.themes.lead} />
+        </PageContent>
+      }
     </>
   );
 };
@@ -83,8 +41,7 @@ ArticleTop.propTypes = {
   title: PropTypes.string,
   subtitle: PropTypes.string,
   lead: PropTypes.string,
-  image: PropTypes.object,
-  headingShouldOverlapImage: PropTypes.bool
+  image: PropTypes.object
 };
 
 export default ArticleTop;

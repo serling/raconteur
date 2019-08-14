@@ -6,6 +6,7 @@ import Icon from '../icon/icon';
 
 const themes = {
   underlined: 'underlined',
+  primary: 'primary',
   arrow: 'arrow',
   download: 'download'
 };
@@ -78,6 +79,22 @@ const Link = ({ text, href, theme, className, children, iconName }) => (
             &:hover {
               border-bottom: 1px solid black;
             }
+          }
+
+          &--primary {
+            text-decoration: none;
+            border-bottom: 1px solid #da0050;
+            padding-bottom: 1px;
+            color: #da0050;
+            text-decoration: none;
+
+            &:hover,
+            &:focus {
+              border: 0;
+              border-color: #a7003d;
+              color: #a7003d;
+            }
+
           }
 
           &--arrow {
