@@ -5,9 +5,9 @@ import Article from '../article/article';
 import Grid from '../grid/grid';
 import Image from '../image/image';
 import PageContent from '../page-content/page-content';
-import Link from '../link/link';
+import ReadMore from '../read-more/read-more';
 
-const ArticlesGrid = ({ articles, readMoreText = "Read more" }) => (
+const ArticlesGrid = ({ articles, readMore }) => (
     <>
   <PageContent theme={PageContent.themes.wide}>
     <div className="articles-grid">
@@ -19,20 +19,15 @@ const ArticlesGrid = ({ articles, readMoreText = "Read more" }) => (
           );
         })}
       </Grid>
-      {readMoreText && <div className="articles-grid__read-more">
-        <Link href="/articles" theme={Link.themes.primary}>
-            {readMoreText}
-        </Link>
-      </div>}
+      {readMore && 
+        <div className="articles-grid__read-more"><ReadMore {...readMore} /></div>
+    }
     </div>
   </PageContent>
   <style jsx>{`
     .articles-grid {
         &__read-more {
-            margin-top: 1rem;
-            padding-top: 0.5rem;
-            border-top: 2px solid #da0050;
-            text-align: right;
+            margin-top: 1.5rem;
         }
     }
 
@@ -41,6 +36,7 @@ const ArticlesGrid = ({ articles, readMoreText = "Read more" }) => (
 );
 
 ArticlesGrid.propTypes = {
+    readMore: PropTypes.object,
   articles: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired

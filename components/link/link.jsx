@@ -82,6 +82,11 @@ const Link = ({ text, href, theme, className, children, iconName }) => (
           }
 
           &--primary {
+            font-size: .7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: bold;
+
             text-decoration: none;
             border-bottom: 1px solid #da0050;
             padding-bottom: 1px;

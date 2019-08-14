@@ -31,7 +31,7 @@ class FrontPage extends React.Component {
     return (
       <Layout title={pageTitle}>
         <PageTitle text={title} />
-        <ArticlesGrid articles={articles} />
+        <ArticlesGrid articles={articles} readMore={{text:'Browse Articles', href:'/articles'}} />
       </Layout>
     );
   }
