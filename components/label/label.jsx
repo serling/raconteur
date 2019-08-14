@@ -24,6 +24,7 @@ const Label = ({ text, theme }) => (
         text-transform: uppercase;
         font-size: 0.6rem;
         line-height: 1.5;
+        
       }
     `}</style>
   </>

@@ -4,16 +4,18 @@ import PropTypes from 'prop-types';
 import Heading from '../heading/heading';
 import PageContent from '../page-content/page-content';
 import Text from '../text/text';
+import Label from '../label/label';
 import Frame from '../frame/frame';
+import RichText from '../rich-text/rich-text';
 
 // https://css-tricks.com/snippets/css/complete-guide-grid/
 
-const GameTop = ({ title, subtitle, lead, categories }) => (
+const GameTop = ({ label, title, subtitle, lead, highlightString, categories }) => (
   <>
       <div className="game-top">
     <PageContent theme={PageContent.themes.narrow} backgroundColor='black'>
         <div className="game-top__heading">
-          game
+          {label && <Text text={label} />}
           <Heading text={title} level={1} />
           {subtitle && <Text text={subtitle} />}
         </div>
@@ -21,7 +23,7 @@ const GameTop = ({ title, subtitle, lead, categories }) => (
           <ul className="game-top__list">
             {categories.map((category, index) => (
               <li className="game-top__item" key={index}>
-                <span className="game-top__tag">{category}</span>
+                <Label text={category} />
               </li>
             ))}
           </ul>
@@ -29,11 +31,11 @@ const GameTop = ({ title, subtitle, lead, categories }) => (
         <div className="game-top__lead">
           <Text text={lead} theme={Text.themes.lead} />
         </div>
-        <div className="game-top__highlights">
+        {highlightString && <div className="game-top__highlights">
           <Frame>
-            info that pops out
+            <RichText string={highlightString} />
           </Frame>
-        </div>
+        </div>}
     </PageContent>
       </div>
     <style jsx>{`
@@ -48,7 +50,7 @@ const GameTop = ({ title, subtitle, lead, categories }) => (
         
         @media screen and (min-width: $break-at-md) {
           margin-bottom: 4rem;
-          border-bottom: 1rem solid $underline-color;
+          border-bottom: 0.8rem solid $underline-color;
         }
         
         &__heading {
@@ -68,11 +70,14 @@ const GameTop = ({ title, subtitle, lead, categories }) => (
 
         &__tag {
           text-transform: uppercase;
-          font-size: 0.6rem;
+          font-size: 0.7rem;
           color: white;
+          letter-spacing: 1px;
         }
 
         &__highlights {
+          width: 100%;
+
           @media screen and (min-width: $break-at-md) {
             position: absolute;
           }
@@ -109,6 +114,8 @@ GameTop.propTypes = {
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string,
   lead: PropTypes.string,
+  label: PropTypes.string,
+  highlightString: PropTypes.string,
   categories: PropTypes.array
 };
 

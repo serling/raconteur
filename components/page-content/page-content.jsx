@@ -109,6 +109,7 @@ const PageContent = ({ theme, margin, children, backgroundColor, backgroundImage
           &__inner {
             margin: 0 auto;
             padding: 0 1rem;
+            position: relative;
           }
         }
       `}
