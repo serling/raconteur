@@ -10,8 +10,6 @@ class FrontPage extends React.Component {
 
   state = { hasLoaded: false };
 
-  //TODO: design - https://css-tricks.com/snippets/css/complete-guide-grid/
-
   componentDidMount() {
     this.setState(
       {

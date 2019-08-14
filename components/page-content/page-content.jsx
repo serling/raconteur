@@ -18,15 +18,16 @@ const margins = {
 
 const colors = Colors;
 
-const PageContent = ({ theme, margin, children, backgroundColor }) => (
+const PageContent = ({ theme, margin, children, backgroundColor, backgroundImageHref }) => (
   <>
     <div
       className={cn('page-content', {
         [`page-content--${themes[theme]}`]: themes[theme],
         [`page-content--margins-${margins[margin]}`]: margins[margin],
         [`page-content--${colors[backgroundColor]}`]: colors[backgroundColor],
-        'page-content--background': !!colors[backgroundColor]
+        'page-content--background': !!colors[backgroundColor] || backgroundImageHref
       })}
+      style={backgroundImageHref ? {background:`url(${backgroundImageHref}) no-repeat center`}: undefined}
     >
       <div className="page-content__inner">{children}</div>
     </div>
@@ -80,12 +81,21 @@ const PageContent = ({ theme, margin, children, backgroundColor }) => (
             }
           }
 
+          &--backgroundImageHref {
+
+          }
+
           &--background {
             padding: 2rem 0;
           }
 
           &--red {
             background-color: #e76a6a;
+          }
+
+          
+          &--black {
+            background-color: #000000;
           }
 
           &--grey {

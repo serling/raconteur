@@ -5,11 +5,14 @@ import Heading from '../heading/heading';
 import PageContent from '../page-content/page-content';
 import Text from '../text/text';
 
+// https://css-tricks.com/snippets/css/complete-guide-grid/
+
 const GameTop = ({ title, subtitle, lead, categories }) => (
   <>
-    <PageContent theme={PageContent.themes.narrow}>
+    <PageContent theme={PageContent.themes.narrow} backgroundColor='black'>
       <div className="game-top">
         <div className="game-top__heading">
+          game
           <Heading text={title} level={1} />
           {subtitle && <Text text={subtitle} />}
         </div>
@@ -25,6 +28,9 @@ const GameTop = ({ title, subtitle, lead, categories }) => (
         <div className="game-top__lead">
           <Text text={lead} theme={Text.themes.lead} />
         </div>
+        <div className="game-top__highlights">
+              info that pops out
+        </div>
       </div>
     </PageContent>
     <style jsx>{`
@@ -33,19 +39,34 @@ const GameTop = ({ title, subtitle, lead, categories }) => (
         $break-at-md: 50rem; //800px
         $break-at-lg: 64rem; //1024px
 
+        position: relative;
+
+        &__heading {
+          color: white;
+        }
+
         &__lead {
           margin-top: 1rem;
+          color: white;
         }
 
         &__meta {
           margin-top: 1rem;
-          border-bottom: 1px solid black;
+          color: white;
         }
 
         &__tag {
-          color: grey;
           text-transform: uppercase;
           font-size: 0.6rem;
+          color: white;
+        }
+
+        &__highlights {
+          box-shadow: 2px 2px 5px 0px black;
+          background-color: white;
+          padding: 1.5rem;
+          position: absolute;
+           width: 100%;
         }
 
         &__list {
