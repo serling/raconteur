@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Layout from '../layout/layout';
 import DynamicContent from '../dynamic-content/dynamic-content';
 import GameTop from '../game-top/game-top';
+import RelatedGames from '../related-games/related-games';
 
 class GameTemplate extends React.Component {
   static propTypes = {
@@ -30,13 +31,13 @@ class GameTemplate extends React.Component {
   render() {
     if (!this.state.hasLoaded) return null;
 
-    const { pageTitle, header } = this.props.data;
+    const { pageTitle, header, relatedGames } = this.props.data;
 
     return (
       <Layout title={pageTitle}>
-        {header && <GameTop {...header}/>}
+        <GameTop {...header}/>
         <DynamicContent {...this.props.data} />
-
+        <RelatedGames games={relatedGames}/>
       </Layout>
     );
   }

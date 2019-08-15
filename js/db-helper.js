@@ -1,5 +1,5 @@
 import url from 'url';
-import { MongoClient } from 'mongodb';
+import { MongoClient, ObjectId } from 'mongodb';
 
 // Create cached connection variable
 let cachedDb = null;
@@ -56,10 +56,10 @@ const queryFrontPage = () => {
     {
       $lookup: {
         from: 'articles',
-        as: 'articles',
         pipeline: [
           { $limit: 5 }
-        ]
+        ],
+        as: 'articles',
       }
     },
     {
@@ -164,14 +164,42 @@ async function getGameBySlug(slug) {
 
   const games = await db.collection('games');
 
-  const data = await games.findOne({ slug }).catch(err => {
-    console.log('db error - ', err);
-    console.error(`Failed to find document: ${err}`);
+  const data = await games
+  .aggregate([{
+    $match: {
+      slug: slug
+    }
+  },
+  {
+    $lookup: {
+      from: 'games',
+      let: { "game": '$game'},
+      pipeline: [
+        { $match: { "id": { $in: [ ObjectId("5d528e808767aa3b100d60f5"), ObjectId("5d528e748767aa3b100d60f4") ] } } },
+        { $limit: 3 },
+        {
+          $replaceRoot: { newRoot: {$mergeObjects : ["$meta", {"id": "$$ROOT.id"}, {"slug": "$$ROOT.slug"}]} }
+        }
+      ],
+      as: 'relatedGames',
+    }
+  }
+  ]).toArray();
 
-    return {};
-  });
+  console.log("DATA FROM GAME QUERY", data[0]);
+  
+  // .findOne({ slug })
+  // .then(cursor => {
+  //   console.log("CURSOR:", cursor);
+  // })
+  // .catch(err => {
+  //   console.log('db error - ', err);
+  //   console.error(`Failed to find document: ${err}`);
 
-  return data;
+  //   return {};
+  // });
+
+  return data[0];
 }
 
 async function getFrontPage() {

@@ -26,3 +26,8 @@ Create a `.env` file with a `MONGODB_URI` string for local development database:
 - game template needs a `next game ->` link
 - remove heading and add `home` and `menu` as sticky, add mix-blend-mode: difference to the svg.
 - front page - top articles needs to be an array of ID's to articles
+- lazy load realted articles etc?
+
+- https://www.npmjs.com/package/react-lazy-load-image-component
+- now? https://www.npmjs.com/package/next-optimized-images
+- https://mongoosejs.com/
