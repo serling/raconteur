@@ -66,6 +66,7 @@ const queryFrontPage = () => {
       $project: {
         pageTitle: true,
         title: true,
+        readMoreArticles: true,
         _id: false,
         articles: {
           $map: {

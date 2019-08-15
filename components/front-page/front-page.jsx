@@ -22,14 +22,14 @@ class FrontPage extends React.Component {
   }
 
   render() {
-    const { pageTitle, title, articles } = this.props;
+    const { pageTitle, title, articles, readMoreArticles } = this.props;
 
     if (!this.state.hasLoaded) return null;
 
     return (
       <Layout title={pageTitle}>
         <PageTitle text={title} />
-        <ArticlesGrid articles={articles} readMore={{text:'Browse Articles', href:'/articles'}} />
+        <ArticlesGrid articles={articles} readMore={readMoreArticles} />
       </Layout>
     );
   }

@@ -19,3 +19,10 @@ https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/#mongodb-as-
 Create a `.env` file with a `MONGODB_URI` string for local development database:
 
 `MONGODB_URI=mongodb://[localhost:port]/[database]`
+
+##TODO:##
+
+- game template needs an article grid for `related games` or `articles`
+- game template needs a `next game ->` link
+- remove heading and add `home` and `menu` as sticky, add mix-blend-mode: difference to the svg.
+- front page - top articles needs to be an array of ID's to articles

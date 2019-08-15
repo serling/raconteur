@@ -34,10 +34,9 @@ class GameTemplate extends React.Component {
 
     return (
       <Layout title={pageTitle}>
-        {header && <GameTop {...header} label='Game' highlightString={"<i>Teacher's note: this game is a great warmup together with <a href='/games/freeze'>freeze tag</a>.</i>"} />}
+        {header && <GameTop {...header}/>}
         <DynamicContent {...this.props.data} />
-        article grid
-        next game, freeze tag ->
+
       </Layout>
     );
   }
