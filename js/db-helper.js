@@ -150,7 +150,7 @@ async function getGamesByCategoryId(categoryId) {
   .aggregate([
     {
     $match: {
-      "meta.categories": { $elemMatch: { id: categoryId} }
+      "meta.categories": { $elemMatch: { id: categoryId} } // TODO: get multiple ones and OR between them
     }
   },
   {
