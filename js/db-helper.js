@@ -36,7 +36,11 @@ const queryAllOfType = type => {
       }
     },
     {
-      $replaceRoot: { newRoot: {$mergeObjects : ["$meta", {"id": "$$ROOT.id"}, {"slug": "$$ROOT.slug"}]} }
+      $replaceRoot: {
+        newRoot: {
+          $mergeObjects: ['$meta', { id: '$$ROOT.id' }, { slug: '$$ROOT.slug' }]
+        }
+      }
     }
   ];
 };
@@ -51,10 +55,8 @@ const queryFrontPage = () => {
     {
       $lookup: {
         from: 'articles',
-        pipeline: [
-          { $limit: 5 }
-        ],
-        as: 'articles',
+        pipeline: [{ $limit: 5 }],
+        as: 'articles'
       }
     },
     {
@@ -67,16 +69,18 @@ const queryFrontPage = () => {
           $map: {
             input: '$articles',
             as: 'article',
-            in: { $mergeObjects : ['$$article.meta', '$$article'] }
+            in: { $mergeObjects: ['$$article.meta', '$$article'] }
           }
         }
       }
     },
     {
-      $replaceRoot: { newRoot: { $mergeObjects: [ { articles: "$articles" }, "$$ROOT" ] } }
+      $replaceRoot: {
+        newRoot: { $mergeObjects: [{ articles: '$articles' }, '$$ROOT'] }
+      }
     }
-  ]
-}
+  ];
+};
 
 const querySuggestionsPage = () => {
   return [
@@ -85,9 +89,8 @@ const querySuggestionsPage = () => {
         slug: 'suggestions'
       }
     }
-  ]
-}
-
+  ];
+};
 
 async function getAllArticles() {
   const db = await connectToDatabase(process.env.MONGODB_URI);
@@ -122,7 +125,6 @@ async function getAllGames() {
       return {};
     });
 
-
   return modifiedGames;
 }
 
@@ -141,22 +143,33 @@ async function getArticleBySlug(slug) {
   return data;
 }
 
-async function getGamesByCategoryId(categoryId) {
+async function getGamesByCategoryIds(categoryIds) {
   const db = await connectToDatabase(process.env.MONGODB_URI);
 
   const games = await db.collection('games');
 
   const data = await games
-  .aggregate([
-    {
-    $match: {
-      "meta.categories": { $elemMatch: { id: categoryId} } // TODO: get multiple ones and OR between them
-    }
-  },
-  {
-    $replaceRoot: { newRoot: {$mergeObjects : ["$meta", {"id": "$$ROOT.id"}, {"slug": "$$ROOT.slug"}]} }
-  }
-  ]).toArray();
+    .aggregate([
+      {
+        $match: {
+          'meta.categories': { $elemMatch: { id: { $in: categoryIds } } }
+        }
+      },
+      {
+        $replaceRoot: {
+          newRoot: {
+            $mergeObjects: [
+              '$meta',
+              { id: '$$ROOT.id' },
+              { slug: '$$ROOT.slug' }
+            ]
+          }
+        }
+      }
+    ])
+    .toArray();
+
+  console.log('GOT BACK FROM MONGO:', data);
 
   return data;
 }
@@ -167,26 +180,45 @@ async function getGameBySlug(slug) {
   const games = await db.collection('games');
 
   const data = await games
-  .aggregate([{
-    $match: {
-      slug: slug
-    }
-  },
-  {
-    $lookup: {
-      from: 'games',
-      let: { "game": '$game'},
-      pipeline: [
-        { $match: { "id": { $in: [ ObjectId("5d528e808767aa3b100d60f5"), ObjectId("5d528e748767aa3b100d60f4") ] } } }, // GET LIST OF RELATED
-        { $limit: 3 },
-        {
-          $replaceRoot: { newRoot: {$mergeObjects : ["$meta", {"id": "$$ROOT.id"}, {"slug": "$$ROOT.slug"}]} }
+    .aggregate([
+      {
+        $match: {
+          slug: slug
         }
-      ],
-      as: 'relatedGames',
-    }
-  }
-  ]).toArray();
+      },
+      {
+        $lookup: {
+          from: 'games',
+          let: { game: '$game' },
+          pipeline: [
+            {
+              $match: {
+                id: {
+                  $in: [
+                    ObjectId('5d528e808767aa3b100d60f5'),
+                    ObjectId('5d528e748767aa3b100d60f4')
+                  ]
+                }
+              }
+            }, // GET LIST OF RELATED
+            { $limit: 3 },
+            {
+              $replaceRoot: {
+                newRoot: {
+                  $mergeObjects: [
+                    '$meta',
+                    { id: '$$ROOT.id' },
+                    { slug: '$$ROOT.slug' }
+                  ]
+                }
+              }
+            }
+          ],
+          as: 'relatedGames'
+        }
+      }
+    ])
+    .toArray();
 
   return data[0];
 }
@@ -196,11 +228,8 @@ async function getFrontPage() {
 
   const pages = await db.collection('pages');
 
-  const frontPage = await pages
-    .aggregate(queryFrontPage())
-    .toArray();
+  const frontPage = await pages.aggregate(queryFrontPage()).toArray();
 
-    
   const data = frontPage[0];
 
   return data;
@@ -215,9 +244,8 @@ async function getSuggestionsPage() {
     .aggregate(querySuggestionsPage())
     .toArray();
 
-    
   const data = suggestionsPage[0];
-    
+
   return data;
 }
 
@@ -269,6 +297,6 @@ module.exports = {
   getGameBySlug,
   getWordsByType,
   getFrontPage,
-  getGamesByCategoryId,
+  getGamesByCategoryIds,
   getSuggestionsPage
 };
