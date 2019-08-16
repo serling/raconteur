@@ -31,3 +31,4 @@ Create a `.env` file with a `MONGODB_URI` string for local development database:
 - https://www.npmjs.com/package/react-lazy-load-image-component
 - now? https://www.npmjs.com/package/next-optimized-images
 - https://mongoosejs.com/
+- https://www.youtube.com/playlist?list=PLK2UnyQjf24rIeUkMMgLKL3wk94qqJj7b&fbclid=IwAR3sdk_EBI1bNlsxnZp73v88iYOwLiFm_WTFwHDbBtazd5mPkgRI4Kg4v00

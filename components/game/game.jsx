@@ -22,11 +22,14 @@ const Game = ({
   playerLevel
 }) => {
   return (
+    <>
     <div className="game">
       <Route href="/games/[slug]" as={`/games/${slug}`}>
-        <a>{name}</a>
+        <a className="remove-link-styles">
+          <Text text={name} />
+          <Text text={abstract} />
+        </a>
       </Route>
-      <Text text={abstract}></Text>
       {/* <Modal
         onClose={() => {}}
         isVisible={false}
@@ -37,6 +40,13 @@ const Game = ({
         {name}
       </Modal> */}
     </div>
+    <style jsx>{`
+      .game {
+        border: 2px solid black;
+        padding: 1rem;
+      }
+      `}</style>
+    </>
   );
 };
 

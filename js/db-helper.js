@@ -175,7 +175,7 @@ async function getGameBySlug(slug) {
       from: 'games',
       let: { "game": '$game'},
       pipeline: [
-        { $match: { "id": { $in: [ ObjectId("5d528e808767aa3b100d60f5"), ObjectId("5d528e748767aa3b100d60f4") ] } } },
+        { $match: { "id": { $in: [ ObjectId("5d528e808767aa3b100d60f5"), ObjectId("5d528e748767aa3b100d60f4") ] } } }, // GET LIST OF RELATED
         { $limit: 3 },
         {
           $replaceRoot: { newRoot: {$mergeObjects : ["$meta", {"id": "$$ROOT.id"}, {"slug": "$$ROOT.slug"}]} }

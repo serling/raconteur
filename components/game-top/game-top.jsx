@@ -13,7 +13,7 @@ import RichText from '../rich-text/rich-text';
 const GameTop = ({ label, title, subtitle, lead, highlightString, categories }) => (
   <>
       <div className="game-top">
-    <PageContent theme={PageContent.themes.narrow} backgroundColor='black'>
+    <PageContent theme={PageContent.themes.narrow} backgroundColor='black' backgroundImageHref='/static/images/aree.jpg'>
         <div className="game-top__heading">
           {label && <Text text={label} />}
           <Heading text={title} level={1} />

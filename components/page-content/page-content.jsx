@@ -25,9 +25,9 @@ const PageContent = ({ theme, margin, children, backgroundColor, backgroundImage
         [`page-content--${themes[theme]}`]: themes[theme],
         [`page-content--margins-${margins[margin]}`]: margins[margin],
         [`page-content--${colors[backgroundColor]}`]: colors[backgroundColor],
-        'page-content--background': !!colors[backgroundColor] || backgroundImageHref
+        'page-content--background': !!colors[backgroundColor],
+        'page-content--background-image': backgroundImageHref
       }, className)}
-      style={backgroundImageHref ? {background:`url(${backgroundImageHref}) no-repeat center`}: undefined}
     >
       <div className="page-content__inner">{children}</div>
     </div>
@@ -81,8 +81,9 @@ const PageContent = ({ theme, margin, children, backgroundColor, backgroundImage
             }
           }
 
-          &--backgroundImageHref {
-
+          &--background-image {
+            background-size: cover;
+            background: linear-gradient(90deg, rgba(0,0,0,1) 33%, rgba(0,0,0,0.5) 100%, rgba(255,255,255,1) 100%), url(${backgroundImageHref}) right center no-repeat;
           }
 
           &--background {
