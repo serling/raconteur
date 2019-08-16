@@ -81,13 +81,14 @@ const PageContent = ({ theme, margin, children, backgroundColor, backgroundImage
             }
           }
 
+          &--background-image, 
+          &--background {
+            padding: 2rem 0;
+          }
+
           &--background-image {
             background-size: cover;
             background: linear-gradient(90deg, rgba(0,0,0,1) 33%, rgba(0,0,0,0.5) 100%, rgba(255,255,255,1) 100%), url(${backgroundImageHref}) right center no-repeat;
-          }
-
-          &--background {
-            padding: 2rem 0;
           }
 
           &--red {

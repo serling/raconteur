@@ -16,7 +16,7 @@ const GameTop = ({ label, title, subtitle, lead, image, highlightString, categor
   return (
   <>
       <div className="game-top">
-    <PageContent theme={PageContent.themes.narrow} backgroundColor='black' backgroundImageHref={src}>
+    <PageContent theme={PageContent.themes.narrow} backgroundImageHref={src}>
         <div className="game-top__heading">
           {label && <Text text={label} />}
           <Heading text={title} level={1} />
@@ -24,11 +24,14 @@ const GameTop = ({ label, title, subtitle, lead, image, highlightString, categor
         </div>
         <div className="game-top__meta">
           <ul className="game-top__list">
-            {categories.map((category, index) => (
-              <li className="game-top__item" key={index}>
-                <Label text={category} />
+            {categories.map(category => { 
+              const {text, id} = category;
+
+              return (
+              <li className="game-top__item" key={id}>
+                <Label text={text} />
               </li>
-            ))}
+            )})}
           </ul>
         </div>
         <div className="game-top__lead">
@@ -119,7 +122,10 @@ GameTop.propTypes = {
   lead: PropTypes.string,
   label: PropTypes.string,
   highlightString: PropTypes.string,
-  categories: PropTypes.array
+  categories: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired
+  }))
 };
 
 GameTop.defaultProps = {
