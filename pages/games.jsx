@@ -22,9 +22,9 @@ const Games = props => {
 };
 
 Games.getInitialProps = async ctx => {
-  const { req } = ctx;
+  const { req, query } = ctx;
 
-  const { payload, error } = await getInitialData(req, '/api/games');
+  const { payload, error } = await getInitialData(req, '/api/games', undefined, query);
 
   return { data: payload, error };
 };

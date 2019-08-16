@@ -27,12 +27,21 @@ function absoluteUrl(req, localHost = LOCAL_HOST) {
   };
 }
 
-const getInitialData = async (req, apiRoute, resourceId) => {
+// this function is iffy when in conjuncture with the api files, since we have to parse the whole response (req, ctx) before sending it to the api
+const getInitialData = async (req, apiRoute, resourceId, query) => {
   const { protocol, host } = absoluteUrl(req);
+
+  if (query) {
+    var queryString = Object.keys(query).map(function(key) {
+      return key + '=' + query[key];
+    }).join('&');
+  }
 
   let endpoint = `${protocol}//${host}${apiRoute}`;
 
   if (resourceId) endpoint = `${endpoint}/${resourceId}`;
+
+  if (queryString) endpoint = `${endpoint}?${queryString}`;
 
   const response = await fetch(endpoint);
 

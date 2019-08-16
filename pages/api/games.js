@@ -1,4 +1,4 @@
-import { getAllGames } from '../../js/db-helper';
+import { getAllGames, getGamesByCategoryId } from '../../js/db-helper';
 
 const errorObject = {
   statusCode: 404,
@@ -6,10 +6,16 @@ const errorObject = {
 };
 
 export default async (req, res) => {
-  await getAllGames()
-    .then(response => {
-      // console.log('got...', response);
+  const { query } = req;
 
+  if (query.category) {
+    var result = getGamesByCategoryId(query.category);
+  } else {
+    var result = getAllGames();
+  };
+
+  await result
+    .then(response => {
       res.status(200).json({ success: true, payload: response });
     })
     .catch(err => {
@@ -17,4 +23,5 @@ export default async (req, res) => {
 
       res.status(404).json({ error: errorObject });
     });
+    
 };

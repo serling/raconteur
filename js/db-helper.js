@@ -36,12 +36,7 @@ const queryAllOfType = type => {
       }
     },
     {
-      $project: {
-        meta: true,
-        slug: true,
-        id: true,
-        _id: false
-      }
+      $replaceRoot: { newRoot: {$mergeObjects : ["$meta", {"id": "$$ROOT.id"}, {"slug": "$$ROOT.slug"}]} }
     }
   ];
 };
@@ -102,13 +97,6 @@ async function getAllArticles() {
   const modifiedArticles = await articles
     .aggregate(queryAllOfType('articles'))
     .toArray()
-    .then(response => {
-      // this step is unnecessary if we aggregate the db query with $replaceRoot
-      return response.map(data => {
-        const { meta, id, slug } = data;
-        return { ...meta, id, slug };
-      });
-    })
     .catch(err => {
       console.log('db error - ', err);
       console.error(`Failed to find documents: ${err}`);
@@ -127,19 +115,13 @@ async function getAllGames() {
   const modifiedGames = await games
     .aggregate(queryAllOfType('games'))
     .toArray()
-    .then(response => {
-      // this step is unnecessary if we aggregate the db query with $replaceRoot
-      return response.map(data => {
-        const { meta, id, slug } = data;
-        return { ...meta, id, slug };
-      });
-    })
     .catch(err => {
       console.log('db error - ', err);
       console.error(`Failed to find documents: ${err}`);
 
       return {};
     });
+
 
   return modifiedGames;
 }
@@ -155,6 +137,26 @@ async function getArticleBySlug(slug) {
 
     return {};
   });
+
+  return data;
+}
+
+async function getGamesByCategoryId(categoryId) {
+  const db = await connectToDatabase(process.env.MONGODB_URI);
+
+  const games = await db.collection('games');
+
+  const data = await games
+  .aggregate([
+    {
+    $match: {
+      "meta.categories": { $elemMatch: { id: categoryId} }
+    }
+  },
+  {
+    $replaceRoot: { newRoot: {$mergeObjects : ["$meta", {"id": "$$ROOT.id"}, {"slug": "$$ROOT.slug"}]} }
+  }
+  ]).toArray();
 
   return data;
 }
@@ -185,19 +187,6 @@ async function getGameBySlug(slug) {
     }
   }
   ]).toArray();
-
-  console.log("DATA FROM GAME QUERY", data[0]);
-  
-  // .findOne({ slug })
-  // .then(cursor => {
-  //   console.log("CURSOR:", cursor);
-  // })
-  // .catch(err => {
-  //   console.log('db error - ', err);
-  //   console.error(`Failed to find document: ${err}`);
-
-  //   return {};
-  // });
 
   return data[0];
 }
@@ -280,5 +269,6 @@ module.exports = {
   getGameBySlug,
   getWordsByType,
   getFrontPage,
+  getGamesByCategoryId,
   getSuggestionsPage
 };
