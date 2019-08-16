@@ -10,10 +10,13 @@ import RichText from '../rich-text/rich-text';
 
 // https://css-tricks.com/snippets/css/complete-guide-grid/
 
-const GameTop = ({ label, title, subtitle, lead, highlightString, categories }) => (
+const GameTop = ({ label, title, subtitle, lead, image, highlightString, categories }) => { 
+  const { src } = image;
+
+  return (
   <>
       <div className="game-top">
-    <PageContent theme={PageContent.themes.narrow} backgroundColor='black' backgroundImageHref='/static/images/aree.jpg'>
+    <PageContent theme={PageContent.themes.narrow} backgroundColor='black' backgroundImageHref={src}>
         <div className="game-top__heading">
           {label && <Text text={label} />}
           <Heading text={title} level={1} />
@@ -108,7 +111,7 @@ const GameTop = ({ label, title, subtitle, lead, highlightString, categories }) 
       }
     `}</style>
   </>
-);
+)};
 
 GameTop.propTypes = {
   title: PropTypes.string.isRequired,

@@ -4,8 +4,7 @@ import cn from 'classnames';
 const themes = {
   body: 'body',
   lead: 'lead',
-  small: 'small',
-  label: 'label'
+  small: 'small'
 };
 
 const Text = ({ text, theme }) => (
@@ -42,12 +41,6 @@ const Text = ({ text, theme }) => (
 
         &--small {
           font-size: 0.8rem;
-        }
-
-        &--label {
-          text-transform: uppercase;
-          letter-spacing: 1px;
-          font-size: 0.8889rem;
         }
       }
     `}</style>

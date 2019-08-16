@@ -3,8 +3,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const themes = {
-  page: 'page',
-  bold: 'bold',
   headline: 'headline'
 };
 

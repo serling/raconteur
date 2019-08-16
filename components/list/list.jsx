@@ -56,8 +56,10 @@ const List = ({
             }
 
             &--unordered {
-              &:first-child {
-                margin-top: 0;
+              #{$self}__item {
+                &:first-child {
+                  margin-top: 0;
+                }
               }
             }
 

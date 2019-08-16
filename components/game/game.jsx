@@ -4,7 +4,8 @@ import cn from 'classnames';
 
 // import Heading from '../heading/heading';
 import Text from '../text/text';
-import Link from '../link/link';
+import Label from '../label/label';
+import List from '../list/list';
 import Route from 'next/link';
 // import Modal from '../modal/modal';
 
@@ -18,16 +19,27 @@ const Game = ({
   abstract,
   description,
   notes,
-  tags,
+  categories,
   playerLevel
 }) => {
   return (
     <>
     <div className="game">
+      <ul className="remove-list-styles game__list">
+        { categories.map(category => { 
+          const { text, id } = category;
+          
+          return (
+            <li key={id} className="game__item">
+              <Label text={text} />
+            </li>)
+        })}
+      </ul>
+  
       <Route href="/games/[slug]" as={`/games/${slug}`}>
         <a className="remove-link-styles">
-          <Text text={name} />
-          <Text text={abstract} />
+          <Text text={name} theme={Text.themes.lead} />
+          <Text text={abstract} theme={Text.themes.small} />
         </a>
       </Route>
       {/* <Modal
@@ -42,8 +54,15 @@ const Game = ({
     </div>
     <style jsx>{`
       .game {
-        border: 2px solid black;
-        padding: 1rem;
+        &__item {
+          display: inline-block;
+          margin-right: 0.5rem;
+          
+          &:last-child {
+            margin-right: 0; 
+          }
+        }
+
       }
       `}</style>
     </>
@@ -59,7 +78,7 @@ Game.propTypes = {
   abstract: PropTypes.string,
   description: PropTypes.string,
   notes: PropTypes.string,
-  tags: PropTypes.array,
+  categories: PropTypes.array,
   playerLevel: PropTypes.string
 };
 

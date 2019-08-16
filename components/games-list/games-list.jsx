@@ -6,7 +6,7 @@ import Game from '../game/game';
 
 const GamesList = ({ games }) => {
   return (
-    <List>
+    <List theme={List.themes.grid}>
       {games.map(game => {
         const { id } = game;
         return <Game key={id} {...game} />;
