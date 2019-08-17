@@ -7,7 +7,8 @@ const GimmeSuggestion = props => {
   const {
     endpoint = '/api/word',
     placeholderText = 'try me',
-    title = 'Profession'
+    title = 'Profession',
+    buttonText = 'generate profession'
   } = props;
 
   const [activeWord, setActiveWord] = useState(placeholderText);
@@ -34,43 +35,39 @@ const GimmeSuggestion = props => {
     <>
       <div className="gimme-suggestion">
         <div className="gimme-suggestion__heading">{title}</div>
-        <div className="gimme-suggestion__word">
-          {activeWord || (
-            <span className="gimme-suggestion__placeholder">
-              {placeholderText}
-            </span>
+        <div className="gimme-suggestion__canvas">
+          <span className="gimme-suggestion__word">{activeWord}</span>
+          {isLoading ? (
+            <span className="gimme-suggestion__loading">LOADING...</span>
+          ) : (
+            <Button
+              text={buttonText}
+              textIsHidden={true}
+              iconName="icon-missing"
+              onClick={() => handleOnClick('professions')}
+            />
           )}
         </div>
-        <div className="gimme-suggestion__actions">
-          <Button
-            theme={Button.themes.primary}
-            text="generate!"
-            onClick={() => handleOnClick('professions')}
-          />
-        </div>
-        {isLoading && (
-          <div className="gimme-suggestion__loading">LOADING...</div>
-        )}
       </div>
       <style jsx>
         {`
           .gimme-suggestion {
             &__heading {
-              text-align: center;
             }
 
-            &__word {
+            &__canvas {
               position: relative;
               border-left: 2px solid #da0050;
-              border-right: 2px solid #da0050;
               padding: 1rem;
               margin-top: 1rem;
               text-align: center;
               color: #da0050;
+              display: flex;
+              align-items: center;
             }
 
-            &__placeholder {
-              color: grey;
+            &__word {
+              margin-right: 0.5rem;
             }
 
             &__actions {
@@ -88,6 +85,7 @@ const GimmeSuggestion = props => {
 GimmeSuggestion.propTypes = {
   endpoint: PropTypes.string.isRequired,
   title: PropTypes.string,
+  buttonText: PropTypes.string,
   placeholderText: PropTypes.string
 };
 
