@@ -30,19 +30,24 @@ const GimmeSuggestion = props => {
     <>
       <div className="gimme-suggestion">
         <div className="gimme-suggestion__heading">{title}</div>
-        <div className="gimme-suggestion__canvas">
+        <p className="gimme-suggestion__lead">
+          You could also ask the peeps for a{' '}
           <Word
             text={activeWord}
             isLoading={isLoading}
             onClick={() => handleOnClick('professions')}
             buttonText={buttonText}
           />
-        </div>
+          text continues here
+        </p>
       </div>
       <style jsx>
         {`
           .gimme-suggestion {
             &__heading {
+            }
+
+            &__lead {
             }
           }
         `}

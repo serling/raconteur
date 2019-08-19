@@ -9,34 +9,44 @@ const Word = props => {
   return (
     <>
       <div className="word">
-        <span className="word__text">{text}</span>
-        <div className="word__actions">
-          {isLoading ? (
-            <span className="word__loading">LOADING...</span>
-          ) : (
-            <Button
-              text={buttonText}
-              textIsHidden={true}
-              iconName="icon-missing"
-              onClick={onClick}
-            />
-          )}
+        <div className="word__content">
+          <span className="word__text">{text}</span>
+          <div className="word__actions">
+            {isLoading ? (
+              <span className="word__loading">LOADING...</span>
+            ) : (
+              <Button
+                text={buttonText}
+                textIsHidden={true}
+                iconName="icon-missing"
+                onClick={onClick}
+              />
+            )}
+          </div>
         </div>
       </div>
       <style jsx>
         {`
           .word {
             position: relative;
-            border-left: 2px solid #da0050;
-            padding: 0.5rem 1rem;
-            margin-top: 1rem;
-            text-align: center;
-            color: #da0050;
-            display: flex;
-            align-items: center;
+            display: inline-block;
+
+            &__text {
+              display: inline-block;
+              padding-right: 2rem;
+            }
+
+            &__content {
+              color: #da0050;
+              display: inline-block;
+            }
 
             &__actions {
+              display: inline-block;
               margin-left: 0.5rem;
+              transform: translateY(-15%);
+              position: absolute;
+              right: 0;
             }
           }
         `}
