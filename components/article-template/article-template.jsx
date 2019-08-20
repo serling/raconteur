@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import Layout from '../layout/layout';
 import ArticleTop from '../article-top/article-top';
+import PageContent from '../page-content/page-content';
 import Blocks from '../dynamic-content/blocks';
 
 class ArticleTemplate extends React.Component {
@@ -35,7 +36,9 @@ class ArticleTemplate extends React.Component {
     return (
       <Layout title={pageTitle}>
         <ArticleTop title={title} image={image} />
-        <Blocks body={body} />
+        <PageContent>
+          <Blocks body={body} />
+        </PageContent>
       </Layout>
     );
   }
