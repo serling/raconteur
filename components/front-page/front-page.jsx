@@ -22,14 +22,14 @@ class FrontPage extends React.Component {
   }
 
   render() {
-    const { pageTitle, title, articles, readMoreArticles } = this.props;
+    const { pageTitle, title, topArticles, readMoreArticles } = this.props;
 
     if (!this.state.hasLoaded) return null;
 
     return (
       <Layout title={pageTitle}>
         <PageTitle text={title} />
-        <ArticlesGrid articles={articles} readMore={readMoreArticles} />
+        <ArticlesGrid articles={topArticles} readMore={readMoreArticles} />
       </Layout>
     );
   }
@@ -38,7 +38,7 @@ class FrontPage extends React.Component {
 FrontPage.propTypes = {
   pageTitle: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  articles: PropTypes.array.isRequired
+  topArticles: PropTypes.array.isRequired
 };
 
 FrontPage.defaultProps = {};

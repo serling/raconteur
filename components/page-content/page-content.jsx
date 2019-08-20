@@ -1,6 +1,7 @@
 import cn from 'classnames';
 import PropTypes from 'prop-types';
 
+import { urlFor } from '../../client';
 import Colors from '../quote/colors';
 
 const themes = {
@@ -18,16 +19,27 @@ const margins = {
 
 const colors = Colors;
 
-const PageContent = ({ theme, margin, children, backgroundColor, backgroundImageHref, className }) => (
+const PageContent = ({
+  theme,
+  margin,
+  children,
+  backgroundColor,
+  backgroundImage,
+  className
+}) => (
   <>
     <div
-      className={cn('page-content', {
-        [`page-content--${themes[theme]}`]: themes[theme],
-        [`page-content--margins-${margins[margin]}`]: margins[margin],
-        [`page-content--${colors[backgroundColor]}`]: colors[backgroundColor],
-        'page-content--background': !!colors[backgroundColor],
-        'page-content--background-image': backgroundImageHref
-      }, className)}
+      className={cn(
+        'page-content',
+        {
+          [`page-content--${themes[theme]}`]: themes[theme],
+          [`page-content--margins-${margins[margin]}`]: margins[margin],
+          [`page-content--${colors[backgroundColor]}`]: colors[backgroundColor],
+          'page-content--background': !!colors[backgroundColor],
+          'page-content--background-image': backgroundImage
+        },
+        className
+      )}
     >
       <div className="page-content__inner">{children}</div>
     </div>
@@ -81,21 +93,26 @@ const PageContent = ({ theme, margin, children, backgroundColor, backgroundImage
             }
           }
 
-          &--background-image, 
+          &--background-image,
           &--background {
             padding: 2rem 0;
           }
 
           &--background-image {
             background-size: cover;
-            background: linear-gradient(90deg, rgba(0,0,0,1) 33%, rgba(0,0,0,0.5) 100%, rgba(255,255,255,1) 100%), url(${backgroundImageHref}) right center no-repeat;
+            background: linear-gradient(
+                90deg,
+                rgba(0, 0, 0, 1) 33%,
+                rgba(0, 0, 0, 0.5) 100%,
+                rgba(255, 255, 255, 1) 100%
+              ),
+              url(${urlFor(backgroundImage).url()}) right center no-repeat;
           }
 
           &--red {
             background-color: #e76a6a;
           }
 
-          
           &--black {
             background-color: #000000;
           }
@@ -123,6 +140,7 @@ PageContent.propTypes = {
   children: PropTypes.node,
   backgroundColor: PropTypes.oneOf(Object.keys(colors).map(key => colors[key])),
   theme: PropTypes.oneOf(Object.keys(themes).map(key => themes[key])),
+  backgroundImage: PropTypes.object,
   margins: PropTypes.oneOf(Object.keys(margins).map(key => margins[key])),
   className: PropTypes.string
 };

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Layout from '../layout/layout';
-import DynamicContent from '../dynamic-content/dynamic-content';
+import Blocks from '../dynamic-content/blocks';
 import GameTop from '../game-top/game-top';
 import RelatedGames from '../related-games/related-games';
 
@@ -31,13 +31,29 @@ class GameTemplate extends React.Component {
   render() {
     if (!this.state.hasLoaded) return null;
 
-    const { pageTitle, header, relatedGames } = this.props.data;
+    const {
+      pageTitle,
+      type,
+      title,
+      relatedGames,
+      image,
+      body,
+      abstract,
+      categories
+    } = this.props.data;
 
     return (
       <Layout title={pageTitle}>
-        <GameTop {...header}/>
-        <DynamicContent {...this.props.data} />
-        <RelatedGames games={relatedGames}/>
+        <GameTop
+          label={type}
+          title={title}
+          lead={abstract}
+          highlightString={abstract}
+          image={image}
+          categories={categories}
+        />
+        <Blocks body={body} />
+        <RelatedGames games={relatedGames} />
       </Layout>
     );
   }

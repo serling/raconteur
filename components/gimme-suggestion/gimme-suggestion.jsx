@@ -35,7 +35,7 @@ const GimmeSuggestion = props => {
           <Word
             text={activeWord}
             isLoading={isLoading}
-            onClick={() => handleOnClick('professions')}
+            onClick={() => handleOnClick('profession')}
             buttonText={buttonText}
           />
           text continues here

@@ -47,27 +47,27 @@ const SuggestionGenerator = props => {
           <Button
             theme={Button.themes.primary}
             text="Profession"
-            onClick={() => handleOnClick('professions')}
+            onClick={() => handleOnClick('profession')}
           />
           <Button
             theme={Button.themes.primary}
             text="Emotion"
-            onClick={() => handleOnClick('emotions')}
+            onClick={() => handleOnClick('emotion')}
           />
           <Button
             theme={Button.themes.primary}
             text="Name"
-            onClick={() => handleOnClick('names')}
+            onClick={() => handleOnClick('name')}
           />
           <Button
             theme={Button.themes.primary}
             text="Quirk"
-            onClick={() => handleOnClick('quirks')}
+            onClick={() => handleOnClick('quirk')}
           />
           <Button
             theme={Button.themes.primary}
             text="Need"
-            onClick={() => handleOnClick('needs')}
+            onClick={() => handleOnClick('need')}
           />
         </List>
       </PageContent>

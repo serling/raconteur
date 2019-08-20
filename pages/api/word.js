@@ -1,4 +1,4 @@
-import { getWordsByType } from '../../js/db-helper';
+import { client } from '../../client';
 
 const errorObject = {
   statusCode: 404,
@@ -11,11 +11,11 @@ const typeErrorObject = {
 };
 
 const validTypes = {
-  professions: 'professions',
-  emotions: 'emotions',
-  names: 'names',
-  needs: 'needs',
-  quirks: 'quirks'
+  profession: 'profession',
+  emotion: 'emotion',
+  name: 'name',
+  need: 'need',
+  quirk: 'quirk'
 };
 
 export default async (req, res) => {
@@ -25,13 +25,22 @@ export default async (req, res) => {
     return res.status(404).json({ error: typeErrorObject });
   }
 
-  await getWordsByType(query.type)
+  await client
+    .fetch(
+      `*
+    [_type == "word" && "${query.type}" in categories] 
+    {
+      "id": _id, 
+      title,
+      categories
+    }`
+    )
     .then(response => {
-      return res.status(200).json({ success: true, payload: response });
+      console.log('WORDSANITY: ', response);
+      res.status(200).json({ success: true, payload: response });
     })
     .catch(err => {
-      console.log('error in articles', err);
-
-      return res.status(404).json({ error: errorObject });
+      console.error('Oh no, error occured: ', err);
+      res.status(404).json({ error: errorObject });
     });
 };

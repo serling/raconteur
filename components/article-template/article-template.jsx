@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Layout from '../layout/layout';
-import DynamicContent from '../dynamic-content/dynamic-content';
+import ArticleTop from '../article-top/article-top';
+import Blocks from '../dynamic-content/blocks';
 
 class ArticleTemplate extends React.Component {
   static propTypes = {
@@ -29,11 +30,12 @@ class ArticleTemplate extends React.Component {
   render() {
     if (!this.state.hasLoaded) return null;
 
-    const { pageTitle } = this.props.data;
+    const { pageTitle, title, image, body } = this.props.data;
 
     return (
       <Layout title={pageTitle}>
-        <DynamicContent {...this.props.data} />
+        <ArticleTop title={title} image={image} />
+        <Blocks body={body} />
       </Layout>
     );
   }

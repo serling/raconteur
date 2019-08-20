@@ -37,7 +37,6 @@ const Layout = ({ children, title }) => {
           html {
             font-size: 20px;
             font-family: 'arial';
-            line-height: 1.5em;
           }
 
           body {

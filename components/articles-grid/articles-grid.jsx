@@ -8,35 +8,45 @@ import PageContent from '../page-content/page-content';
 import ReadMore from '../read-more/read-more';
 
 const ArticlesGrid = ({ articles, readMore }) => (
-    <>
-  <PageContent theme={PageContent.themes.wide}>
-    <div className="articles-grid">
-      <Grid>
-        {articles.map((article, index) => {
-          const { id } = article;
-          return (
-            <Article key={id} {...article} theme={index === 0 ? Article.themes.hero : undefined || index === 1 ? Article.themes.vertical : Article.themes.overlay } imageAspect={index === 0 ? Image.aspects.wider : undefined}  />
-          );
-        })}
-      </Grid>
-      {readMore && 
-        <div className="articles-grid__read-more"><ReadMore {...readMore} /></div>
-    }
-    </div>
-  </PageContent>
-  <style jsx>{`
-    .articles-grid {
+  <>
+    <PageContent theme={PageContent.themes.wide}>
+      <div className="articles-grid">
+        <Grid>
+          {articles.map((article, index) => {
+            const { id } = article;
+            return (
+              <Article
+                key={id}
+                {...article}
+                theme={
+                  index === 0
+                    ? Article.themes.hero
+                    : undefined || index === 1
+                    ? Article.themes.vertical
+                    : Article.themes.overlay
+                }
+                imageAspect={index === 0 ? Image.aspects.wider : undefined}
+              />
+            );
+          })}
+        </Grid>
+        <div className="articles-grid__read-more">
+          <ReadMore {...readMore} />
+        </div>
+      </div>
+    </PageContent>
+    <style jsx>{`
+      .articles-grid {
         &__read-more {
-            margin-top: 1.5rem;
+          margin-top: 1.5rem;
         }
-    }
-
+      }
     `}</style>
   </>
 );
 
 ArticlesGrid.propTypes = {
-    readMore: PropTypes.object,
+  readMore: PropTypes.object,
   articles: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired

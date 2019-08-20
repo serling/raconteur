@@ -11,10 +11,8 @@ import Route from 'next/link';
 
 const Game = ({
   id,
-  name,
+  title,
   slug,
-  href,
-  alternativeNames,
   playerCount,
   abstract,
   description,
@@ -24,46 +22,46 @@ const Game = ({
 }) => {
   return (
     <>
-    <div className="game">
-      <ul className="remove-list-styles game__list">
-        { categories.map(category => { 
-          const { text, id } = category;
-          
-          return (
-            <li key={id} className="game__item">
-              <Label text={text} />
-            </li>)
-        })}
-      </ul>
-  
-      <Route href="/games/[slug]" as={`/games/${slug}`}>
-        <a className="remove-link-styles">
-          <Text text={name} theme={Text.themes.lead} />
-          <Text text={abstract} theme={Text.themes.small} />
-        </a>
-      </Route>
-      {/* <Modal
+      <div className="game">
+        <ul className="remove-list-styles game__list">
+          {categories.map(category => {
+            const { title, id } = category;
+
+            return (
+              <li key={id} className="game__item">
+                <Label text={title} />
+              </li>
+            );
+          })}
+        </ul>
+
+        <Route href="/games/[slug]" as={`/games/${slug}`}>
+          <a className="remove-link-styles">
+            <Text text={title} theme={Text.themes.lead} />
+            <Text text={abstract} theme={Text.themes.small} />
+          </a>
+        </Route>
+        {/* <Modal
         onClose={() => {}}
         isVisible={false}
         isCloseable={true}
-        contentLabel={name}
+        contentLabel={title}
         theme={Modal.themes.menu}
       >
-        {name}
+        {title}
       </Modal> */}
-    </div>
-    <style jsx>{`
-      .game {
-        &__item {
-          display: inline-block;
-          margin-right: 0.5rem;
-          
-          &:last-child {
-            margin-right: 0; 
+      </div>
+      <style jsx>{`
+        .game {
+          &__item {
+            display: inline-block;
+            margin-right: 0.5rem;
+
+            &:last-child {
+              margin-right: 0;
+            }
           }
         }
-
-      }
       `}</style>
     </>
   );
@@ -71,9 +69,8 @@ const Game = ({
 
 Game.propTypes = {
   id: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
   slug: PropTypes.string.isRequired,
-  alternativeNames: PropTypes.array,
   playerCount: PropTypes.string,
   abstract: PropTypes.string,
   description: PropTypes.string,

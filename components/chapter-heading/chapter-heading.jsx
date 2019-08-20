@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import cn from 'classnames';
 
 import Heading from '../heading/heading';
-import Image from '../image/image';
+import Poster from '../image/poster';
 
 const themes = {
   overlap: 'overlap'
@@ -19,7 +19,7 @@ const ChapterHeading = ({ title, subtitle, image, theme }) => (
     >
       {image && (
         <div className="chapter-heading__image">
-          <Image {...image} aspect={Image.aspects.wider} />
+          <Poster image={image} />
         </div>
       )}
       <div className="chapter-heading__text">

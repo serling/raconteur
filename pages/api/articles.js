@@ -1,4 +1,4 @@
-import { getAllArticles } from '../../js/db-helper';
+import { client } from '../../client';
 
 const errorObject = {
   statusCode: 404,
@@ -6,15 +6,31 @@ const errorObject = {
 };
 
 export default async (req, res) => {
-  await getAllArticles()
+  await client
+    .fetch(
+      `*
+      [_type == "article"] 
+      {
+        "id": _id, 
+        title, 
+        "image": mainImage,
+        "slug": slug.current,
+        abstract,
+        categories[]->
+        {
+          title, 
+          "slug": slug.current
+        },
+        abstract,
+        type
+      }`
+    )
     .then(response => {
-      // console.log('got...', response);
-
+      console.log('GAMESANITY: ', response);
       res.status(200).json({ success: true, payload: response });
     })
     .catch(err => {
-      console.log('error in articles', err);
-
+      console.error('Oh no, error occured: ', err);
       res.status(404).json({ error: errorObject });
     });
 };

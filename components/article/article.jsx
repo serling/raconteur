@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Route from 'next/link';
 import cn from 'classnames';
 
-import Image from '../image/image';
+import Poster from '../image/poster';
 import Label from '../label/label';
 
 const themes = {
@@ -13,7 +13,7 @@ const themes = {
   horizontal: 'horizontal'
 };
 
-const Article = ({ title, lead, image, type, slug, theme, imageAspect }) => (
+const Article = ({ title, lead, image, type, slug, theme }) => (
   <>
     <div
       className={cn('article', {
@@ -24,7 +24,7 @@ const Article = ({ title, lead, image, type, slug, theme, imageAspect }) => (
         <a className="article__link remove-link-styles">
           <div className="article__content">
             <div className="article__image">
-              <Image {...image} aspect={imageAspect} />
+              <Poster image={image} isPreview={true} />
             </div>
             <div className="article__text-wrapper">
               <div className="article__text">
@@ -113,7 +113,7 @@ const Article = ({ title, lead, image, type, slug, theme, imageAspect }) => (
         }
 
         &--hero {
-            #{$self}__text-wrapper {
+          #{$self}__text-wrapper {
             position: absolute;
             top: 0;
             left: 0;
@@ -129,7 +129,7 @@ const Article = ({ title, lead, image, type, slug, theme, imageAspect }) => (
           #{$self}__title {
             @media screen and (min-width: $break-at-md) {
               font-size: 2rem;
-              line-height: 1.5;            
+              line-height: 1.5;
             }
           }
         }
@@ -147,8 +147,6 @@ const Article = ({ title, lead, image, type, slug, theme, imageAspect }) => (
             color: #ffffff;
             margin-bottom: 1rem;
           }
-
-          
         }
       }
     `}</style>
