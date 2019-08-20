@@ -1,10 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import Button from '../button/button';
 
 const Word = props => {
-  const { text, isLoading, onClick, buttonText } = props;
+  const { text, buttonText, category } = props;
+  const [isLoading, setIsLoading] = useState(false);
+
+  const getWord = async category => {
+    setIsLoading(true);
+
+    const response = await fetch(`api/word?type=${category}`);
+
+    const { payload, error } = await response.json();
+
+    return { word: payload };
+  };
+
+  const handleOnClick = () => {
+    getWord(category).then(({ word }) => {
+      setIsLoading(false);
+      setActiveWord(word);
+    });
+  };
 
   return (
     <>
@@ -19,7 +37,7 @@ const Word = props => {
                 text={buttonText}
                 textIsHidden={true}
                 iconName="icon-missing"
-                onClick={onClick}
+                onClick={handleOnClick}
               />
             )}
           </div>

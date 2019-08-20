@@ -17,8 +17,6 @@ const sizes = {
 const Poster = ({ image, showMeta, isPreview }) => {
   if (!image) return null;
 
-  console.log('in image, with these props:', image);
-
   const { description, credit, caption } = image;
 
   return (
