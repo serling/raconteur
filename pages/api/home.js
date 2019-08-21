@@ -35,7 +35,6 @@ export default async (req, res) => {
     [0]`
     )
     .then(response => {
-      console.log('INSANITY: ', response);
       res.status(200).json({ success: true, payload: response });
     })
     .catch(err => {
