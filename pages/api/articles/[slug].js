@@ -24,7 +24,16 @@ export default async (req, res) => {
           "slug": slug.current
         }, 
         type, 
-        body, 
+        body[]{
+          ...,
+          markDefs[]
+          {
+            ...,
+            _type == "suggestion" => {
+              "category": category[0]->title
+            }
+          }
+        }, 
         relatedArticles[]->
           {
             "id": _id, 
@@ -49,14 +58,4 @@ export default async (req, res) => {
       console.error('Oh no, error occured: ', err);
       res.status(404).json({ error: errorObject });
     });
-
-  // await getArticleBySlug(query.slug)
-  //   .then(response => {
-  //     res.status(200).json({ success: true, payload: response });
-  //   })
-  //   .catch(err => {
-  //     console.log('error in articles', err);
-
-  //     res.status(404).json({ error: errorObject });
-  //   });
 };

@@ -18,6 +18,10 @@ const validTypes = {
   quirk: 'quirk'
 };
 
+function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+}
+
 export default async (req, res) => {
   const { query } = req;
 
@@ -28,16 +32,22 @@ export default async (req, res) => {
   await client
     .fetch(
       `*
-    [_type == "word" && "${query.type}" in categories] 
+    [_type == "wordCategory" && title == "${query.type}"] 
     {
-      "id": _id, 
       title,
-      categories
+      "numberOfWords": count(words),
+      words[] 
     }`
     )
     .then(response => {
-      console.log('WORDSANITY: ', response);
-      res.status(200).json({ success: true, payload: response });
+      const { title, words, numberOfWords } = response[0];
+
+      res
+        .status(200)
+        .json({
+          success: true,
+          payload: { word: words[getRandomInt(numberOfWords)] }
+        });
     })
     .catch(err => {
       console.error('Oh no, error occured: ', err);

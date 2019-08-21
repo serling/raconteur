@@ -5,17 +5,16 @@ import Word from '../../components/word/word';
 const serializers = {
   marks: {
     suggestion: data => {
-      console.log('serializing suggestion:', data);
-      const { children } = data;
+      const { children, mark } = data;
+      const { category } = mark;
 
-      return <Word text={children} />;
+      return <Word text={children} category={category} />;
     }
   },
   types: {
     poster: data => {
       const { node } = data;
 
-      console.log('serializing poster:', data);
       return <Poster image={node} showMeta={true} />;
     }
   }
