@@ -22,21 +22,25 @@ const Poster = ({ image, showMeta, isPreview }) => {
   return (
     <>
       <div className="poster">
-        <img
-          className="poster__image"
-          src={urlFor(image)
-            .size(
-              isPreview ? sizes.preview.width : sizes.full.width,
-              isPreview ? sizes.preview.height : sizes.full.height
-            )
-            .fit('crop')
-            .url()}
-          alt={description}
-        />
-        {showMeta && (
+        <div className="poster__wrapper">
+          <img
+            className="poster__image"
+            src={urlFor(image)
+              .size(
+                isPreview ? sizes.preview.width : sizes.full.width,
+                isPreview ? sizes.preview.height : sizes.full.height
+              )
+              .fit('crop')
+              .url()}
+            alt={description}
+          />
+          {showMeta && credit && (
+            <span className="poster__credit">Photo: {credit}</span>
+          )}
+        </div>
+        {showMeta && caption && (
           <div className="poster__text">
             <span className="poster__caption">{caption}</span>
-            <span className="poster__credit">{credit}</span>
           </div>
         )}
       </div>
@@ -44,6 +48,33 @@ const Poster = ({ image, showMeta, isPreview }) => {
         .poster {
           &__image {
             max-width: 100%;
+          }
+
+          &__wrapper {
+            position: relative;
+            line-height: 0;
+          }
+
+          &__text {
+            border-bottom: 1px solid #e1dede;
+            padding: 0 0.5rem;
+          }
+
+          &__caption {
+            color: #706f6f;
+            font-size: 0.8em;
+          }
+
+          &__credit {
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            text-align: right;
+            color: white;
+            margin: 0.2rem;
+            position: absolute;
+            right: 0;
+            line-height: 1;
+            bottom: 0;
           }
         }
       `}</style>

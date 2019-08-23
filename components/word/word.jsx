@@ -69,9 +69,10 @@ const Word = props => {
             &__actions {
               display: inline-block;
               margin-left: 0.5rem;
-              transform: translateY(-20%);
+              transform: translateY(-50%);
               position: absolute;
               right: 0;
+              top: 50%;
             }
           }
         `}

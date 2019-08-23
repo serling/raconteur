@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
-import DynamicContent from '../dynamic-content/dynamic-content';
 import Frame from '../frame/frame';
 
 const alignments = {
@@ -14,7 +13,7 @@ const themes = {
   frame: 'frame'
 };
 
-const InlineContent = ({ components, alignment, theme }) => (
+const InlineContent = ({ children, alignment, theme }) => (
   <>
     <div
       className={cn('inline-content', {
@@ -24,8 +23,7 @@ const InlineContent = ({ components, alignment, theme }) => (
         [`inline-content--${themes[theme]}`]: themes[theme]
       })}
     >
-      {theme === themes.frame ? <Frame><DynamicContent components={components} /></Frame> : <DynamicContent components={components} />}
-        
+      {theme === themes.frame ? <Frame>{children}</Frame> : children}
     </div>
     <style jsx>
       {`
@@ -41,7 +39,7 @@ const InlineContent = ({ components, alignment, theme }) => (
           &--aligned-left {
             @media screen and (min-width: $break-at-md) {
               float: left;
-              width: 50%;
+              width: 60%;
               margin: 0 $gutter 1rem 0;
             }
           }
@@ -49,7 +47,7 @@ const InlineContent = ({ components, alignment, theme }) => (
           &--aligned-right {
             @media screen and (min-width: $break-at-md) {
               float: right;
-              width: 50%;
+              width: 60%;
               margin: 0 0 1rem $gutter;
             }
           }
@@ -60,15 +58,11 @@ const InlineContent = ({ components, alignment, theme }) => (
 );
 
 InlineContent.propTypes = {
-  components: PropTypes.array.isRequired,
+  children: PropTypes.node.isRequired,
   alignment: PropTypes.oneOf(
     Object.keys(alignments).map(key => alignments[key])
   ),
   theme: PropTypes.oneOf(Object.keys(themes).map(key => themes[key]))
-};
-
-InlineContent.defaultProps = {
-  components: []
 };
 
 InlineContent.alignments = alignments;

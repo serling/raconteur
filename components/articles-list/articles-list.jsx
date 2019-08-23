@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import Article from '../article/article';
 import List from '../list/list';
 import Frame from '../frame/frame';
-import GimmeSuggestion from '../gimme-suggestion/gimme-suggestion';
 import PageContent from '../page-content/page-content';
 
 const ArticlesList = ({ articles }) => (
