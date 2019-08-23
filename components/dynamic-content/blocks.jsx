@@ -37,11 +37,7 @@ const serializers = {
         );
       }
 
-      return (
-        <PageContent theme={PageContent.themes.wide}>
-          <Poster image={node} showMeta={true} />
-        </PageContent>
-      );
+      return <Poster image={node} showMeta={true} />;
     }
   }
 };
